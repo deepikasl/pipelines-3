@@ -1,0 +1,11 @@
+jobs:
+  - name: simple-runsh
+  - type: runSh
+  - steps:
+    - TASK:
+        script: echo "Hello World!!!"
+  - name: rsync-in-runsh
+  - type: runSh
+  - steps:
+    - TASK:
+        script: printenv
