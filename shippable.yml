@@ -7,5 +7,6 @@ jobs:
   - name: rsync-in-runsh
     type: runSh
     steps:
+    - IN: pipelines_master
     - TASK:
-        script: printenv
+        script: ls $PIPELINES_MASTER_PATH/syncRepo
