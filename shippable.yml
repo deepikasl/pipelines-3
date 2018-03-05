@@ -59,12 +59,16 @@ jobs:
           - cat /etc/resolv.conf
           - cat /etc/dhcp/dhclient.conf
           - cat /etc/default/docker
+          - docker images
+          - df -h
     - TASK:
         name: Container
         script:
           - smi=$(shipctl get_resource_version_key smi_state "smi")
           - echo "Testing container build on $smi SMI"
           - cat /etc/resolv.conf
+          - docker images
+          - df -h
     on_success:
       - script: shipctl put_resource_state check_smi versionName "$smi"
 
