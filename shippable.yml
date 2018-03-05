@@ -61,6 +61,7 @@ jobs:
           - cat /etc/default/docker
           - docker images
           - df -h
+          - printenv
     - TASK:
         name: Container
         script:
