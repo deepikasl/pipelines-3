@@ -231,3 +231,24 @@ jobs:
           pwd
           ls
           sleep 10
+
+  - name: openssl_tester
+    type: runSh
+    runtime:
+      nodePool: u16custom
+    steps:
+    - TASK:
+        name: openssl custom image
+        runtime:
+          container: true
+          options:
+            imageName: gvancuts/clearlinux-acrn-build
+            imageTag: latest
+        script:
+          - openssl version
+    - TASK:
+        name: openssl default image
+        runtime:
+          container: true
+        script:
+          - openssl version
