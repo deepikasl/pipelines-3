@@ -2,15 +2,53 @@ resources:
   - name: smi_state
     type: state
 
+  - name: u16_smi_state
+    type: state
+
+  - name: c7_smi_state
+    type: state
+
+  - name: windows_smi_state
+    type: state
+
   - name: defaults
     type: params
     version:
       params:
-        subscriptionId: "583dc186d4d77b0f0021d73a"
+        subscriptionId: "5ad045ca73c57407000f874d"
         apiUrl: "https://rcapi.shippable.com"
-        smi: "Stable"
+        smi: "Stable - U14"
         dynamicClusterType: 10000
-        secure: A6zo9CJH6u+6stlX6pYC9BNGqqXdOYBKXeASfQy+CDR140MRsLMUIBU4tMsJw/EM0By1UULeNcZMM34kJLCmwRG+mwPrKT+z1hiMctT4/85foTFKpu8ozXUP4naGq5NRWKT8PRk9m37xJbsJsj7rmx47yjpqH3yXggBgTrpDW9h+vLO2tmXAdt79Zl+bf+NLETx6OZRj1s4xe6nAnMt/sjXYyE7YPobchdjVu2Zw+rQVdTTvgdTcsJrO/gmU7qA1s/kNQe/f9muOoLVGTthI07z3+xkuMAWokji3i7uQHOvpMiIS29MGgVsHVhPV1iqJ+B0UF9lMhdOQTvnTH1RoJQ==
+        smiStateResource: "smi_state"
+        nodePoolName: "u14_on_demand_nodepool"
+        secure: sy9C8uiPVgftfuCO+zWPo8d/Hb70n0iLry2KW6RRHTNP67UOpdE5eFvq8lheLta+lruL8B5C3onAIH4b2+hmh+uf+n1Xc/43te7pUgXqulUZRDzDhzeVOMJpk7KURmqCCakkg2GblosoN2vCPxagXePbAJsGg2CW+HHcQnvLXznYYT4pHMaaW0bz2EZjozFf1qL5CnSSp3TIQhSHp3B+FhqZyOFy67lFO4StzmAN/a3KQalfEjQ6vnvE8SpEP8mBmPj+7VIuF0iayqR9g3byDTUgjPe3RC5fA1LvRcM44bTYC9qd2cSQnySdnLHCltXDvn2pyaOPGLFTGpVFYpbAHA==
+
+  - name: u16_params
+    type: params
+    version:
+      params:
+        smi: "v6.3.4 - U16"
+        dynamicClusterType: 10010
+        nodePoolName: "u16_on_demand_nodepool"
+        smiStateResource: "u16_smi_state"
+
+  - name: c7_params
+    type: params
+    version:
+      params:
+        smi: "v6.3.4 - C7"
+        dynamicClusterType: 10014
+        nodePoolName: "c7_on_demand_nodepool"
+        smiStateResource: "c7_smi_state"
+
+  - name: windows_params
+    type: params
+    version:
+      params:
+        smi: "v6.3.4 - Windows"
+        dynamicClusterType: 10009
+        nodePoolName: "windows_on_demand_nodepool"
+        smiStateResource: "windows_smi_state"
 
   - name: pipelines_repo
     type: gitRepo
@@ -20,14 +58,54 @@ resources:
       branch: scripts
 
 jobs:
+  - name: trigger_tests
+    type: runSh
+    steps:
+      - TASK:
+          - script: echo "start :)"
+
   - name: start_smi_test
     type: runSh
     steps:
+      - IN: trigger_tests
       - IN: defaults
       - OUT: smi_state
       - TASK:
           - script: echo "starting SMI test with SMI $smi"
-          - script: shipctl put_resource_state smi_state smi $smi
+          - script: echo "smi"="$smi" >> "$JOB_STATE/smi_state.env"
+
+  - name: u16_start_smi_test
+    type: runSh
+    steps:
+      - IN: trigger_tests
+      - IN: defaults
+      - IN: u16_params
+      - OUT: u16_smi_state
+      - TASK:
+          - script: echo "starting SMI test with SMI $smi"
+          - script: echo "smi"="$smi" >> "$JOB_STATE/u16_smi_state.env"
+
+  - name: c7_start_smi_test
+    type: runSh
+    steps:
+      - IN: trigger_tests
+      - IN: defaults
+      - IN: c7_params
+      - OUT: c7_smi_state
+      - TASK:
+          - script: echo "starting SMI test with SMI $smi"
+          - script: echo "smi"="$smi" >> "$JOB_STATE/c7_smi_state.env"
+
+  - name: windows_start_smi_test
+    type: runSh
+    steps:
+      - IN: trigger_tests
+      - IN: defaults
+      - IN: windows_params
+      - OUT: windows_smi_state
+      - TASK:
+          - script: echo "starting SMI test with SMI $smi"
+          - script: echo "smi"="$smi" >> "$JOB_STATE/windows_smi_state.env"
 
   - name: smi_test_trigger
     type: runSh
@@ -42,10 +120,12 @@ jobs:
           - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
           - script: ./updateClusterRuntimeTemplateId.sh
           - script: popd
-          - script: shipctl put_resource_state smi_state triggerJobResourceId $RESOURCE_ID
+          - script: echo "triggerJobResourceId"="$RESOURCE_ID" >> "$JOB_STATE/smi_state.env"
 
   - name: check_smi
     type: runSh
+    runtime:
+      nodePool: u14_on_demand_nodepool
     steps:
     - IN: smi_test_trigger
     - IN: smi_state
@@ -62,6 +142,7 @@ jobs:
           - docker images
           - df -h
           - printenv
+          - lsb_release -a
     - TASK:
         name: Container
         script:
@@ -70,8 +151,207 @@ jobs:
           - cat /etc/resolv.conf
           - docker images
           - df -h
+          - lsb_release -a
     on_success:
-      - script: shipctl put_resource_state check_smi versionName "$smi"
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_1
+    type: runSh
+    runtime:
+      nodePool: u14_n_1
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_2
+    type: runSh
+    runtime:
+      nodePool: u14_n_2
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_3
+    type: runSh
+    runtime:
+      nodePool: u14_n_3
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_4
+    type: runSh
+    runtime:
+      nodePool: u14_n_4
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_5
+    type: runSh
+    runtime:
+      nodePool: u14_n_5
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
+
+  - name: check_smiu14_n_6
+    type: runSh
+    runtime:
+      nodePool: u14_n_6
+    steps:
+    - IN: smi_test_trigger
+    - IN: smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/default/docker
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/check_smi.env"
 
   - name: check_trigger_next_smi
     type: runSh
@@ -88,14 +368,14 @@ jobs:
         - script: |
             for smi in $(cat smis.txt); do
               if [ "$next_smi" == "true" ]; then
-                next_smi_name=$smi
+                next_smi_name="$smi"
                 break;
               fi;
               if [ "$smi" == "$current_smi" ]; then
                 next_smi="true";
               fi;
             done
-        - script: shipctl put_resource_state smi_state "smi" "$next_smi_name";
+        - script: echo "smi"="$next_smi_name" >> "$JOB_STATE/smi_state.env"
         - script: popd
 
   - name: trigger_next_smi_test
@@ -113,136 +393,263 @@ jobs:
               curl -X POST "$apiUrl/resources/$resource_id/triggerNewBuildRequest" -H "Authorization: apiToken $apiToken" -H "content-type: application/json" -d "{}"
             fi
 
-  # - name: wait_for_exit_test_success
-  #   type: runSh
-  #   steps:
-  #   - TASK:
-  #       name: simple
-  #       script:
-  #         - ls
-  #   - TASK:
-  #       name: multi-simple
-  #       script: |
-  #           ls
-  #           pwd
-  #           true
-  #   - TASK:
-  #       name: multi-exit-0
-  #       script: |
-  #           ls
-  #           exit 0
-  #           pwd
-  #   - TASK:
-  #       name: exit-0->
-  #       script: >
-  #           exit 0
-  #   - TASK:
-  #       name: host_simple
-  #       runtime:
-  #         container: false
-  #       script:
-  #         - ls
-  #   - TASK:
-  #       name: host_multi-simple
-  #       runtime:
-  #         container: false
-  #       script: |
-  #           ls
-  #           pwd
-  #           true
-  #   - TASK:
-  #       name: host_multi-exit-0
-  #       runtime:
-  #         container: false
-  #       script: |
-  #           ls
-  #           exit 0
-  #           pwd
-  #   - TASK:
-  #       name: host_exit-0->
-  #       runtime:
-  #         container: false
-  #       script: >
-  #           exit 0
-  #
-  # - name: wait_for_exit_test_fail1
-  #   type: runSh
-  #   steps:
-  #   - IN: wait_for_exit_test_success
-  #   - TASK:
-  #       name: host_exit-1
-  #       runtime:
-  #         container: false
-  #       script: >
-  #           exit 1
-  #
-  # - name: wait_for_exit_test_fail2
-  #   type: runSh
-  #   steps:
-  #   - IN: wait_for_exit_test_success
-  #   - TASK:
-  #       name: wrong_command
-  #       script: sl
-  #
-  # - name: wait_for_exit_test_fail3
-  #   type: runSh
-  #   steps:
-  #   - IN: wait_for_exit_test_success
-  #   - TASK:
-  #       name: multi-line-fail
-  #       script: |
-  #           ls
-  #           sl
-  #           pwd
-  #
-  # - name: wait_for_exit_test_fail4
-  #   type: runSh
-  #   steps:
-  #   - IN: wait_for_exit_test_success
-  #   - TASK:
-  #       name: multi-line-fail
-  #       script: exit -1
-  #
-  # - name: rancher_poc
-  #   type: runSh
-  #   steps:
-  #   - TASK:
-  #       name: rancher_container
-  #       runtime:
-  #         container: true
-  #         options:
-  #           imageName: drydock/microbase
-  #           imageTag: master
-  #           options: --net=host --privileged=true --init
-  #       script:
-  #         - az --version
-  #         - sleep 10
-  #   - TASK:
-  #       name: fail
-  #       runtime:
-  #         container: false
-  #       script: |
-  #         pwd
-  #         ls
-  #         sleep 10
-  #
-  # - name: openssl_tester
-  #   type: runSh
-  #   runtime:
-  #     nodePool: u16custom
-  #   steps:
-  #   - TASK:
-  #       name: openssl custom image
-  #       runtime:
-  #         container: true
-  #         options:
-  #           imageName: gvancuts/clearlinux-acrn-build
-  #           imageTag: latest
-  #       script:
-  #         - openssl version
-  #   - TASK:
-  #       name: openssl default image
-  #       runtime:
-  #         container: true
-  #       script:
-  #         - openssl version
+  - name: u16_smi_test_trigger
+    type: runSh
+    steps:
+      - IN: u16_smi_state
+      - IN: u16_start_smi_test
+      - IN: defaults
+      - IN: u16_params
+      - IN: pipelines_repo
+        switch: off
+      - OUT: u16_smi_state
+      - TASK:
+          - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+          - script: ./updateClusterRuntimeTemplateId.sh
+          - script: popd
+          - script: echo "triggerJobResourceId"="$RESOURCE_ID" >> "$JOB_STATE/u16_smi_state.env"
+
+  - name: u16_check_smi
+    type: runSh
+    runtime:
+      nodePool: u16_on_demand_nodepool
+    steps:
+    - IN: u16_smi_test_trigger
+    - IN: u16_smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key u16_smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/docker/daemon.json
+          - docker images
+          - df -h
+          - printenv
+          - lsb_release -a
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key u16_smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+          - lsb_release -a
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/u16_check_smi.env"
+
+  - name: u16_check_trigger_next_smi
+    type: runSh
+    steps:
+    - IN: u16_smi_state
+    - IN: u16_check_smi
+    - IN: pipelines_repo
+      switch: off
+    - OUT: u16_smi_state
+    - TASK:
+        - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+        - script: next_smi_name=""; next_smi="";
+        - script: ls /var/lib/shippable/build/IN/u16_smi_state
+        - script: cat /var/lib/shippable/build/IN/u16_smi_state/version.json
+        - script: current_smi=$(cat /var/lib/shippable/build/IN/u16_smi_state/version.json | jq -r '.version.propertyBag.smi')
+        - script: echo "current_smi - $current_smi"
+        - script: |
+            for smi in $(cat u16smis.txt); do
+              echo "$smi"
+              if [ "$next_smi" == "true" ]; then
+                next_smi_name="$smi"
+                break;
+              fi;
+              if [ "$smi" == "$current_smi" ]; then
+                next_smi="true";
+              fi;
+            done
+        - script: echo $next_smi_name
+        - script: echo "smi"="$next_smi_name" >> "$JOB_STATE/u16_smi_state.env"
+        - script: popd
+
+  - name: u16_trigger_next_smi_test
+    type: runSh
+    steps:
+    - IN: u16_check_trigger_next_smi
+    - IN: u16_smi_state
+    - IN: defaults
+    - TASK:
+        - script: smi=$(shipctl get_resource_version_key u16_smi_state "smi")
+        - script: echo $smi
+        - script: |
+            if [ ! -z "$smi" ]; then
+              resource_id=$(shipctl get_resource_version_key u16_smi_state "triggerJobResourceId")
+              echo $resource_id
+              curl -X POST "$apiUrl/resources/$resource_id/triggerNewBuildRequest" -H "Authorization: apiToken $apiToken" -H "content-type: application/json" -d "{}"
+            fi
+
+  - name: c7_smi_test_trigger
+    type: runSh
+    steps:
+      - IN: c7_smi_state
+      - IN: c7_start_smi_test
+      - IN: defaults
+      - IN: c7_params
+      - IN: pipelines_repo
+        switch: off
+      - OUT: c7_smi_state
+      - TASK:
+          - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+          - script: ./updateClusterRuntimeTemplateId.sh
+          - script: popd
+          - script: echo "triggerJobResourceId"="$RESOURCE_ID" >> "$JOB_STATE/c7_smi_state.env"
+
+  - name: c7_check_smi
+    type: runSh
+    runtime:
+      nodePool: c7_on_demand_nodepool
+    steps:
+    - IN: c7_smi_test_trigger
+    - IN: c7_smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - smi=$(shipctl get_resource_version_key c7_smi_state "smi")
+          - echo "Testing host build on $smi SMI"
+          - cat /etc/resolv.conf
+          - cat /etc/dhcp/dhclient.conf
+          - cat /etc/docker/daemon.json
+          - docker images
+          - df -h
+          - printenv
+    - TASK:
+        name: Container
+        script:
+          - smi=$(shipctl get_resource_version_key c7_smi_state "smi")
+          - echo "Testing container build on $smi SMI"
+          - cat /etc/resolv.conf
+          - docker images
+          - df -h
+    on_success:
+      - script: echo "versionName"="$smi" >> "$JOB_STATE/c7_check_smi.env"
+
+  - name: c7_check_trigger_next_smi
+    type: runSh
+    steps:
+    - IN: c7_smi_state
+    - IN: c7_check_smi
+    - IN: pipelines_repo
+      switch: off
+    - OUT: c7_smi_state
+    - TASK:
+        - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+        - script: next_smi_name=""; next_smi="";
+        - script: current_smi=$(shipctl get_resource_version_key c7_smi_state "smi")
+        - script: |
+            for smi in $(cat c7smis.txt); do
+              if [ "$next_smi" == "true" ]; then
+                next_smi_name="$smi"
+                break;
+              fi;
+              if [ "$smi" == "$current_smi" ]; then
+                next_smi="true";
+              fi;
+            done
+        - script: echo "smi"="$next_smi_name" >> "$JOB_STATE/c7_smi_state.env"
+        - script: popd
+
+  - name: c7_trigger_next_smi_test
+    type: runSh
+    steps:
+    - IN: c7_check_trigger_next_smi
+    - IN: c7_smi_state
+    - IN: defaults
+    - TASK:
+        - script: smi=$(shipctl get_resource_version_key c7_smi_state "smi")
+        - script: |
+            if [ ! -z "$smi" ]; then
+              resource_id=$(shipctl get_resource_version_key c7_smi_state "triggerJobResourceId")
+              echo $resource_id
+              curl -X POST "$apiUrl/resources/$resource_id/triggerNewBuildRequest" -H "Authorization: apiToken $apiToken" -H "content-type: application/json" -d "{}"
+            fi
+
+  - name: windows_smi_test_trigger
+    type: runSh
+    steps:
+      - IN: windows_smi_state
+      - IN: windows_start_smi_test
+      - IN: defaults
+      - IN: windows_params
+      - IN: pipelines_repo
+        switch: off
+      - OUT: windows_smi_state
+      - TASK:
+          - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+          - script: ./updateClusterRuntimeTemplateId.sh
+          - script: popd
+          - script: echo "triggerJobResourceId"="$RESOURCE_ID" >> "$JOB_STATE/windows_smi_state.env"
+
+  - name: windows_check_smi
+    type: runSh
+    runtime:
+      nodePool: windows_on_demand_nodepool
+    steps:
+    - IN: windows_smi_test_trigger
+    - IN: windows_smi_state
+    - TASK:
+        name: Host
+        runtime:
+          container: false
+        script:
+          - docker ps
+          - docker images
+    - TASK:
+        name: Container
+        script:
+          - docker ps
+          - docker images
+    on_success:
+      - script: |
+          "versionName=$smi" | Out-File -Encoding utf8 -NoNewLine -Append -File "$env:JOB_STATE/windows_check_smi.env"
+
+  - name: windows_check_trigger_next_smi
+    type: runSh
+    steps:
+    - IN: windows_smi_state
+    - IN: windows_check_smi
+    - IN: pipelines_repo
+      switch: off
+    - OUT: windows_smi_state
+    - TASK:
+        - script: pushd $(shipctl get_resource_state "pipelines_repo") && git checkout scripts
+        - script: next_smi_name=""; next_smi="";
+        - script: current_smi=$(shipctl get_resource_version_key windows_smi_state "smi")
+        - script: |
+            for smi in $(cat windowssmis.txt); do
+              if [ "$next_smi" == "true" ]; then
+                next_smi_name="$smi"
+                break;
+              fi;
+              if [ "$smi" == "$current_smi" ]; then
+                next_smi="true";
+              fi;
+            done
+        - script: echo "smi"="$next_smi_name" >> "$JOB_STATE/windows_smi_state.env"
+        - script: popd
+
+  - name: windows_trigger_next_smi_test
+    type: runSh
+    steps:
+    - IN: windows_check_trigger_next_smi
+    - IN: windows_smi_state
+    - IN: defaults
+    - TASK:
+        - script: smi=$(shipctl get_resource_version_key windows_smi_state "smi")
+        - script: |
+            if [ ! -z "$smi" ]; then
+              resource_id=$(shipctl get_resource_version_key windows_smi_state "triggerJobResourceId")
+              echo $resource_id
+              curl -X POST "$apiUrl/resources/$resource_id/triggerNewBuildRequest" -H "Authorization: apiToken $apiToken" -H "content-type: application/json" -d "{}"
+            fi
