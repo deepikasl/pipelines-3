@@ -660,8 +660,10 @@ jobs:
     - TASK:
         runtime:
           container: false
-        script: node -v
+        script:
+          - node -v
     - TASK:
         runtime:
           container: true
-        script: node -v
+        script:
+          - node -v
