@@ -662,8 +662,10 @@ jobs:
           container: false
         script:
           - node -v
+          - docker -v
     - TASK:
         runtime:
           container: true
         script:
           - node -v
+          - docker -v
