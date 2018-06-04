@@ -653,3 +653,15 @@ jobs:
               echo $resource_id
               curl -X POST "$apiUrl/resources/$resource_id/triggerNewBuildRequest" -H "Authorization: apiToken $apiToken" -H "content-type: application/json" -d "{}"
             fi
+
+  - name: default_nodepool_test
+    type: runSh
+    steps:
+    - TASK:
+        runtime:
+          container: false
+        script: node -v
+    - TASK:
+        runtime:
+          container:
+        script: node -v
