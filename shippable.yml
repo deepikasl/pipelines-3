@@ -605,11 +605,13 @@ jobs:
         script:
           - docker ps
           - docker images
+          - node -v
     - TASK:
         name: Container
         script:
           - docker ps
           - docker images
+          - node -v
     on_success:
       - script: |
           "versionName=$smi" | Out-File -Encoding utf8 -NoNewLine -Append -File "$env:JOB_STATE/windows_check_smi.env"
