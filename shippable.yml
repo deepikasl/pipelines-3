@@ -13,10 +13,10 @@ resources:
   
   - name: irc
     type: notification
-    recipients:
-      - "#hey"
-      - "#test"
-
+    pointer:
+      method: irc
+      recipients:
+        - "#hey"
 
   - name: defaults
     type: params
