@@ -10,6 +10,12 @@ resources:
 
   - name: windows_smi_state
     type: state
+  
+  - name: irc
+    type: notification
+    recipients:
+      - "#hey"
+
 
   - name: defaults
     type: params
@@ -658,6 +664,8 @@ jobs:
 
   - name: default_nodepool_test
     type: runSh
+    on_start:
+      - NOTIFY: irc
     steps:
     - TASK:
         runtime:
