@@ -673,6 +673,7 @@ jobs:
           container: false
         script:
           - node -v
+          - docker images
           - docker -v
     - TASK:
         runtime:
