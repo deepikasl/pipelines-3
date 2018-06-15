@@ -676,10 +676,6 @@ jobs:
     - TASK:
         runtime:
           container: true
-          options:
-            imageName: aarch32_u16
-            imageTag: latest
-            pull: false
         script:
           - node -v
           - docker -v
