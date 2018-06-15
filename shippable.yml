@@ -665,8 +665,6 @@ jobs:
 
   - name: default_nodepool_test
     type: runSh
-    on_start:
-      - NOTIFY: irc
     steps:
     - TASK:
         runtime:
@@ -678,6 +676,10 @@ jobs:
     - TASK:
         runtime:
           container: true
+          options:
+            imageName: aarch32_u16
+            imageTag: latest
+            pull: false
         script:
           - node -v
           - docker -v
