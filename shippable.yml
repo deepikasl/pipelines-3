@@ -673,6 +673,7 @@ jobs:
           - node -v
           - docker images
           - docker -v
+          - objdump -f /var/lib/shippable/a12229f2-283c-487d-800b-ea3fcf9f5f83/reqExec/dist/main/main
     - TASK:
         runtime:
           container: true
@@ -683,3 +684,4 @@ jobs:
         script:
           - node -v
           - docker -v
+          - objdump -f /var/lib/shippable/a12229f2-283c-487d-800b-ea3fcf9f5f83/reqExec/dist/main/main
