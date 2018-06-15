@@ -684,4 +684,4 @@ jobs:
         script:
           - node -v
           - docker -v
-          - objdump -f /var/lib/shippable/a12229f2-283c-487d-800b-ea3fcf9f5f83/reqExec/aarch64/Ubuntu_16.04/dist/main/main
+          - objdump -f /reqExec/aarch64/Ubuntu_16.04/dist/main/main
