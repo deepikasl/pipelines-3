@@ -10,7 +10,7 @@ resources:
 
   - name: windows_smi_state
     type: state
-  
+
   - name: irc
     type: notification
     pointer:
@@ -63,6 +63,13 @@ resources:
     pointer:
       sourceName: bharath92/pipelines
       branch: scripts
+
+  - name: aarch32_microbase
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: bharath92/aarch32_microbase
+      branch: master
 
 jobs:
   - name: trigger_tests
@@ -679,4 +686,25 @@ jobs:
         script:
           - node -v
           - docker -v
-    
+
+  - name: default_nodepool_test_in
+    type: runSh
+    steps:
+    - IN: aarch32_microbase
+    - IN: docker_cli
+    - TASK:
+        runtime:
+          container: false
+        script:
+          - node -v
+          - docker images
+          - docker -v
+    - TASK:
+        runtime:
+          container: true
+        script:
+          - node -v
+          - docker -v
+          - pushd $(shipctl get_resource_state "aarch32_microbase")
+          - docker build -t="bharath92/aarch32_u16reqproc:test" -f=image/aarch32/Ubuntu_16.04/Dockerfile .
+          - docker push bharath92/aarch32_u16reqproc:test
