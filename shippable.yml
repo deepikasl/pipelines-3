@@ -64,11 +64,11 @@ resources:
       sourceName: bharath92/pipelines
       branch: scripts
 
-  - name: aarch32_microbase
+  - name: aarch32_u16reqproc
     type: gitRepo
     integration: github
     pointer:
-      sourceName: bharath92/aarch32_microbase
+      sourceName: bharath92/reqproc
       branch: master
 
 jobs:
@@ -690,7 +690,7 @@ jobs:
   - name: default_nodepool_test_in
     type: runSh
     steps:
-    - IN: aarch32_microbase
+    - IN: aarch32_u16reqproc
     - IN: docker_cli
     - TASK:
         runtime:
@@ -705,6 +705,8 @@ jobs:
         script:
           - node -v
           - docker -v
-          - pushd $(shipctl get_resource_state "aarch32_microbase")
+          - pushd $(shipctl get_resource_state "aarch32_u16reqproc")
+          - sed -i "s/{{%TAG%}}/master/g" ./image/aarch32/Ubuntu_16.04/Dockerfile
           - docker build -t="bharath92/aarch32_u16reqproc:test" -f=image/aarch32/Ubuntu_16.04/Dockerfile .
+          - docker image inspect --format='{{.Architecture}}' bharath92/aarch32_u16reqproc:test
           - docker push bharath92/aarch32_u16reqproc:test
