@@ -70,6 +70,13 @@ resources:
     pointer:
       sourceName: bharath92/reqproc
       branch: master
+  
+  - name: api_repo
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: bharath92/api
+      branch: master
 
 jobs:
   - name: trigger_tests
@@ -710,3 +717,13 @@ jobs:
           - docker build -t="bharath92/aarch32_u16reqproc:test" -f=image/aarch32/Ubuntu_16.04/Dockerfile .
           - docker image inspect --format='{{.Architecture}}' bharath92/aarch32_u16reqproc:test
           - docker push bharath92/aarch32_u16reqproc:test
+  - name: default_nodepool_test_gitRepo
+    type: runSh
+    steps:
+    - IN: pipelines_repo
+    - IN: api_repo
+    - TASK:
+        runtime:
+          container: true
+        script:
+          - echo lol
