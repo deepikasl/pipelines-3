@@ -713,8 +713,12 @@ jobs:
     type: runSh
     steps:
     - IN: pipelines_repo
+    - IN: aarch32_u16reqproc
     - TASK:
         runtime:
           container: true
         script:
           - echo lol
+          - pushd $(shipctl get_resource_state "aarch32_u16reqproc")
+          - sed -i "s/{{%TAG%}}/master/g" ./image/aarch32/Ubuntu_16.04/Dockerfile
+          - docker build -t="bharath92/u16reqproc:test" -f=image/x86_64/Ubuntu_16.04/Dockerfile .
