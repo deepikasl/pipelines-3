@@ -70,20 +70,6 @@ resources:
     pointer:
       sourceName: bharath92/reqproc
       branch: master
-  
-  - name: api_repo
-    type: gitRepo
-    integration: github
-    pointer:
-      sourceName: bharath92/api
-      branch: master
-  - name: micro_repo
-    type: gitRepo
-    integration: github
-    pointer:
-      sourceName: bharath92/micro
-      branch: master
-
 jobs:
   - name: trigger_tests
     type: runSh
@@ -726,9 +712,7 @@ jobs:
   - name: default_nodepool_test_gitRepo
     type: runSh
     steps:
-    - IN: api_repo
     - IN: pipelines_repo
-    - IN: micro_repo
     - TASK:
         runtime:
           container: true
