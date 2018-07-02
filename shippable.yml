@@ -728,10 +728,17 @@ jobs:
     - TASK:
         script:
           - sleep 10
+  - name: default_IN_job_2
+    type: runSh
+    steps:
+    - TASK:
+        script:
+          - sleep 20          
   - name: default_job
     type: runSh
     steps:
     - IN: default_IN_job
+    - IN: default_IN_job_2
     - OUT: default_OUT_job
     - TASK:
         script:
