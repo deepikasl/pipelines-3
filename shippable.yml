@@ -722,3 +722,24 @@ jobs:
           - pushd $(shipctl get_resource_state "aarch32_u16reqproc")
           - sed -i "s/{{%TAG%}}/master/g" ./image/aarch32/Ubuntu_16.04/Dockerfile
           - docker build -t="bharath92/u16reqproc:test" -f=image/x86_64/Ubuntu_16.04/Dockerfile .
+  - name: default_IN_job
+    type: runSh
+    steps:
+    - TASK:
+        script:
+          - sleep 10
+  - name: default_job
+    type: runSh
+    steps:
+    - IN: default_IN_job
+    - OUT: default_OUT_job
+    - TASK:
+        script:
+          - sleep 10
+  
+  - name: default_OUT_job
+    type: runSh
+    steps:
+    - TASK:
+        script:
+          - sleep 10
