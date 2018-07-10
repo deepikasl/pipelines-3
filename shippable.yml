@@ -749,4 +749,30 @@ jobs:
     steps:
     - TASK:
         script:
-          - sleep 10
+          - sleep 10 
+  - name: restricted_job
+    type: runSh
+    runtime:
+      nodePool: shippable_shared_aarch64
+    steps:
+    - TASK:
+        script:
+          - echo hi
+  - name: restricted_host_job
+    runtime:
+      container: false
+      nodePool: shippable_shared_aarch64
+    type: runSh
+    steps:
+    - TASK:
+        script:
+          - echo hi
+  - name: restricted_docker_job
+    runtime:
+      container: false
+      nodePool: shippable_shared_aarch64
+    type: runSh
+    steps:
+    - TASK:
+        script:
+          - docker -v
