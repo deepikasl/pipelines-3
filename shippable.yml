@@ -776,3 +776,9 @@ jobs:
     - TASK:
         script:
           - docker -v
+  - name: new_job
+    steps:
+    - TASK:
+        script:
+          - docker -v
+  
