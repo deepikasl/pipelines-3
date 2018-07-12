@@ -777,6 +777,7 @@ jobs:
         script:
           - docker -v
   - name: new_job
+    type: runSh
     steps:
     - TASK:
         script:
