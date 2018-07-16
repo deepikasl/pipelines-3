@@ -770,7 +770,7 @@ jobs:
           - echo hi
   - name: restricted_docker_job
     runtime:
-      nodePool: shippable_shared_aarch64
+      nodePool: default-restricted
     type: runSh
     steps:
     - TASK:
