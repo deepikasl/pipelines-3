@@ -786,5 +786,9 @@ jobs:
     type: runSh
     steps:
     - TASK:
-      script:
-        - docker -v  
+      runtime:
+        options:
+          env:
+          - test: test
+    script:
+      - docker -v  
