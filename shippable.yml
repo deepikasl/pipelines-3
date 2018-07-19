@@ -782,13 +782,15 @@ jobs:
     - TASK:
         script:
           - docker -v
+
   - name: new_job_2
     type: runSh
     steps:
     - TASK:
-      runtime:
-        options:
-          env:
-          - test: test
-    script:
-      - docker -v  
+        runtime:
+          options:
+            env:
+            - test: test
+      script:
+      - - |
+          echo hi 
