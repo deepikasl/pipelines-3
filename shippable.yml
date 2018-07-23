@@ -794,9 +794,9 @@ jobs:
       script:
       - - |
           echo hi
-   - name: sample-job-ZZ
-     type: runSh
-     steps:
-       - TASK:
-           script:
-           -  echo "hello: world"
+  - name: sample-job-ZZ
+    type: runSh
+    steps:
+      - TASK:
+          script:
+          -  echo "hello: world"
