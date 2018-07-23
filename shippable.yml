@@ -793,4 +793,10 @@ jobs:
             - test: test
       script:
       - - |
-          echo hi 
+          echo hi
+   - name: sample-job-ZZ
+     type: runSh
+     steps:
+       - TASK:
+           script:
+           -  echo "hello: world"
