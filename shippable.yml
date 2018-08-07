@@ -753,7 +753,6 @@ jobs:
   - name: restricted_job
     type: runSh
     runtime:
-      container: true
       nodePool: shippable_shared_aarch64
     steps:
     - TASK:
@@ -800,3 +799,27 @@ jobs:
       - TASK:
           script:
           -  echo "hello: world"
+  - name: restricted_job_1
+    type: runSh
+    runtime:
+      nodePool: shippable_shared_aarch64
+    steps:
+    - TASK:
+        script:
+          - echo hi
+  - name: restricted_job_2
+    type: runSh
+    runtime:
+      nodePool: shippable_shared_aarch64
+    steps:
+    - TASK:
+        script:
+          - echo hi
+  - name: restricted_job_3
+    type: runSh
+    runtime:
+      nodePool: shippable_shared_aarch64
+    steps:
+    - TASK:
+        script:
+          - echo hi
