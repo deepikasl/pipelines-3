@@ -70,6 +70,9 @@ resources:
     pointer:
       sourceName: bharath92/reqproc
       branch: master
+      depth: 6
+      gitConfig:
+        - core.editor vim
 jobs:
   - name: trigger_tests
     type: runSh
@@ -820,6 +823,8 @@ jobs:
     runtime:
       nodePool: shippable_shared_aarch64
     steps:
+    - IN: pipelines_repo
+    - IN: aarch32_u16reqproc
     - TASK:
         script:
           - echo hi
