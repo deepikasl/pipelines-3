@@ -820,8 +820,6 @@ jobs:
           - echo hi
   - name: restricted_job_3
     type: runSh
-    runtime:
-      nodePool: shippable_shared_aarch64
     steps:
     - IN: pipelines_repo
     - IN: aarch32_u16reqproc
