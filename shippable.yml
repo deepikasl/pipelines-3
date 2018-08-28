@@ -826,3 +826,8 @@ jobs:
     - TASK:
         script:
           - echo hi
+  - name: samplePyt_runCI
+    type: runCI
+    steps:
+      - IN: pipelines_repo
+      - IN: aarch32_u16reqproc
