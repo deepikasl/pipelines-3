@@ -679,15 +679,12 @@ jobs:
         runtime:
           container: false
         script:
-          - node -v
-          - docker images
-          - docker -v
-    - TASK:
-        runtime:
-          container: true
-        script:
-          - node -v
-          - docker -v
+          - sleep 1m
+          - echo hi
+          - sleep 1m
+          - echo "hi again"
+          - sleep 1m
+          - echo lol
 
   - name: default_nodepool_test_in
     type: runSh
