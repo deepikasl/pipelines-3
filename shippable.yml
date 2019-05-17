@@ -17,7 +17,7 @@ pipelines:
         type: bash
         configuration:
           affinityGroup: build
-          nodePool: dev
+          nodePool: u18
         setup:
           environmentVariables:
             normal:
@@ -39,7 +39,7 @@ pipelines:
         type: bash
         configuration:
           affinityGroup: build
-          nodePool: dev
+          nodePool: u18
         triggeredBy:
           steps:
             - test_func
