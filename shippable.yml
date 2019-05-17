@@ -1,77 +1,90 @@
+resources:
+  - name: app1
+    type: gitRepo
+    repoPath: bharath92/admiral
+    configuration:
+      integrationName: bharath_github
+      branches:
+        only: master
+    initialVersion:
+      sha: master
+
 pipelines:
-  - name: fan_out_in
+
+  - name: test_pipeline
     steps:
-      - name: start_foi
+      - name: test_func
         type: bash
         configuration:
-          affinityGroup: test
+          affinityGroup: build
+          nodePool: dev
+        setup:
+          environmentVariables:
+            normal:
+              myFirstName: Manisha
+              myLastName: Sahasrabudhe
+        requires:
+          resources:
+            - app1
+          integrations:
+            - art
         execution:
           onExecute:
-            - echo "start"
-      - name: top1_foi
+            - echo $myFirstName
+            - echo $myLastName
+            - printenv
+
+
+      - name: test_func_next
         type: bash
         configuration:
-          priority: 1
-          affinityGroup: test
+          affinityGroup: build
+          nodePool: dev
         triggeredBy:
           steps:
-            - start_foi
+            - test_func
         execution:
           onExecute:
-            - echo "top1"
-      - name: bottom1_foi
-        type: bash
-        configuration:
-          priority: 5
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - start_foi
-        execution:
-          onExecute:
-            - echo "bottom1"
-            - sleep 3m
-      - name: top2_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top1_foi
-        execution:
-          onExecute:
-            - echo "top2"
-            - sleep 1h
-          onComplete:
-            - echo "hmmmm"
-          onFailure:
-            - echo "boo"
-      - name: top3_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top2_foi
-        execution:
-          onExecute:
-            - echo "start"
-      - name: final_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top3_foi
-            - bottom1_foi
-        execution:
-          onExecute:
-            - echo "start"
-      - name: outside_foi
+            - printenv
+
+
+      - name: parallel_1
         type: bash
         triggeredBy:
           steps:
-            - top1_foi
+            - test_func_next
         execution:
           onExecute:
-            - echo "no group"
+            - printenv
+            - echo $imageTag
+
+
+      - name: parallel_2
+        type: bash
+        triggeredBy:
+          steps:
+            - test_func_next
+        execution:
+          onExecute:
+            - printenv
+
+      - name: parallel_3
+        type: bash
+        triggeredBy:
+          steps:
+            - test_func_next
+        execution:
+          onExecute:
+            - printenv
+
+      - name: final_step
+        type: bash
+        triggeredBy:
+          steps:
+            - parallel_2
+            - parallel_1
+            - parallel_3
+        execution:
+          onExecute:
+            - printenv
+
