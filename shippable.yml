@@ -26,8 +26,6 @@ pipelines:
         requires:
           resources:
             - app1
-          integrations:
-            - art
         execution:
           onExecute:
             - echo $myFirstName
