@@ -41,7 +41,7 @@ pipelines:
         execution:
           onExecute:
             - echo "top2"
-            - sleep 1h
+            #- sleep 1h
           onComplete:
             - echo "hmmmm"
           onFailure:
