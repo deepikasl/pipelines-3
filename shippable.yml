@@ -30,7 +30,7 @@ pipelines:
         execution:
           onExecute:
             - echo "bottom1"
-            - sleep 3m
+            #- sleep 3m
       - name: top2_foi
         type: bash
         configuration:
