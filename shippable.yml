@@ -15,6 +15,12 @@ pipelines:
     steps:
       - name: test_pvt_git
         type: bash
+        setup:
+          runtime:
+            type: image
+            image:
+              imageName: drydock/u16microbase
+              imageTag: master
         requires:
           resources:
             - pvt_repo
