@@ -24,9 +24,9 @@ pipelines:
     steps:
       - name: test_pvt_git
         type: bash
-        setup:
-          runtime:
-            type: host
+        #setup:
+        #  runtime:
+        #    type: host
         requires:
           resources:
             - pub_repo
