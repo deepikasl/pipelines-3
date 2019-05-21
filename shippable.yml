@@ -1,6 +1,15 @@
 resources:
   - name: pvt_repo
     type: gitRepo
+    repoPath: bharath92/api # private git repository
+    configuration:
+      integrationName: bharath_github
+      branches:
+        only: master
+    initialVersion:
+      sha: master
+  - name: pub_repo
+    type: gitRepo
     repoPath: bharath92/admiral # private git repository
     configuration:
       integrationName: bharath_github
@@ -20,7 +29,7 @@ pipelines:
             type: host
         requires:
           resources:
-            - pvt_repo
+            - pub_repo
         execution:
           onExecute:
             - ls $res_pvt_repo_resourcePath
