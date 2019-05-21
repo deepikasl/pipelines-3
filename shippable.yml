@@ -17,11 +17,7 @@ pipelines:
         type: bash
         setup:
           runtime:
-            type: image
-            image:
-              custom:
-                name: drydock/u16microbase
-                tag: master
+            type: host
         requires:
           resources:
             - pvt_repo
