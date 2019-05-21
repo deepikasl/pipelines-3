@@ -1,6 +1,26 @@
+resources:
+  - name: pvt_repo
+    type: gitRepo
+    repoPath: bharath92/api # private git repository
+    configuration:
+      integrationName: github
+      branches:
+        only: master
+    initialVersion:
+      sha: master
+
+
 pipelines:
   - name: fan_out_in
     steps:
+      - name: test_pvt_git
+        type: bash
+        requires:
+          resources:
+            - pvt_repo
+        execution:
+          onExecute:
+            - ls $res_pvt_repo_resourcePath
       - name: start_foi
         type: bash
         configuration:
