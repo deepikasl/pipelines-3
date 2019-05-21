@@ -3,7 +3,7 @@ resources:
     type: gitRepo
     repoPath: bharath92/api # private git repository
     configuration:
-      integrationName: github
+      integrationName: bharath_github
       branches:
         only: master
     initialVersion:
