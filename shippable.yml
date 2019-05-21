@@ -30,6 +30,7 @@ pipelines:
         requires:
           resources:
             - pub_repo
+            - pvt_repo
         execution:
           onExecute:
             - printenv
