@@ -1,7 +1,7 @@
 resources:
   - name: pvt_repo
     type: gitRepo
-    repoPath: bharath92/api # private git repository
+    repoPath: bharath92/admiral # private git repository
     configuration:
       integrationName: bharath_github
       branches:
