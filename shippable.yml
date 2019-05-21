@@ -20,8 +20,8 @@ pipelines:
             type: image
             image:
               custom:
-                imageName: drydock/u16microbase
-                imageTag: master
+                name: drydock/u16microbase
+                tag: master
         requires:
           resources:
             - pvt_repo
