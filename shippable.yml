@@ -32,6 +32,7 @@ pipelines:
             - pub_repo
         execution:
           onExecute:
+            - printenv
             - ls $res_pvt_repo_resourcePath
       - name: start_foi
         type: bash
