@@ -35,6 +35,7 @@ pipelines:
           onExecute:
             - printenv
             - ls $res_pvt_repo_resourcePath
+            - sleep 1m
       - name: start_foi
         type: bash
         configuration:
