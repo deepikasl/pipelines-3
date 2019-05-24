@@ -24,6 +24,8 @@ pipelines:
     steps:
       - name: sleep
         type: bash
+        requires:
+          - pub_repo
         execution:
           onExecute:
             - echo 1
