@@ -22,6 +22,14 @@ resources:
 pipelines:
   - name: fan_out_in
     steps:
+      - name: sleep
+        type: bash
+        execution:
+          onExecute:
+            - echo 1
+            - sleep 3m
+            - echo 2
+            - sleep 5
       - name: test_pvt_git
         type: bash
         setup:
