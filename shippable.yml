@@ -24,6 +24,8 @@ pipelines:
     steps:
       - name: sleep
         type: bash
+        configuration:
+          timeoutSeconds: 20
         requires:
           resources:
             - pub_repo
