@@ -25,7 +25,8 @@ pipelines:
       - name: sleep
         type: bash
         requires:
-          - pub_repo
+          resources:
+            - pub_repo
         execution:
           onExecute:
             - echo 1
