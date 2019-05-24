@@ -33,91 +33,91 @@ pipelines:
             - sleep 3m
             - echo 2
             - sleep 5
-      - name: test_pvt_git
-        type: bash
-        setup:
-          runtime:
-            type: host
-        requires:
-          resources:
-            - pub_repo
-            - pvt_repo
-        execution:
-          onExecute:
-            - printenv
-            - ls $res_pvt_repo_resourcePath
-            - sleep 3m
-      - name: start_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        execution:
-          onExecute:
-            - echo "start"
-      - name: top1_foi
-        type: bash
-        configuration:
-          priority: 1
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - start_foi
-        execution:
-          onExecute:
-            - echo "top1"
-      - name: bottom1_foi
-        type: bash
-        configuration:
-          priority: 5
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - start_foi
-        execution:
-          onExecute:
-            - echo "bottom1"
-            #- sleep 3m
-      - name: top2_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top1_foi
-        execution:
-          onExecute:
-            - echo "top2"
-            #- sleep 1h
-          onComplete:
-            - echo "hmmmm"
-          onFailure:
-            - echo "boo"
-      - name: top3_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top2_foi
-        execution:
-          onExecute:
-            - echo "start"
-      - name: final_foi
-        type: bash
-        configuration:
-          affinityGroup: test
-        triggeredBy:
-          steps:
-            - top3_foi
-            - bottom1_foi
-        execution:
-          onExecute:
-            - echo "start"
-      - name: outside_foi
-        type: bash
-        triggeredBy:
-          steps:
-            - top1_foi
-        execution:
-          onExecute:
-            - echo "no group"
+#      - name: test_pvt_git
+#        type: bash
+#        setup:
+#          runtime:
+#            type: host
+#        requires:
+#          resources:
+#            - pub_repo
+#            - pvt_repo
+#        execution:
+#          onExecute:
+#            - printenv
+#            - ls $res_pvt_repo_resourcePath
+#            - sleep 3m
+#      - name: start_foi
+#        type: bash
+#        configuration:
+#          affinityGroup: test
+#        execution:
+#          onExecute:
+#            - echo "start"
+#      - name: top1_foi
+#        type: bash
+#        configuration:
+#          priority: 1
+#          affinityGroup: test
+#        triggeredBy:
+#          steps:
+#            - start_foi
+#        execution:
+#          onExecute:
+#            - echo "top1"
+#      - name: bottom1_foi
+#        type: bash
+#        configuration:
+#          priority: 5
+#          affinityGroup: test
+#        triggeredBy:
+#          steps:
+#            - start_foi
+#        execution:
+#          onExecute:
+#            - echo "bottom1"
+#            #- sleep 3m
+#      - name: top2_foi
+#        type: bash
+#        configuration:
+#          affinityGroup: test
+#        triggeredBy:
+#          steps:
+#            - top1_foi
+#        execution:
+#          onExecute:
+#            - echo "top2"
+#            #- sleep 1h
+#          onComplete:
+#            - echo "hmmmm"
+#          onFailure:
+#            - echo "boo"
+#      - name: top3_foi
+#        type: bash
+#        configuration:
+#          affinityGroup: test
+#        triggeredBy:
+#          steps:
+#            - top2_foi
+#        execution:
+#          onExecute:
+#            - echo "start"
+#      - name: final_foi
+#        type: bash
+#        configuration:
+#          affinityGroup: test
+#        triggeredBy:
+#          steps:
+#            - top3_foi
+#            - bottom1_foi
+#        execution:
+#          onExecute:
+#            - echo "start"
+#      - name: outside_foi
+#        type: bash
+#        triggeredBy:
+#          steps:
+#            - top1_foi
+#        execution:
+#          onExecute:
+#            - echo "no group"
