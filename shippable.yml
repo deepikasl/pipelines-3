@@ -33,19 +33,19 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-            #- sleep 3m
+            - sleep 2m
             - echo 2
-            #- sleep 5
-      - name: no_sleep
-        type: bash
-        configuration:
-          affinityGroup: foo
-        triggeredBy:
-          steps:
-            - sleep
-        execution:
-          onExecute:
-            - sleep 15
+            - sleep 5
+#      - name: no_sleep
+#        type: bash
+#        configuration:
+#          affinityGroup: foo
+#        triggeredBy:
+#          steps:
+#            - sleep
+#        execution:
+#          onExecute:
+#            - sleep 15
 #      - name: test_pvt_git
 #        type: bash
 #        setup:
