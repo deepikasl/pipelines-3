@@ -33,8 +33,9 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-            - sleep 2m
+            #- sleep 2m
             - echo 2
+            - printenv
             - sleep 5
 #      - name: no_sleep
 #        type: bash
