@@ -40,7 +40,7 @@ pipelines:
         type: bash
         configuration:
           affinityGroup: foo
-        requires:
+        triggeredBy:
           steps:
             - sleep
         execution:
