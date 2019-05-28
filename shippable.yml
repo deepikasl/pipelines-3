@@ -22,7 +22,11 @@ resources:
     initialVersion:
       buildName: test
       buildNumber: 1
-
+  - name: buildInfo2
+    type: buildInfo
+    initialVersion:
+      buildName: test
+      buildNumber: 1
 pipelines:
   - name: fan_out_in
     steps:
@@ -41,6 +45,7 @@ pipelines:
             - art
         outputResources:
           - buildInfo
+          - buildInfo2
 #      - name: sleep
 #        type: bash
 #        configuration:
