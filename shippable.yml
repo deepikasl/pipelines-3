@@ -32,10 +32,10 @@ pipelines:
     steps:
       - name: publish
         type: publish
-        setup:
-          environmentVariables:
-            normal:
-              foo: bar
+        #setup:
+          #environmentVariables:
+          #  normal:
+          #    foo: bar
           #publish:
           #  envInclude: "test"
           #  envExclude: "boo"
