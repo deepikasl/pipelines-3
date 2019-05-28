@@ -41,7 +41,8 @@ pipelines:
         requires:
           resources:
             - pub_repo
-          #integrations:
+          integrations:
+            - bharath_github
           #  - art
         outputResources:
           - buildInfo
