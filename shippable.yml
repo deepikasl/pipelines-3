@@ -34,7 +34,7 @@ pipelines:
         type: publish
         configuration:
           affinityGroup: native
-        setup:
+        #setup:
         #  environmentVariables:
         #    normal:
         #      buildName: boo
