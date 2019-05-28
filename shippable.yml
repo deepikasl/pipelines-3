@@ -40,7 +40,7 @@ pipelines:
         #      buildName: boo
         #      buildNumber: 1
           publish:
-            envInclude: "*PWD*;"
+            envExclude: "*PWD*;"
           #  envExclude: "REQEXEC_DIR;"
         triggeredBy:
           steps:
