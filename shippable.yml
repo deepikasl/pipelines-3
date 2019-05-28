@@ -24,6 +24,9 @@ pipelines:
     steps:
       - name: publish
         type: publish
+        requires:
+          integrations:
+            - bharath_github
       - name: sleep
         type: bash
         configuration:
