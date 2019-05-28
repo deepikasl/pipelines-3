@@ -51,8 +51,8 @@ pipelines:
           integrations:
           #  - bharath_github
             - art
-#        outputResources:
-#          - buildInfo
+        outputResources:
+          - buildInfo
           #- buildInfo2
       - name: sleep
         type: bash
