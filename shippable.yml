@@ -40,8 +40,8 @@ pipelines:
         #      buildName: boo
         #      buildNumber: 1
           publish:
-            envInclude: "PWD;"
-          #  envExclude: "STEP_DOCKER_CONTAINER_NAME;"
+          #  envInclude: "PWD;"
+            envExclude: "REQEXEC_DIR;"
         triggeredBy:
           steps:
             - sleep
