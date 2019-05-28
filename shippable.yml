@@ -30,26 +30,26 @@ pipelines:
           publish:
             envInclude: "test"
         requires:
-          steps:
-            - sleep
-          integrations:
-            - bharath_github
-      - name: sleep
-        type: bash
-        configuration:
-          affinityGroup: foo
-        #  timeoutSeconds: 10
-        requires:
           resources:
             - pub_repo
-        execution:
-          onExecute:
-            - echo 1
-            - cat $STEP_JSON_PATH
-            #- sleep 2m
-            - echo 2
-            - printenv
-            - sleep 5
+          integrations:
+            - bharath_github
+#      - name: sleep
+#        type: bash
+#        configuration:
+#          affinityGroup: foo
+#        #  timeoutSeconds: 10
+#        requires:
+#          resources:
+#            - pub_repo
+#        execution:
+#          onExecute:
+#            - echo 1
+#            - cat $STEP_JSON_PATH
+#            #- sleep 2m
+#            - echo 2
+#            - printenv
+#            - sleep 5
 #      - name: no_sleep
 #        type: bash
 #        configuration:
