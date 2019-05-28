@@ -34,13 +34,13 @@ pipelines:
         type: publish
         configuration:
           affinityGroup: native
-        #setup:
+        setup:
         #  environmentVariables:
         #    normal:
         #      buildName: boo
         #      buildNumber: 1
-          #publish:
-          #  envInclude: "test"
+          publish:
+            envInclude: "STEP_DOCKER_CONTAINER_NAME"
           #  envExclude: "boo"
         triggeredBy:
           steps:
