@@ -17,7 +17,11 @@ resources:
         only: master
     initialVersion:
       sha: master
-
+  - name: buildInfo
+    type: buildInfo
+    initialVersion:
+      buildName: test
+      buildNumber: 1
 
 pipelines:
   - name: fan_out_in
@@ -35,6 +39,8 @@ pipelines:
             - pub_repo
           integrations:
             - art
+        outputResources:
+          - buildInfo
 #      - name: sleep
 #        type: bash
 #        configuration:
