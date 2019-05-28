@@ -22,6 +22,8 @@ resources:
 pipelines:
   - name: fan_out_in
     steps:
+      - name: publish
+        type: publish
       - name: sleep
         type: bash
         configuration:
