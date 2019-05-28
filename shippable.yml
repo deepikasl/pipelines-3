@@ -24,6 +24,9 @@ pipelines:
     steps:
       - name: publish
         type: publish
+        setup:
+          publish:
+            envInclude: "test"
         requires:
           steps:
             - sleep
