@@ -33,6 +33,7 @@ pipelines:
         execution:
           onExecute:
             - echo 1
+            - cat $STEP_JSON_PATH
             #- sleep 2m
             - echo 2
             - printenv
