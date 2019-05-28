@@ -46,8 +46,8 @@ pipelines:
           steps:
             - sleep
         requires:
-          resources:
-            - pub_repo
+          #resources:
+          #  - pub_repo
           integrations:
           #  - bharath_github
             - art
