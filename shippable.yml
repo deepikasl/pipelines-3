@@ -32,14 +32,19 @@ pipelines:
     steps:
       - name: publish
         type: publish
-        setup:
-          environmentVariables:
-            normal:
-              buildName: boo
-              buildNumber: 1
+        configuration:
+          affinityGroup: native
+        #setup:
+        #  environmentVariables:
+        #    normal:
+        #      buildName: boo
+        #      buildNumber: 1
           #publish:
           #  envInclude: "test"
           #  envExclude: "boo"
+        triggeredBy:
+          steps:
+            - sleep
         requires:
           resources:
             - pub_repo
@@ -49,17 +54,20 @@ pipelines:
 #        outputResources:
 #          - buildInfo
           #- buildInfo2
-#      - name: sleep
-#        type: bash
-#        configuration:
-#          affinityGroup: foo
+      - name: sleep
+        type: bash
+        configuration:
+          affinityGroup: native
 #        #  timeoutSeconds: 10
 #        requires:
 #          resources:
 #            - pub_repo
-#        execution:
-#          onExecute:
-#            - echo 1
+        execution:
+          onExecute:
+            - echo 1
+            - add_pipeline_variable buildStepName sleep
+            - add_pipeline_variable sleep_buildName sleep
+            - add_pipeline_variable sleep_buildNumber 100
 #            - cat $STEP_JSON_PATH
 #            #- sleep 2m
 #            - echo 2
