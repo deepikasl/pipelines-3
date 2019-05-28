@@ -34,7 +34,7 @@ pipelines:
           resources:
             - pub_repo
           integrations:
-            - bharath_github
+            - art
 #      - name: sleep
 #        type: bash
 #        configuration:
