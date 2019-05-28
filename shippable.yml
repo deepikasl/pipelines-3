@@ -41,11 +41,11 @@ pipelines:
         requires:
           resources:
             - pub_repo
-          integrations:
-            - art
+          #integrations:
+          #  - art
         outputResources:
           - buildInfo
-          - buildInfo2
+          #- buildInfo2
 #      - name: sleep
 #        type: bash
 #        configuration:
