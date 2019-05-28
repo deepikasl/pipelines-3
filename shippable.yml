@@ -40,8 +40,8 @@ pipelines:
         #      buildName: boo
         #      buildNumber: 1
           publish:
-            envInclude: "STEP_DOCKER_CONTAINER_NAME;"
-          #  envExclude: "boo"
+          #  envInclude: "STEP_DOCKER_CONTAINER_NAME;"
+            envExclude: "STEP_DOCKER_CONTAINER_NAME;"
         triggeredBy:
           steps:
             - sleep
