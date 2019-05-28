@@ -68,6 +68,7 @@ pipelines:
             - add_pipeline_variable buildStepName=sleep
             - add_pipeline_variable sleep_buildName=sleep
             - add_pipeline_variable sleep_buildNumber=$RUN_NUMBER
+            - jfrog rt bce sleep $RUN_NUMBER
 #            - cat $STEP_JSON_PATH
 #            #- sleep 2m
 #            - echo 2
