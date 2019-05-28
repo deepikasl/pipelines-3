@@ -38,12 +38,13 @@ pipelines:
           #    foo: bar
           publish:
             envInclude: "test"
+            envExclude: "boo"
         requires:
           resources:
             - pub_repo
           integrations:
-            - bharath_github
-          #  - art
+          #  - bharath_github
+            - art
         outputResources:
           - buildInfo
           #- buildInfo2
