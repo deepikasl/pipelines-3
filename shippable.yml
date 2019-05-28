@@ -33,20 +33,20 @@ pipelines:
       - name: publish
         type: publish
         setup:
-          #environmentVariables:
-          #  normal:
-          #    foo: bar
-          publish:
-            envInclude: "test"
-            envExclude: "boo"
+          environmentVariables:
+            normal:
+              foo: bar
+          #publish:
+          #  envInclude: "test"
+          #  envExclude: "boo"
         requires:
           resources:
             - pub_repo
           integrations:
           #  - bharath_github
             - art
-        outputResources:
-          - buildInfo
+#        outputResources:
+#          - buildInfo
           #- buildInfo2
 #      - name: sleep
 #        type: bash
