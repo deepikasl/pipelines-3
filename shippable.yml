@@ -25,9 +25,9 @@ pipelines:
       - name: publish
         type: publish
         setup:
-          environmentVariables:
-            normal:
-              foo: bar
+          #environmentVariables:
+          #  normal:
+          #    foo: bar
           publish:
             envInclude: "test"
         requires:
