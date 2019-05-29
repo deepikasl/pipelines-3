@@ -59,9 +59,9 @@ pipelines:
         configuration:
           affinityGroup: native
 #        #  timeoutSeconds: 10
-#        requires:
-#          resources:
-#            - pub_repo
+        requires:
+          resources:
+            - pub_repo
         execution:
           onExecute:
             - echo 1
