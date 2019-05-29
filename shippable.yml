@@ -59,6 +59,9 @@ pipelines:
         configuration:
           affinityGroup: native
 #        #  timeoutSeconds: 10
+        setup:
+          runtime:
+            type: host
         requires:
           resources:
             - pub_repo
