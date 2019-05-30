@@ -43,13 +43,13 @@ pipelines:
           steps:
             - build_image
             
-//      - name: publish_build
-//        type: publish
-//        requires:
-//          integrations:
-//            - art
-//        outputResources:
-//          - buildInfo
+#      - name: publish_build
+#        type: publish
+#        requires:
+#          integrations:
+#            - art
+#        outputResources:
+#          - buildInfo
   - name: scan_pipelinne
     steps:
       - name: scan_build
