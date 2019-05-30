@@ -35,8 +35,6 @@ pipelines:
         setup:
           push:
             targetRepo: docker
-            scan: true
-            publish: true
         requires:
           integrations:
             - art
@@ -44,13 +42,19 @@ pipelines:
           steps:
             - build_image
             
-#      - name: publish_build
-#        type: publish
-#        requires:
-#          integrations:
-#            - art
-#        outputResources:
-#          - buildInfo
+      - name: publish_build
+        type: publish
+        setup:
+          publish:
+            scan: true
+        requires:
+          integrations:
+            - art
+        triggeredBy:
+          steps:
+            - push_image
+        outputResources:
+          - buildInfo
   - name: scan_pipelinne
     steps:
       - name: scan_build
