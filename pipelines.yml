@@ -35,6 +35,8 @@ pipelines:
         setup:
           push:
             targetRepo: docker
+            publish: false
+            scan: false
         requires:
           integrations:
             - art
@@ -44,9 +46,9 @@ pipelines:
             
       - name: publish_build
         type: publish
-        #setup:
-        #  publish:
-        #    scan: true
+        setup:
+          publish:
+            scan: false
         requires:
           integrations:
             - art
