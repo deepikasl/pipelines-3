@@ -6,7 +6,7 @@ resources:
       integrationName: bharath_github
       branches:
         only: master
-    initialVersion:
+    version:
       sha: master
   - name: pub_repo
     type: gitRepo
@@ -15,16 +15,16 @@ resources:
       integrationName: bharath_github
       branches:
         only: master
-    initialVersion:
+    version:
       sha: master
   - name: buildInfo
     type: buildInfo
-    initialVersion:
+    version:
       buildName: test
       buildNumber: 1
   - name: buildInfo2
     type: buildInfo
-    initialVersion:
+    version:
       buildName: test
       buildNumber: 1
 pipelines:
@@ -32,8 +32,11 @@ pipelines:
     steps:
       - name: scan
         type: scan
-        integrations:
-          - art
+        requires:
+          steps:
+            - publish
+          integrations:
+            - art
       - name: publish
         type: publish
         configuration:
