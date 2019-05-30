@@ -36,8 +36,8 @@ pipelines:
           steps:
             - publish
           integrations:
-            - bharath_github
-          #  - art
+          #  - bharath_github
+            - art
       - name: publish
         type: publish
         configuration:
