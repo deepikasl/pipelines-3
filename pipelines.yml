@@ -6,6 +6,11 @@ resources:
       integrationName: bharath_github
     version:
       sha: master
+  - name: buildInfo
+    type: buildInfo
+    version:
+      buildName: app
+      buildNumber: foo
     
 pipelines:
   - name: app
@@ -45,7 +50,10 @@ pipelines:
         triggeredBy:
           steps:
             - push_image
-            
+        outputResources:
+          - buildInfo
+  - name: scan_pipelinne
+    steps:
       - name: scan_build
         type: scan
         requires:
@@ -53,4 +61,4 @@ pipelines:
             - art
         triggeredBy:
           steps:
-            - publish_build
+            - buildInfo
