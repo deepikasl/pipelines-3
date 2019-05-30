@@ -63,5 +63,6 @@ pipelines:
         requires:
           integrations:
             - art
+        triggeredBy:
           resources:
             - buildInfo
