@@ -44,9 +44,9 @@ pipelines:
             
       - name: publish_build
         type: publish
-        setup:
-          publish:
-            scan: true
+        #setup:
+        #  publish:
+        #    scan: true
         requires:
           integrations:
             - art
