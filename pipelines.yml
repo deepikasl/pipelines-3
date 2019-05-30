@@ -10,7 +10,7 @@ resources:
     type: buildInfo
     version:
       buildName: app
-      buildNumber: foo
+      buildNumber: 1
     
 pipelines:
   - name: app
