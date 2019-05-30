@@ -35,6 +35,7 @@ pipelines:
         setup:
           push:
             targetRepo: docker
+            scan: true
         requires:
           integrations:
             - art
@@ -47,9 +48,6 @@ pipelines:
         requires:
           integrations:
             - art
-        triggeredBy:
-          steps:
-            - push_image
         outputResources:
           - buildInfo
   - name: scan_pipelinne
