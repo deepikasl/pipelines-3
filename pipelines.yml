@@ -35,8 +35,8 @@ pipelines:
         requires:
           steps:
             - publish
-          integrations:
-            - art
+          #integrations:
+          #  - art
       - name: publish
         type: publish
         configuration:
