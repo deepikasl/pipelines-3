@@ -63,3 +63,5 @@ pipelines:
         requires:
           integrations:
             - art
+          resources:
+            - buildInfo
