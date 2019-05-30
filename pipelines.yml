@@ -56,9 +56,10 @@ pipelines:
     steps:
       - name: scan_build
         type: scan
+        setup:
+          scan:
+            buildName: $BUILD_NAME
+            buildNumber: $BUILD_NUMBER
         requires:
           integrations:
             - art
-        triggeredBy:
-          resources:
-            - buildInfo
