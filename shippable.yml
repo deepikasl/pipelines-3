@@ -30,6 +30,10 @@ resources:
 pipelines:
   - name: fan_out_in
     steps:
+      - name: scan
+        type: scan
+        integrations:
+          - art
       - name: publish
         type: publish
         configuration:
