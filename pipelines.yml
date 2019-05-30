@@ -35,7 +35,8 @@ pipelines:
         requires:
           steps:
             - publish
-          #integrations:
+          integrations:
+            - bharath_github
           #  - art
       - name: publish
         type: publish
