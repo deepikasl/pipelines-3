@@ -60,5 +60,5 @@ pipelines:
           integrations:
             - art
         triggeredBy:
-          steps:
+          resources:
             - buildInfo
