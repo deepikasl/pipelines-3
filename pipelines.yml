@@ -36,6 +36,7 @@ pipelines:
           push:
             targetRepo: docker
             scan: true
+            publish: false
         requires:
           integrations:
             - art
