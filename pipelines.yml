@@ -20,12 +20,12 @@ resources:
       countryCodes:
         countryCodeCount: 1
         countryCode01: "test"
- - name: releaseBundle
-   type: releaseBundle
-   version:
-     name: test
-     version: foo
-     isSigned: false
+  - name: releaseBundle
+    type: releaseBundle
+    version:
+      name: test
+      version: foo
+      isSigned: false
     
 pipelines:
   - name: app
