@@ -20,6 +20,12 @@ resources:
       countryCodes:
         countryCodeCount: 1
         countryCode01: "test"
+ - name: releaseBundle
+   type: releaseBundle
+   version:
+     name: test
+     version: foo
+     isSigned: false
     
 pipelines:
   - name: app
@@ -73,6 +79,7 @@ pipelines:
             - publish_build
           resources:
             - distributionRule
+            - releaseBundle
   - name: scan_pipelinne
     steps:
       - name: scan_build
