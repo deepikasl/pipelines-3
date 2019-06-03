@@ -26,6 +26,12 @@ resources:
       name: test
       version: foo
       isSigned: false
+  - name: releaseBundle2
+    type: releaseBundle
+    version:
+      name: test
+      version: foo
+      isSigned: false
   - name: distributionRule2
     type: DistributionRule
     version:
@@ -92,6 +98,7 @@ pipelines:
             - distributionRule
             - releaseBundle
             - distributionRule2
+            - releaseBundle2
   - name: scan_pipelinne
     steps:
       - name: scan_build
