@@ -17,9 +17,8 @@ resources:
       cityName: "Beng"
       serviceName: "lol"
       siteName: "test"
-      test: lol
       countryCodes:
-        countryCodeCount: 1
+        countryCodeCount: false
         countryCode01: "test"
     
 pipelines:
