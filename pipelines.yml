@@ -19,7 +19,7 @@ resources:
       siteName: "test"
       countryCodes:
         countryCodeCount: 1
-        countryCode01: "test"
+        #countryCode01: "test"
     
 pipelines:
   - name: app
