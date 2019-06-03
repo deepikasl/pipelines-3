@@ -13,11 +13,11 @@ resources:
       buildNumber: 1
   - name: distributionRule
     type: DistributionRule
+    test: lol
     version:
       cityName: "Beng"
       serviceName: "lol"
       siteName: "test"
-      test: lol
       countryCodes:
         countryCodeCount: 1
         countryCode01: "test"
