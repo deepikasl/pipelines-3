@@ -11,15 +11,15 @@ resources:
     version:
       buildName: app
       buildNumber: 1
- - name: distributionRule
-   type: DistributionRule
-   version:
-     cityName: "Beng"
-     serviceName: "lol"
-     siteName: "test"
-     countryCodes:
-       countryCodeCount: 1
-       countryCode01: "test"
+  - name: distributionRule
+    type: DistributionRule
+    version:
+      cityName: "Beng"
+      serviceName: "lol"
+      siteName: "test"
+      countryCodes:
+        countryCodeCount: 1
+        countryCode01: "test"
     
 pipelines:
   - name: app
