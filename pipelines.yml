@@ -69,6 +69,8 @@ pipelines:
       - name: distribute
         type: Distribute
         triggeredBy:
+          steps:
+            - publish_build
           resources:
             - distributionRule
   - name: scan_pipelinne
