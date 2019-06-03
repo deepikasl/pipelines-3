@@ -93,7 +93,7 @@ pipelines:
         type: Distribute
         requires:
           integrations:
-            - bharath_github
+            - art
           steps:
             - publish_build
           resources:
