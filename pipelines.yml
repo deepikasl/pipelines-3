@@ -13,7 +13,6 @@ resources:
       buildNumber: 1
   - name: distributionRule
     type: DistributionRule
-    test: lol
     version:
       cityName: "Beng"
       serviceName: "lol"
@@ -67,6 +66,11 @@ pipelines:
             - push_image
         outputResources:
           - buildInfo
+      - name: distribute
+        type: Distribute
+        requires:
+          resources:
+            - distributionRule
   - name: scan_pipelinne
     steps:
       - name: scan_build
