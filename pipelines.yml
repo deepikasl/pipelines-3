@@ -91,6 +91,8 @@ pipelines:
           - buildInfo
       - name: distribute
         type: Distribute
+        configuration:
+          dryRun: false
         requires:
           integrations:
             - art
