@@ -18,8 +18,9 @@ resources:
       serviceName: "lol"
       siteName: "test"
       countryCodes:
-        countryCodeCount: false
-        countryCode01: "test"
+        test: lol
+        #countryCodeCount: 1
+        #countryCode01: "test"
     
 pipelines:
   - name: app
