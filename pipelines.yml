@@ -92,6 +92,8 @@ pipelines:
       - name: distribute
         type: Distribute
         requires:
+          integrations:
+            - bharath_github
           steps:
             - publish_build
           resources:
