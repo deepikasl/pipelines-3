@@ -68,7 +68,7 @@ pipelines:
           - buildInfo
       - name: distribute
         type: Distribute
-        requires:
+        triggeredBy:
           resources:
             - distributionRule
   - name: scan_pipelinne
