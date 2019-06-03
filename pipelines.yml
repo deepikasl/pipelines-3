@@ -26,6 +26,17 @@ resources:
       name: test
       version: foo
       isSigned: false
+  - name: distributionRule2
+    type: DistributionRule
+    version:
+      cityName: "Beng"
+      serviceName: "lol"
+      siteName: "test"
+      countryCodes:
+        countryCodeCount: 3
+        countryCode01: "test"
+        countryCode02: "lol"
+        countryCode03: "bol"
     
 pipelines:
   - name: app
@@ -78,7 +89,7 @@ pipelines:
           steps:
             - publish_build
           resources:
-            #- distributionRule
+            - distributionRule
             - releaseBundle
   - name: scan_pipelinne
     steps:
