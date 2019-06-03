@@ -16,10 +16,11 @@ resources:
     version:
       cityName: "Beng"
       serviceName: "lol"
-      #siteName: "test"
+      siteName: "test"
       countryCodes:
         countryCodeCount: 1
         countryCode01: "test"
+        test: lol
     
 pipelines:
   - name: app
