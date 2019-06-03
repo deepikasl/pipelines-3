@@ -91,7 +91,7 @@ pipelines:
           - buildInfo
       - name: distribute
         type: Distribute
-        triggeredBy:
+        requires:
           steps:
             - publish_build
           resources:
