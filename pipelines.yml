@@ -91,6 +91,7 @@ pipelines:
           resources:
             - distributionRule
             - releaseBundle
+            - distributionRule2
   - name: scan_pipelinne
     steps:
       - name: scan_build
