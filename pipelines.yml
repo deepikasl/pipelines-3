@@ -92,7 +92,7 @@ pipelines:
       - name: distribute
         type: Distribute
         configuration:
-          dryRun: true
+          dryRun: false
           releaseBundleName: ankul_test_release
           releaseBundleVersion: v1.0.0
         requires:
