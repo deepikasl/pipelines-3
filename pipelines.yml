@@ -102,7 +102,7 @@ pipelines:
         configuration:
           dryRun: false
           releaseBundleName: test_release
-          releaseBundleVersion: 1
+          releaseBundleVersion: v1.0.0
         requires:
           integrations:
             - kermit_art
