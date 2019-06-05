@@ -19,13 +19,13 @@ resources:
       siteName: "*"
       countryCodes:
         countryCodeCount: 1
-        countryCode01: "*"
+        countryCode01: "CN"
   - name: releaseBundle
     type: releaseBundle
     version:
-      name: test
-      version: foo
-      isSigned: false
+      name: test_release
+      version: v1.0.0
+      isSigned: true
   - name: releaseBundle2
     type: releaseBundle
     version:
@@ -91,9 +91,9 @@ pipelines:
           - buildInfo
       - name: distribute
         type: Distribute
-        configuration:
-          releaseBundleName: test_release
-          releaseBundleVersion: v1.0.0
+        #configuration:
+        #  releaseBundleName: test_release
+        #  releaseBundleVersion: v1.0.0
         requires:
           integrations:
             - kermit_art
@@ -101,6 +101,7 @@ pipelines:
             - publish_build
           resources:
             - distributionRule
+            - releaseBundle
    
   - name: scan_pipelinne
     steps:
