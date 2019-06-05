@@ -92,7 +92,6 @@ pipelines:
       - name: distribute
         type: Distribute
         configuration:
-          dryRun: false
           releaseBundleName: test_release
           releaseBundleVersion: v1.0.0
         requires:
