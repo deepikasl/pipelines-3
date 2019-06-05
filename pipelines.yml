@@ -90,7 +90,7 @@ pipelines:
         outputResources:
           - buildInfo
       - name: distribute
-        type: Distribute
+        type: DistributeReleaseBundle
         configuration:
           dryRun: false
           releaseBundleName: test_release
