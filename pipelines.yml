@@ -93,8 +93,8 @@ pipelines:
         type: Distribute
         configuration:
           dryRun: false
-          releaseBundleName: ankul_test_release
-          releaseBundleVersion: v1.0.1
+          releaseBundleName: test_release
+          releaseBundleVersion: 1
         requires:
           integrations:
             - kermit_art
