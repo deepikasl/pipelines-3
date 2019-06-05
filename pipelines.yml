@@ -19,7 +19,7 @@ resources:
       siteName: "*"
       countryCodes:
         countryCodeCount: 1
-        countryCode01: "CN"
+        countryCode01: "*"
   - name: releaseBundle
     type: releaseBundle
     version:
