@@ -93,8 +93,8 @@ pipelines:
         type: Distribute
         configuration:
           dryRun: false
-        #  releaseBundleName: test_release
-        #  releaseBundleVersion: v1.0.0
+          releaseBundleName: test_release
+          releaseBundleVersion: 1
         requires:
           integrations:
             - kermit_art
