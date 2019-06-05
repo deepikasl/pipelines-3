@@ -47,6 +47,11 @@ resources:
 pipelines:
   - name: app
     steps:
+      - name: bash
+        type: bash
+        execution:
+          onExecute:
+            - echo hi
       - name: build_image
         type: build
         payloadType: docker
@@ -99,7 +104,7 @@ pipelines:
           integrations:
             - kermit_art
           steps:
-            - publish_build
+            - bash
           resources:
             - distributionRule
             - releaseBundle
