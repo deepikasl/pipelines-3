@@ -1,4 +1,12 @@
 resources:
+  - name: image
+    type: image
+    imageName: imageRepo/imageName
+     configuration:
+       integrationName: art
+       autoPull: true
+     version:
+       imageTag: lol
   - name: dockerbuild_gitRepo
     type: gitRepo
     repoPath: bharath92/gitIssues
