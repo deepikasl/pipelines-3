@@ -21,13 +21,11 @@ resources:
       registry: bharath_github
       autoPull: true
       imageTag: lol
-#  - name: dockerbuild_gitRepo
-#    type: gitRepo
-#    repoPath: bharath92/gitIssues
-#    configuration:
-#      integrationName: bharath_github
-#    version:
-#      sha: master
+  - name: dockerbuild_gitRepo
+    type: GitRepo
+    configuration:
+      path: bharath92/gitIssues
+      gitProvider: bharath_github
 #  - name: buildInfo
 #    type: buildInfo
 #    version:
@@ -66,17 +64,17 @@ resources:
 #        countryCode02: "lol"
 #        countryCode03: "bol"
 #    
-#pipelines:
-#  - name: app
-#    steps:
-#      - name: bash
-#        type: bash
-#        requires:
-#          resources:
-#            - dockerbuild_gitRepo
-#        execution:
-#          onExecute:
-#            - echo hi
+pipelines:
+  - name: app
+    steps:
+      - name: bash
+        type: bash
+        requires:
+          resources:
+            - dockerbuild_gitRepo
+        execution:
+          onExecute:
+            - printenv
 #      - name: build_image
 #        type: build
 #        payloadType: docker
