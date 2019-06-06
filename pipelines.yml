@@ -4,7 +4,7 @@ resources:
     configuration:
       imageName: imageRepo/imageName
       registry: bharath_github
-      #autoPull: true
+      autoPull: true
       imageTag: lol
 #  - name: dockerbuild_gitRepo
 #    type: gitRepo
