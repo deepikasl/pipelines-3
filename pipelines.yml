@@ -1,136 +1,136 @@
 resources:
   - name: image
-    type: image
-    imageName: imageRepo/imageName
+    type: Image
     configuration:
-      integrationName: art
+      imageName: imageRepo/imageName
+      registry: art
       autoPull: true
-    version:
       imageTag: lol
-  - name: dockerbuild_gitRepo
-    type: gitRepo
-    repoPath: bharath92/gitIssues
-    configuration:
-      integrationName: bharath_github
-    version:
-      sha: master
-  - name: buildInfo
-    type: buildInfo
-    version:
-      buildName: app
-      buildNumber: 1
-  - name: distributionRule
-    type: DistributionRule
-    version:
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
-      countryCodes:
-        countryCodeCount: 1
-        countryCode01: "*"
-  - name: releaseBundle
-    type: releaseBundle
-    version:
-      name: test_release
-      version: v1.0.0
-      isSigned: true
-  - name: releaseBundle2
-    type: releaseBundle
-    version:
-      name: test
-      version: foo
-      isSigned: false
-  - name: distributionRule2
-    type: DistributionRule
-    version:
-      cityName: "Beng"
-      serviceName: "lol"
-      siteName: "test"
-      countryCodes:
-        countryCodeCount: 3
-        countryCode01: "test"
-        countryCode02: "lol"
-        countryCode03: "bol"
-    
-pipelines:
-  - name: app
-    steps:
-      - name: bash
-        type: bash
-        requires:
-          resources:
-            - dockerbuild_gitRepo
-        execution:
-          onExecute:
-            - echo hi
-      - name: build_image
-        type: build
-        payloadType: docker
-        setup:
-          build:
-            dockerFileLocation: .
-            dockerFileName: Dockerfile
-            imageName: mill.jfrog.info:12052/docker/bharath-gitissues
-            imageTag: $PIPELINE_NAME.$RUN_NUMBER
-        requires:
-          integrations:
-            - art
-          resources:
-            - dockerbuild_gitRepo
-            
-      - name: push_image
-        type: push
-        setup:
-          push:
-            targetRepo: docker
-            publish: false
-            scan: false
-        requires:
-          integrations:
-            - art
-        triggeredBy:
-          steps:
-            - build_image
-            
-      - name: publish_build
-        type: publish
-        setup:
-          publish:
-            scan: false
-        requires:
-          integrations:
-            - art
-        triggeredBy:
-          steps:
-            - push_image
-        outputResources:
-          - buildInfo
-      - name: distribute
-        type: DistributeReleaseBundle
-        configuration:
-          dryRun: false
-          releaseBundleName: test_release
-          releaseBundleVersion: v1.0.0
-        requires:
-          integrations:
-            - kermit_art
-          steps:
-            - bash
-          resources:
-            - distributionRule
-            - releaseBundle
-   
-  - name: scan_pipelinne
-    steps:
-      - name: scan_build
-        type: scan
-        setup:
-          scan:
-            buildName: $BUILD_NAME
-            buildNumber: $BUILD_NUMBER
-        requires:
-          integrations:
-            - art
-        triggeredBy:
-          resources:
-            - buildInfo
+#  - name: dockerbuild_gitRepo
+#    type: gitRepo
+#    repoPath: bharath92/gitIssues
+#    configuration:
+#      integrationName: bharath_github
+#    version:
+#      sha: master
+#  - name: buildInfo
+#    type: buildInfo
+#    version:
+#      buildName: app
+#      buildNumber: 1
+#  - name: distributionRule
+#    type: DistributionRule
+#    version:
+#      cityName: "*"
+#      serviceName: "*"
+#      siteName: "*"
+#      countryCodes:
+#        countryCodeCount: 1
+#        countryCode01: "*"
+#  - name: releaseBundle
+#    type: releaseBundle
+#    version:
+#      name: test_release
+#      version: v1.0.0
+#      isSigned: true
+#  - name: releaseBundle2
+#    type: releaseBundle
+#    version:
+#      name: test
+#      version: foo
+#      isSigned: false
+#  - name: distributionRule2
+#    type: DistributionRule
+#    version:
+#      cityName: "Beng"
+#      serviceName: "lol"
+#      siteName: "test"
+#      countryCodes:
+#        countryCodeCount: 3
+#        countryCode01: "test"
+#        countryCode02: "lol"
+#        countryCode03: "bol"
+#    
+#pipelines:
+#  - name: app
+#    steps:
+#      - name: bash
+#        type: bash
+#        requires:
+#          resources:
+#            - dockerbuild_gitRepo
+#        execution:
+#          onExecute:
+#            - echo hi
+#      - name: build_image
+#        type: build
+#        payloadType: docker
+#        setup:
+#          build:
+#            dockerFileLocation: .
+#            dockerFileName: Dockerfile
+#            imageName: mill.jfrog.info:12052/docker/bharath-gitissues
+#            imageTag: $PIPELINE_NAME.$RUN_NUMBER
+#        requires:
+#          integrations:
+#            - art
+#          resources:
+#            - dockerbuild_gitRepo
+#            
+#      - name: push_image
+#        type: push
+#        setup:
+#          push:
+#            targetRepo: docker
+#            publish: false
+#            scan: false
+#        requires:
+#          integrations:
+#            - art
+#        triggeredBy:
+#          steps:
+#            - build_image
+#            
+#      - name: publish_build
+#        type: publish
+#        setup:
+#          publish:
+#            scan: false
+#        requires:
+#          integrations:
+#            - art
+#        triggeredBy:
+#          steps:
+#            - push_image
+#        outputResources:
+#          - buildInfo
+#      - name: distribute
+#        type: DistributeReleaseBundle
+#        configuration:
+#          dryRun: false
+#          releaseBundleName: test_release
+#          releaseBundleVersion: v1.0.0
+#        requires:
+#          integrations:
+#            - kermit_art
+#          steps:
+#            - bash
+#          resources:
+#            - distributionRule
+#            - releaseBundle
+#   
+#  - name: scan_pipelinne
+#    steps:
+#      - name: scan_build
+#        type: scan
+#        setup:
+#          scan:
+#            buildName: $BUILD_NAME
+#            buildNumber: $BUILD_NUMBER
+#        requires:
+#          integrations:
+#            - art
+#        triggeredBy:
+#          resources:
+#            - buildInfo
+#
