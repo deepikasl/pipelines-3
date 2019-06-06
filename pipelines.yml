@@ -1,6 +1,6 @@
 resources:
   - name: aql
-    type: aql
+    type: Aql
     version:
       query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"native_pipeline"}},{"artifact.module.build.number":{"$eq":"8"}}]})'     
       addedProperties:
