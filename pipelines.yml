@@ -2,7 +2,7 @@ resources:
   - name: aql
     type: Aql
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: bharath_github
       query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"native_pipeline"}},{"artifact.module.build.number":{"$eq":"8"}}]})'     
       addedProperties:
         FOO: "value1a value1b"
