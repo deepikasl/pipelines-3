@@ -1,16 +1,17 @@
 resources:
   - name: aql
     type: Aql
-    version:
+    configuration:
+      sourceArtifactory: art
       query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"native_pipeline"}},{"artifact.module.build.number":{"$eq":"8"}}]})'     
       addedProperties:
         FOO: "value1a value1b"
         BAR: "value2a value2b"
       mappings:
-        mapping0:
+        - name: "a"
           input: "regex"
           output: "$1/$2"
-        mapping1:
+        - name: "b"
           input: "regex"
           output: "$2/$1"
   - name: image
