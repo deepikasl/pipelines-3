@@ -31,15 +31,16 @@ resources:
 #    version:
 #      buildName: app
 #      buildNumber: 1
-#  - name: distributionRule
-#    type: DistributionRule
-#    version:
-#      cityName: "*"
-#      serviceName: "*"
-#      siteName: "*"
-#      countryCodes:
-#        countryCodeCount: 1
-#        countryCode01: "*"
+  - name: distributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: art
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
+      countryCodes:
+        - "*"
+        - "a"
 #  - name: releaseBundle
 #    type: releaseBundle
 #    version:
@@ -72,6 +73,8 @@ pipelines:
         requires:
           resources:
             - dockerbuild_gitRepo
+            - aql
+            - distributionRule
         execution:
           onExecute:
             - printenv
