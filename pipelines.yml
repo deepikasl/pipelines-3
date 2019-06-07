@@ -69,7 +69,7 @@ pipelines:
   - name: app
     steps:
       - name: bash
-        type: bash
+        type: Bash
         configuration:
           environmentVariables:
             fodo: bar
