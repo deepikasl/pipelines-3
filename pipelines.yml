@@ -140,11 +140,11 @@ pipelines:
           releaseBundleName: test_release
           releaseBundleVersion: v1.0.0
           integrations:
-            - kermit_art
+            - name: kermit_art
           inputResources:
-            - distributionRule
-        requires:
-          integrations:
+            - name: distributionRule
+#        requires:
+#          integrations:
 #            - kermit_art
 #          steps:
 #            - bash
