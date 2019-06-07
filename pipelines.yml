@@ -71,6 +71,7 @@ pipelines:
       - name: bash
         type: bash
         configuration:
+          timeoutSeconds: 2
           inputResources:
             - name: dockerbuild_gitRepo
         execution:
