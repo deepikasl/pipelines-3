@@ -140,7 +140,7 @@ pipelines:
           releaseBundleName: test_release
           releaseBundleVersion: v1.0.4
           integrations:
-            - name: kermit_art
+            - name: bharath_github
           inputResources:
             - name: aql
           environmentVariables:
