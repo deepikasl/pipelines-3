@@ -77,9 +77,9 @@ pipelines:
           outputResources:
             - name: aql
           inputResources:
-            - name: dockerbuild_gitRepo
-              trigger: false
+            - name: dockerbuild_gitRepo        
             - name: image
+              trigger: false
        
         execution:
           onExecute:
