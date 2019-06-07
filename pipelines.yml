@@ -144,7 +144,7 @@ pipelines:
           inputResources:
             - name: aql
           environmentVariables:
-            foo: bar
+            foo: d
             boo: far
 #        requires:
 #          integrations:
