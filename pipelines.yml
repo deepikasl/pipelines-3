@@ -71,6 +71,7 @@ pipelines:
       - name: bash
         type: bash
         configuration:
+          a: b
           environmentVariables:
             fodo: bar
           timeoutSeconds: 2
