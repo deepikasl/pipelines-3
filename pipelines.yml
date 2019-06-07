@@ -74,6 +74,7 @@ pipelines:
           environmentVariables:
             fodo: bar
           timeoutSeconds: 2
+          nodePool: dev
           integrations:
             - name: art
           outputResources:
