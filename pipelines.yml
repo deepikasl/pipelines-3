@@ -142,7 +142,7 @@ pipelines:
           integrations:
             - name: kermit_art
           inputResources:
-            - name: distributionRule
+            - name: aql
           environmentVariables:
             foo: bar
             boo: far
