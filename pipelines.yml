@@ -81,16 +81,16 @@ pipelines:
             - name: art
           outputResources:
             - name: aql
-          #inputResources:
-          #  - name: dockerbuild_gitRepo
-          #    trigger: false
-          #  - name: image
+          inputResources:
+            - name: dockerbuild_gitRepo
+              trigger: false
+            - name: image
               
               
        
         execution:
           onExecute:
-            - printenv1
+            - printenv
 #      - name: build_image
 #        type: build
 #        payloadType: docker
