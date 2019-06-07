@@ -73,7 +73,7 @@ pipelines:
         configuration:
           timeoutSeconds: 2
           integrations:
-            - art
+            - name: art
           outputResources:
             - name: aql
           inputResources:
