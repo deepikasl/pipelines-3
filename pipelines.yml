@@ -70,11 +70,9 @@ pipelines:
     steps:
       - name: bash
         type: bash
-        requires:
-          resources:
-            - dockerbuild_gitRepo
-            - aql
-            - distributionRule
+        configuration:
+          inputResources:
+            - name: dockerbuild_gitRepo
         execution:
           onExecute:
             - printenv
