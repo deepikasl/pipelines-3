@@ -76,7 +76,7 @@ pipelines:
           timeoutSeconds: 2
           nodePool: dev
           integrations:
-            - name: art
+            - name: arti
           outputResources:
             - name: aql
           inputResources:
