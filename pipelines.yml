@@ -75,14 +75,16 @@ pipelines:
             fodo: bar
           timeoutSeconds: 2
           nodePool: dev
+          inputSteps:
+            - name: steppi
           integrations:
             - name: arti
           outputResources:
-            - name: aql
+            - name: aqli
           inputResources:
             - name: dockerbuild_gitRepo
               trigger: false
-            - name: image 
+            - name: imagei
               
               
        
