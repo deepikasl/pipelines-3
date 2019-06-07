@@ -143,6 +143,9 @@ pipelines:
             - name: kermit_art
           inputResources:
             - name: distributionRule
+          environmentVariables:
+            foo: bar
+            boo: far
 #        requires:
 #          integrations:
 #            - kermit_art
