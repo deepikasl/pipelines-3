@@ -71,6 +71,8 @@ pipelines:
       - name: bash
         type: bash
         configuration:
+          environmentVariables:
+            foo: bar
           timeoutSeconds: 2
           integrations:
             - name: art
