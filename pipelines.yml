@@ -76,7 +76,7 @@ pipelines:
             - name: dockerbuild_gitRepo
         execution:
           onExecute:
-            - printenv
+            - printenv1
 #      - name: build_image
 #        type: build
 #        payloadType: docker
