@@ -71,21 +71,20 @@ pipelines:
       - name: bash
         type: bash
         configuration:
-          a: b
           environmentVariables:
             fodo: bar
           timeoutSeconds: 2
           nodePool: dev
           inputSteps:
-            - name: steppi
+            - name: stepp
           integrations:
-            - name: arti
+            - name: art
           outputResources:
-            - name: aqli
+            - name: aql
           inputResources:
             - name: dockerbuild_gitRepo
               trigger: false
-            - name: imagei
+            - name: image
               
               
        
