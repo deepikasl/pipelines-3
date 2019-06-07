@@ -72,8 +72,14 @@ pipelines:
         type: bash
         configuration:
           timeoutSeconds: 2
+          inputIntegrations:
+            - art
+          outputResources:
+            - name: aql
           inputResources:
             - name: dockerbuild_gitRepo
+            - name: image
+              trigger: false
         execution:
           onExecute:
             - printenv1
