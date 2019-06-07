@@ -68,29 +68,29 @@ resources:
 pipelines:
   - name: app
     steps:
-      - name: bash
-        type: Bash
-        configuration:
-          environmentVariables:
-            foo: bar
-          timeoutSeconds: 2
-          nodePool: dev
-          #inputSteps:
-          #  - name: step
-          integrations:
-            - name: art
-          outputResources:
-            - name: aql
-          inputResources:
-            - name: dockerbuild_gitRepo
-              trigger: false
-            - name: image
-              
-              
-       
-        execution:
-          onExecute:
-            - printenv
+#      - name: bash
+#        type: Bash
+#        configuration:
+#          environmentVariables:
+#            foo: bar
+#          timeoutSeconds: 2
+#          nodePool: dev
+#          #inputSteps:
+#          #  - name: step
+#          integrations:
+#            - name: art
+#          outputResources:
+#            - name: aql
+#          inputResources:
+#            - name: dockerbuild_gitRepo
+#              trigger: false
+#            - name: image
+#              
+#              
+#       
+#        execution:
+#          onExecute:
+#            - printenv
 #      - name: build_image
 #        type: build
 #        payloadType: docker
@@ -133,14 +133,18 @@ pipelines:
 #            - push_image
 #        outputResources:
 #          - buildInfo
-#      - name: distribute
-#        type: DistributeReleaseBundle
-#        configuration:
-#          dryRun: false
-#          releaseBundleName: test_release
-#          releaseBundleVersion: v1.0.0
-#        requires:
-#          integrations:
+      - name: distribute
+        type: DistributeReleaseBundle
+        configuration:
+          dryRun: false
+          releaseBundleName: test_release
+          releaseBundleVersion: v1.0.0
+          integrations:
+            - kermit_art
+          inputResources:
+            - distributionRule
+        requires:
+          integrations:
 #            - kermit_art
 #          steps:
 #            - bash
