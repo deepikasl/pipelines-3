@@ -72,7 +72,7 @@ pipelines:
         type: Bash
         configuration:
           environmentVariables:
-            fodo: bar
+            foo: bar
           timeoutSeconds: 2
           nodePool: dev
           #inputSteps:
