@@ -76,7 +76,7 @@ pipelines:
           timeoutSeconds: 2
           nodePool: dev
           inputSteps:
-            - name: stepp
+            - name: step
           integrations:
             - name: art
           outputResources:
