@@ -53,8 +53,8 @@ resources:
 #      version: v1.0.0
 #      isSigned: true
   - name: releaseBundle2
-    type: releaseBundle
-    version:
+    type: ReleaseBundle
+    configuration:
       name: test
       version: foo
       isSigned: false
