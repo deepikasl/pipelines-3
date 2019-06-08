@@ -1,8 +1,18 @@
+resources:
+  - name: buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: lol
+      buildNumber: 1
 pipelines:
   - name: basic
     steps:
       - name: basic1
         type: Bash
+        configuration:
+          inputResources:
+            - name: buildInfo
         execution:
           onExecute:
             - printenv
