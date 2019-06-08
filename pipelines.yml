@@ -167,7 +167,7 @@ pipelines:
           releaseBundleName: kermit_test_new_aql
           releaseBundleVersion: v1.1.0
           dryRun: false
-          sign: true
+          sign: false
           description: "some random test description"
           integrations:
             - name: kermit_art
