@@ -139,6 +139,15 @@ pipelines:
 #            - push_image
 #        outputResources:
 #          - buildInfo
+      - name: scan
+        type: XrayScan
+        configuration:
+          buildName: ankul_pipeline
+          buildNumber: 1
+          integrations:
+            - name: kermit_art
+          input_steps:
+            - name: sign
       - name: sign
         type: SignReleaseBundle
         configuration:
