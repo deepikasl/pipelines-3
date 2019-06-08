@@ -1,209 +1,120 @@
 resources:
-  - name: aql
-    type: Aql
-    configuration:
-      sourceArtifactory: art
-      query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"native_pipeline"}},{"artifact.module.build.number":{"$eq":"8"}}]})'     
-      #addedProperties:
-      #  FOO: "value1a value1b"
-      #  BAR: "value2a value2b"
-      mappings:
-        - name: "a"
-          input: "regex"
-          output: "$1/$2"
-        - name: "b"
-          input: "regex"
-          output: "$2/$1"
-  - name: image
-    type: Image
-    configuration:
-      imageName: imageRepo/imageName
-      registry: bharath_github
-      autoPull: true
-      imageTag: lol
-  - name: dockerbuild_gitRepo
+  - name: artifactory_go_example
     type: GitRepo
     configuration:
-      path: bharath92/gitIssues
-      gitProvider: bharath_github
-#  - name: buildInfo
-#    type: buildInfo
-#    version:
-#      buildName: app
-#      buildNumber: 1
-  - name: distributionRule
+      path: bharath92/artifactory-go-example
+      gitProvider: github
+  - name: go_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: go_example_build
+      buildNumber: 1
+  - name: unsigned_release_bundle
+    type: ReleaseBundle
+    configuration:
+      sourceArtifactory: art
+      name: go-test-bundle
+      version: v1.0
+  - name: signed_release_bundle
+    type: ReleaseBundle
+    configuration:
+      sourceArtifactory: art
+      name: go_test_bundle
+      version: v1.0
+  - name: promoted_go_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: promote_go_build
+      buildNumber: 1
+  - name: distribution_rule
     type: DistributionRule
     configuration:
       sourceArtifactory: art
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
+      cityName: *
+      serviceName: *
+      siteName: *
       countryCodes:
-        - "CN"
-  - name: releaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceArtifactory: art
-      name: test_2
-      version: v1.1.3
-#  - name: releaseBundle
-#    type: releaseBundle
-#    version:
-#      name: test_release
-#      version: v1.0.0
-#      isSigned: true
-  - name: releaseBundle2
-    type: ReleaseBundle
-    configuration:
-      sourceArtifactory: art
-      name: test
-      version: foo
-      isSigned: false
-#  - name: distributionRule2
-#    type: DistributionRule
-#    version:
-#      cityName: "Beng"
-#      serviceName: "lol"
-#      siteName: "test"
-#      countryCodes:
-#        countryCodeCount: 3
-#        countryCode01: "test"
-#        countryCode02: "lol"
-#        countryCode03: "bol"
-#    
+        - CN
+ 
 pipelines:
-  - name: app
+  - name: go_example_build
     steps:
-#      - name: bash
-#        type: Bash
-#        configuration:
-#          environmentVariables:
-#            foo: bar
-#          timeoutSeconds: 2
-#          nodePool: dev
-#          #inputSteps:
-#          #  - name: step
-#          integrations:
-#            - name: art
-#          outputResources:
-#            - name: aql
-#          inputResources:
-#            - name: dockerbuild_gitRepo
-#              trigger: false
-#            - name: image
-#              
-#              
-#       
-#        execution:
-#          onExecute:
-#            - printenv
-#      - name: build_image
-#        type: build
-#        payloadType: docker
-#        setup:
-#          build:
-#            dockerFileLocation: .
-#            dockerFileName: Dockerfile
-#            imageName: mill.jfrog.info:12052/docker/bharath-gitissues
-#            imageTag: $PIPELINE_NAME.$RUN_NUMBER
-#        requires:
-#          integrations:
-#            - art
-#          resources:
-#            - dockerbuild_gitRepo
-#            
-#      - name: push_image
-#        type: push
-#        setup:
-#          push:
-#            targetRepo: docker
-#            publish: false
-#            scan: false
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          steps:
-#            - build_image
-#            
-#      - name: publish_build
-#        type: publish
-#        setup:
-#          publish:
-#            scan: false
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          steps:
-#            - push_image
-#        outputResources:
-#          - buildInfo
-      - name: sign
-        type: SignReleaseBundle
+      - name: build_go
+        type: GoBuild
         configuration:
+          sourceLocation: .
+          repository: go
+          outputLocation: /tmp/dist
+          outputFile: hello
           inputResources:
-            - name: releaseBundle
+            - name: artifactory_go_example
           integrations:
-            - name: kermit_art
+            - name: art
+        execution:
+          onStart:
+            - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+            - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+            - export PATH=$PATH:/usr/local/go/bin
+            - go version
+      - name: push_go_binary
+        type: PushArtifactoryPackage
+        configuration:
+          targetRepo: go_test
+          integrations:
+            - name: art
+          inputSteps:
+            - name: build_go
+      - name: publish_go_build
+        type: PublishBuildInfo
+        configuration:
+          integrations:
+            - name: art
+          inputSteps:
+            - name: push_go_binary
           outputResources:
-            - name: releaseBundle2
-      - name: distribute
-        type: DistributeReleaseBundle
-        #execution:
-        #  onSuccess:
-        #    - echo hi
+            - name: go_build_info
+      - name: promote_go_build
+        type: PromoteBuildInfo
         configuration:
-          dryRun: false
-          #releaseBundleName: test_release
-          #releaseBundleVersion: v1.0.1
+          targetRepo: promoted_go_test
           integrations:
-            - name: kermit_art
-          inputResources:
-            - name: distributionRule
-            - name: releaseBundle2
-      - name: bundle
+            - name: art
+          inputSteps:
+            - name: publish_go_build
+          outputResources:
+            - name: promoted_go_build_info
+      - name: create_release_bundle
         type: CreateReleaseBundle
         configuration:
-          affinityGroup: test
-          releaseBundleName: kermit_test_new_aql
-          releaseBundleVersion: v1.1.0
           dryRun: false
+          releaseBundleName: go-test-build
+          releaseBundleVersion: v1.0
           sign: false
-          description: "some random test description"
-          integrations:
-            - name: kermit_art
           inputResources:
-            - name: aql
+            - promoted_go_build_info
+          integrations:
+            - art
           outputResources:
-            - name: releaseBundle
-          releaseNotes:
-            syntax: markdown
-            content: |
-              ## Heading
-                * Bullet
-                * Points
-#        requires:
-#          integrations:
-#            - kermit_art
-#          steps:
-#            - bash
-#          resources:
-#            - distributionRule
-#            - releaseBundle
-#   
-#  - name: scan_pipelinne
-#    steps:
-#      - name: scan_build
-#        type: scan
-#        setup:
-#          scan:
-#            buildName: $BUILD_NAME
-#            buildNumber: $BUILD_NUMBER
-#        requires:
-#          integrations:
-#            - art
-#        triggeredBy:
-#          resources:
-#            - buildInfo
-#
+            - unsigned_release_bundle
+      - name: sign_release_bundle
+        type: SignReleaseBundle
+        configuration:
+          sign: false
+          inputResources:
+            - unsigned_release_bundle
+          integrations:
+            - art
+          outputResources:
+            - signed_release_bundle
+      - name: distribute_signed_release_bundle
+        type: DistributeReleaseBundle
+        configuration:
+          dryRun: false
+          inputResources:
+            - signed_release_bundle
+            - distribution_rule
+          integrations:
+            - art
+      
