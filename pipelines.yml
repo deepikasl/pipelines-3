@@ -3,7 +3,7 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art
-      buildName: lol
+      buildName: lol2
       buildNumber: 1
 pipelines:
   - name: basic
