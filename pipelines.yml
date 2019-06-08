@@ -159,7 +159,7 @@ pipelines:
           releaseBundleName: test_2
           releaseBundleVersion: v1.1.4
           dryRun: false
-          signed: false
+          sign: false
           description: "some random test description"
           integrations:
             - name: kermit_art
