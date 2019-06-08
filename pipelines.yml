@@ -136,7 +136,7 @@ pipelines:
       - name: distribute
         type: DistributeReleaseBundle
         configuration:
-          dryRun: false
+          dryRun: true
           releaseBundleName: test_release
           releaseBundleVersion: v1.0.0
           integrations:
