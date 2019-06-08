@@ -134,9 +134,9 @@ pipelines:
 #          - buildInfo
       - name: distribute
         type: DistributeReleaseBundle
-        execution:
-          onSuccess:
-            - echo hi
+        #execution:
+        #  onSuccess:
+        #    - echo hi
         configuration:
           dryRun: false
           releaseBundleName: test_release
