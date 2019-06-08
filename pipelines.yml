@@ -55,6 +55,7 @@ resources:
   - name: releaseBundle2
     type: ReleaseBundle
     configuration:
+      sourceArtifactory: art
       name: test
       version: foo
       isSigned: false
