@@ -1,5 +1,5 @@
 resources:
-  - name: artifactory_go_example
+  - name: kermit_artifactory_go_example
     type: GitRepo
     configuration:
       path: bharath92/artifactory-go-example
@@ -7,31 +7,31 @@ resources:
   - name: go_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       buildName: go_example_build
       buildNumber: 1
   - name: unsigned_release_bundle
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       name: go_test_bundle
       version: v1.0
   - name: signed_release_bundle
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       name: go_test_bundle
       version: v1.0
   - name: promoted_go_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       buildName: promote_go_build
       buildNumber: 1
   - name: distribution_rule
     type: DistributionRule
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       cityName: "*"
       serviceName: "*"
       siteName: "*"
@@ -49,9 +49,9 @@ pipelines:
           outputLocation: /tmp/dist
           outputFile: hello
           inputResources:
-            - name: artifactory_go_example
+            - name: kermit_artifactory_go_example
           integrations:
-            - name: art
+            - name: kermit_art
         execution:
           onStart:
             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
@@ -63,14 +63,14 @@ pipelines:
         configuration:
           targetRepo: go_test
           integrations:
-            - name: art
+            - name: kermit_art
           inputSteps:
             - name: build_go
       - name: publish_go_build
         type: PublishBuildInfo
         configuration:
           integrations:
-            - name: art
+            - name: kermit_art
           inputSteps:
             - name: push_go_binary
           outputResources:
@@ -80,7 +80,7 @@ pipelines:
         configuration:
           targetRepo: promoted_go_test
           integrations:
-            - name: art
+            - name: kermit_art
           inputSteps:
             - name: publish_go_build
           outputResources:
@@ -95,7 +95,7 @@ pipelines:
           inputResources:
             - name: promoted_go_build_info
           integrations:
-            - name: art
+            - name: kermit_art
           outputResources:
             - name: unsigned_release_bundle
       - name: sign_release_bundle
@@ -104,7 +104,7 @@ pipelines:
           inputResources:
             - name: unsigned_release_bundle
           integrations:
-            - name: art
+            - name: kermit_art
           outputResources:
             - name: signed_release_bundle
       - name: distribute_signed_release_bundle
@@ -115,5 +115,5 @@ pipelines:
             - name: signed_release_bundle
             - name: distribution_rule
           integrations:
-            - name: art
+            - name: kermit_art
       
