@@ -39,8 +39,7 @@ resources:
       serviceName: "*"
       siteName: "*"
       countryCodes:
-        - "*"
-        - "a"
+        - "CN"
 #  - name: releaseBundle
 #    type: releaseBundle
 #    version:
