@@ -32,9 +32,9 @@ resources:
     type: DistributionRule
     configuration:
       sourceArtifactory: art
-      cityName: *
-      serviceName: *
-      siteName: *
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
       countryCodes:
         - CN
  
