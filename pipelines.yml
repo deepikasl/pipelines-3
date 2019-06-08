@@ -40,6 +40,11 @@ resources:
       siteName: "*"
       countryCodes:
         - "CN"
+  - name: releaseBundle
+    type: releaseBundle
+    version:
+      name: test_2
+      version: v1.1.3
 #  - name: releaseBundle
 #    type: releaseBundle
 #    version:
@@ -145,6 +150,28 @@ pipelines:
             - name: kermit_art
           inputResources:
             - name: distributionRule
+      - name: bundle
+        type: CreateReleaseBundle
+        configuration:
+          affinityGroup: test
+          nodePool: ankul_nodes
+          releaseBundleName: test_2
+          releaseBundleVersion: v1.1.4
+          dryRun: false
+          signed: false
+          description: "some random test description"
+          integrations:
+            - name: kermit_art
+          inputResources:
+            - name: aql
+          outputResources:
+            - name: releaseBundle
+          releaseNotes:
+            syntax: markdown
+            content: |
+              ## Heading
+                * Bullet
+                * Points
 #        requires:
 #          integrations:
 #            - kermit_art
