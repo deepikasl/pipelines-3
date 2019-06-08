@@ -144,7 +144,7 @@ pipelines:
         #  onSuccess:
         #    - echo hi
         configuration:
-          dryRun: true
+          dryRun: false
           #releaseBundleName: test_release
           #releaseBundleVersion: v1.0.1
           integrations:
