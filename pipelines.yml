@@ -155,9 +155,8 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           affinityGroup: test
-          nodePool: ankul_nodes
-          releaseBundleName: test_2
-          releaseBundleVersion: v1.1.4
+          releaseBundleName: kermit_test_new_aql
+          releaseBundleVersion: v1.1.0
           dryRun: false
           sign: false
           description: "some random test description"
