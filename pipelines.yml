@@ -52,12 +52,12 @@ resources:
 #      name: test_release
 #      version: v1.0.0
 #      isSigned: true
-#  - name: releaseBundle2
-#    type: releaseBundle
-#    version:
-#      name: test
-#      version: foo
-#      isSigned: false
+  - name: releaseBundle2
+    type: releaseBundle
+    version:
+      name: test
+      version: foo
+      isSigned: false
 #  - name: distributionRule2
 #    type: DistributionRule
 #    version:
@@ -145,6 +145,8 @@ pipelines:
             - name: releaseBundle
           integrations:
             - name: kermit_art
+          outputResources:
+            - name: releaseBundle2
       - name: distribute
         type: DistributeReleaseBundle
         #execution:
@@ -158,8 +160,7 @@ pipelines:
             - name: kermit_art
           inputResources:
             - name: distributionRule
-          inputSteps:
-            - name: sign
+            - name: releaseBundle2
       - name: bundle
         type: CreateReleaseBundle
         configuration:
