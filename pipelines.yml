@@ -101,7 +101,6 @@ pipelines:
       - name: sign_release_bundle
         type: SignReleaseBundle
         configuration:
-          sign: false
           inputResources:
             - name: unsigned_release_bundle
           integrations:
