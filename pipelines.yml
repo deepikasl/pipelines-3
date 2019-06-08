@@ -138,19 +138,19 @@ pipelines:
 #            - push_image
 #        outputResources:
 #          - buildInfo
-      - name: distribute
-        type: DistributeReleaseBundle
-        #execution:
-        #  onSuccess:
-        #    - echo hi
-        configuration:
-          dryRun: false
-          releaseBundleName: test_release
-          releaseBundleVersion: v1.0.1
-          integrations:
-            - name: kermit_art
-          inputResources:
-            - name: distributionRule
+#      - name: distribute
+#        type: DistributeReleaseBundle
+#        #execution:
+#        #  onSuccess:
+#        #    - echo hi
+#        configuration:
+#          dryRun: false
+#          releaseBundleName: test_release
+#          releaseBundleVersion: v1.0.1
+#          integrations:
+#            - name: kermit_art
+#          inputResources:
+#            - name: distributionRule
       - name: bundle
         type: CreateReleaseBundle
         configuration:
