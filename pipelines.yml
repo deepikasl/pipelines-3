@@ -76,7 +76,7 @@ pipelines:
           outputResources:
             - name: go_build_info
       - name: promote_go_build
-        type: PromoteBuildInfo
+        type: PromoteBuild
         configuration:
           targetRepo: promoted_go_test
           integrations:
