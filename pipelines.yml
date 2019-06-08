@@ -138,14 +138,11 @@ pipelines:
         configuration:
           dryRun: false
           releaseBundleName: test_release
-          releaseBundleVersion: v1.0.5
+          releaseBundleVersion: v1.0.0
           integrations:
-            - name: bharath_github
+            - name: kermit_art
           inputResources:
-            - name: aql
-          environmentVariables:
-            foo: d
-            boo: far
+            - name: distributionRule
 #        requires:
 #          integrations:
 #            - kermit_art
