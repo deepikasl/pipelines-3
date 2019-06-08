@@ -14,7 +14,7 @@ resources:
     type: ReleaseBundle
     configuration:
       sourceArtifactory: art
-      name: go-test-bundle
+      name: go_test_bundle
       version: v1.0
   - name: signed_release_bundle
     type: ReleaseBundle
@@ -89,7 +89,7 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           dryRun: false
-          releaseBundleName: go-test-build
+          releaseBundleName: go_test_build
           releaseBundleVersion: v1.0
           sign: false
           inputResources:
