@@ -146,7 +146,7 @@ pipelines:
           buildNumber: 1
           integrations:
             - name: kermit_art
-          input_steps:
+          inputSteps:
             - name: sign
       - name: sign
         type: SignReleaseBundle
