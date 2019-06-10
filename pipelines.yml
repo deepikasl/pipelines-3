@@ -171,8 +171,8 @@ pipelines:
           inputResources:
             - name: distributionRule
             - name: releaseBundle2
-      - name: bundle
-        lol: CreateReleaseBundle
+      - name: bundle@
+        type: CreateReleaseBundle
         configuration:
           affinityGroup: test
           releaseBundleName: kermit_test_new_aql
