@@ -40,6 +40,15 @@ resources:
       siteName: "*"
       countryCodes:
         - "CN"
+  - name: distributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: art
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
+      countryCodes:
+        - "EU"
   - name: releaseBundle
     type: ReleaseBundle
     configuration:
