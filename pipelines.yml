@@ -171,10 +171,10 @@ pipelines:
           inputResources:
             - name: distributionRule
             - name: releaseBundle2
-      - name: bundle
+      - name: bundle@
         type: CreateReleaseBundle
         configuration:
-          affinityGdroup: test
+          affinityGroup: test
           releaseBundleName: kermit_test_new_aql
           releaseBundleVersion: v1.1.0
           dryRun: false
