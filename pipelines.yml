@@ -174,7 +174,7 @@ pipelines:
       - name: bundle@
         type: CreateReleaseBundle
         configuration:
-          affinityGroup: test
+          affinityGdroup: test
           releaseBundleName: kermit_test_new_aql
           releaseBundleVersion: v1.1.0
           dryRun: false
