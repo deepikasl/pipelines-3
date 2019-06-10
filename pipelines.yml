@@ -40,7 +40,7 @@ resources:
       siteName: "*"
       countryCodes:
         - "CN"
-  - name: distributionRule
+  - name: distributionRule2
     type: DistributionRule
     configuration:
       sourceArtifactory: art
@@ -180,6 +180,7 @@ pipelines:
           inputResources:
             - name: distributionRule
             - name: releaseBundle2
+            - name: distributionRule2
       - name: bundle
         type: CreateReleaseBundle
         configuration:
