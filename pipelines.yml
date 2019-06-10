@@ -172,7 +172,7 @@ pipelines:
             - name: distributionRule
             - name: releaseBundle2
       - name: bundle
-        Step: CreateReleaseBundle
+        type: CreateReleaseBundle
         configuration:
           affinityGroup: test
           releaseBundleName: kermit_test_new_aql
