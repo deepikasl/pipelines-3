@@ -37,6 +37,15 @@ resources:
       siteName: "*"
       countryCodes:
         - CN
+  - name: distribution_rule2
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: kermit_art
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
+      countryCodes:
+        - EU
  
 pipelines:
   - name: go_example_build
@@ -114,6 +123,7 @@ pipelines:
           inputResources:
             - name: signed_release_bundle
             - name: distribution_rule
+            - name: distribution_rule2
           integrations:
             - name: kermit_art
       
