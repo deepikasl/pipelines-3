@@ -80,6 +80,20 @@ resources:
 #        countryCode02: "lol"
 #        countryCode03: "bol"
 #    
+
+  - name: buildinfo1
+    type: BuildInfo
+    configuration:
+      buildNumber: 1
+      buileName: app
+      sourceArtifactory: art
+
+  - name: buildinfo2
+    type: BuildInfo
+    configuration:
+      buildNumber: 1
+      buileName: app
+      sourceArtifactory: art
 pipelines:
   - name: app
     steps:
@@ -193,7 +207,8 @@ pipelines:
           integrations:
             - name: kermit_art
           inputResources:
-            - name: aql
+            - name: buildinfo1
+            - name: buildinfo2
           outputResources:
             - name: releaseBundle
           releaseNotes:
