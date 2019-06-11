@@ -85,14 +85,14 @@ resources:
     type: BuildInfo
     configuration:
       buildNumber: 1
-      buileName: app
+      buildName: app
       sourceArtifactory: art
 
   - name: buildinfo2
     type: BuildInfo
     configuration:
       buildNumber: 1
-      buileName: app
+      buildName: app
       sourceArtifactory: art
 pipelines:
   - name: app
