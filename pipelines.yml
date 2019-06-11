@@ -84,15 +84,15 @@ resources:
   - name: buildinfo1
     type: BuildInfo
     configuration:
-      buildNumber: 1
-      buildName: app
+      buildNumber: 12
+      buildName: go_publish_example
       sourceArtifactory: art
 
   - name: buildinfo2
     type: BuildInfo
     configuration:
-      buildNumber: 2
-      buildName: app2
+      buildNumber: 11
+      buildName: mvn_example_build
       sourceArtifactory: art
 pipelines:
   - name: app
@@ -199,7 +199,7 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           affinityGroup: test
-          releaseBundleName: kermit_test_new_aql
+          releaseBundleName: kermit_test_multipleBuildInfos
           releaseBundleVersion: v1.1.0
           dryRun: false
           sign: false
