@@ -91,8 +91,8 @@ resources:
   - name: buildinfo2
     type: BuildInfo
     configuration:
-      buildNumber: 1
-      buildName: app
+      buildNumber: 2
+      buildName: app2
       sourceArtifactory: art
 pipelines:
   - name: app
