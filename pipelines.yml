@@ -51,13 +51,13 @@ resources:
     configuration:
       registry: edge_art
       imageName: 34.66.110.173:8082/demo/app
-      imageTag: 11
+      imageTag: "11"
   - name: image_no_pull
     type: Image
     configuration:
       registry: edge_art
       imageName: 34.66.110.173:8081/demo/app
-      imageTag: 11
+      imageTag: "11"
  
 pipelines:
   - name: go_example_build
