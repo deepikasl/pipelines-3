@@ -46,6 +46,18 @@ resources:
       siteName: "*"
       countryCodes:
         - EU
+  - name: image_pull
+    type: Image
+    configuration:
+      registry: edge_art
+      imageName: 34.66.110.173:8082/demo/app
+      imageTag: 11
+  - name: image_no_pull
+    type: Image
+    configuration:
+      registry: edge_art
+      imageName: 34.66.110.173:8081/demo/app
+      imageTag: 11
  
 pipelines:
   - name: go_example_build
@@ -67,6 +79,18 @@ pipelines:
             - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
             - export PATH=$PATH:/usr/local/go/bin
             - go version
+      - name: test_something
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: build_go
+          inputResources:
+            - name: image_pull
+            - name: image_no_pull
+        execution:
+          onExecute:
+            - echo lol 
+
       - name: push_go_binary
         type: PushArtifactoryPackage
         configuration:
