@@ -235,6 +235,7 @@ pipelines:
           mvnCommand: clean install -f ./pom.xml
           configFileLocation: .
           configFileName: mvn-art-config
+          autoPublishBuildInfo: true
           inputResources:
             - name: project_example
           integrations:
