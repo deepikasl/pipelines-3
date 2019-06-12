@@ -233,7 +233,7 @@ pipelines:
         configuration:
           sourceLocation: .
           mvnCommand: clean install -ntp
-          configFileLocation: .
+          configFileLocation: ./artifactory-maven-plugin-example
           configFileName: mvn-art-config
           inputResources:
             - name: project_example
