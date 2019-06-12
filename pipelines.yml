@@ -87,8 +87,8 @@ resources:
   - name: project_example
     type: GitRepo
     configuration:
-      gitProvider: github
-      path: skylark05/project-examples
+      gitProvider: bharath/github
+      path: bharath92/project-examples
 pipelines:
   - name: app
     steps:
