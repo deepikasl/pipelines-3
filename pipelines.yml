@@ -176,6 +176,7 @@ pipelines:
           dryRun: true
           inputResources:
             - name: distributionRule
+            - name: distributionRule2
             - name: releaseBundle2
 #       - name: bundle
 #         type: CreateReleaseBundle
