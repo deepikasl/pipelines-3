@@ -84,6 +84,11 @@ resources:
       buildNumber: 11
       buildName: mvn_example_build
       sourceArtifactory: art
+  - name: project_example
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: skylark05/project-examples
 pipelines:
   - name: app
     steps:
