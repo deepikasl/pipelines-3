@@ -240,6 +240,8 @@ pipelines:
             - name: project_example
           integrations:
             - name: kermit_art
+          outputResources:
+            - name: buildinfo1
         execution:
           onStart:
             - apt-get update
