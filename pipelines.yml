@@ -24,7 +24,7 @@ resources:
   - name: distributionRule
     type: DistributionRule
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       cityName: "*"
       serviceName: "*"
       siteName: "*"
@@ -33,7 +33,7 @@ resources:
   - name: distributionRule2
     type: DistributionRule
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       cityName: "*"
       serviceName: "*"
       siteName: "*"
