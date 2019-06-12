@@ -172,14 +172,11 @@ pipelines:
 #             - name: releaseBundle2
       - name: distribute
         type: DistributeReleaseBundle
-        #execution:
-        #  onSuccess:
-        #    - echo hi
         configuration:
-          dryRun: false
+          dryRun: true
           inputResources:
             - name: distributionRule
-            #- name: releaseBundle2
+            - name: releaseBundle2
 #       - name: bundle
 #         type: CreateReleaseBundle
 #         configuration:
