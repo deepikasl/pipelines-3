@@ -175,7 +175,7 @@ pipelines:
         configuration:
           dryRun: true
           inputResources:
-            #- name: distributionRule
+            - name: distributionRule
             - name: distributionRule2
             - name: releaseBundle2
 #       - name: bundle
