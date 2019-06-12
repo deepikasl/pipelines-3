@@ -55,9 +55,9 @@ resources:
     type: ReleaseBundle
     configuration:
       sourceArtifactory: art
-      name: test
-      version: foo
-      isSigned: false
+      name: ankul_test_release
+      version: v1.0.0
+      isSigned: true
 #  - name: distributionRule2
 #    type: DistributionRule
 #    version:
