@@ -236,7 +236,7 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
-            - name: backend_gitRepo
+            - name: project_example
           integrations:
             - name: kermit_art
         execution:
