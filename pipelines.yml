@@ -228,12 +228,12 @@ pipelines:
 #          resources:
 #            - buildInfo
 
-      - name: bld_backend
+      - name: build_mvn
         type: MvnBuild
         configuration:
-          sourceLocation: .
-          mvnCommand: clean install -ntp
-          configFileLocation: ./artifactory-maven-plugin-example
+          sourceLocation: ./artifactory-maven-plugin-example
+          mvnCommand: clean install -f ./pom.xml
+          configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
             - name: project_example
@@ -241,7 +241,6 @@ pipelines:
             - name: kermit_art
         execution:
           onStart:
-            - apt-get update
             - apt install default-jdk
             - pushd /tmp
             - wget http://mirrors.estointernet.in/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
@@ -251,4 +250,5 @@ pipelines:
             - popd
             - javac -version
             - mvn --version
+
 
