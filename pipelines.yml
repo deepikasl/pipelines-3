@@ -54,7 +54,7 @@ resources:
   - name: releaseBundle2
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: kermit_art
       name: ankul_test_release
       version: v1.0.0
       isSigned: true
