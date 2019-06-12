@@ -38,7 +38,7 @@ resources:
       serviceName: "*"
       siteName: "*"
       countryCodes:
-        - "EU"
+        - "US"
   - name: releaseBundle
     type: ReleaseBundle
     configuration:
