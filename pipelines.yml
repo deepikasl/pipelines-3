@@ -179,7 +179,7 @@ pipelines:
           dryRun: false
           inputResources:
             - name: distributionRule
-            - name: releaseBundle2
+            #- name: releaseBundle2
 #       - name: bundle
 #         type: CreateReleaseBundle
 #         configuration:
