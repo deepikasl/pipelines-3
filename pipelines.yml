@@ -152,24 +152,24 @@ pipelines:
 #            - push_image
 #        outputResources:
 #          - buildInfo
-      - name: scan
-        type: XrayScan
-        configuration:
-          buildName: ankul_pipeline
-          buildNumber: 1
-          integrations:
-            - name: kermit_art
-          inputSteps:
-            - name: sign
-      - name: sign
-        type: SignReleaseBundle
-        configuration:
-          inputResources:
-            - name: releaseBundle
-          integrations:
-            - name: kermit_art
-          outputResources:
-            - name: releaseBundle2
+#       - name: scan
+#         type: XrayScan
+#         configuration:
+#           buildName: ankul_pipeline
+#           buildNumber: 1
+#           integrations:
+#             - name: kermit_art
+#           inputSteps:
+#             - name: sign
+#       - name: sign
+#         type: SignReleaseBundle
+#         configuration:
+#           inputResources:
+#             - name: releaseBundle
+#           integrations:
+#             - name: kermit_art
+#           outputResources:
+#             - name: releaseBundle2
       - name: distribute
         type: DistributeReleaseBundle
         #execution:
@@ -185,27 +185,27 @@ pipelines:
             - name: distributionRule
             - name: releaseBundle2
             - name: distributionRule2
-      - name: bundle
-        type: CreateReleaseBundle
-        configuration:
-          affinityGroup: test
-          releaseBundleName: kermit_test_aql
-          releaseBundleVersion: v1.1.0
-          dryRun: false
-          sign: false
-          description: "some random test description"
-          integrations:
-            - name: kermit_art
-          inputResources:
-            - name: aql
-          outputResources:
-            - name: releaseBundle
-          releaseNotes:
-            syntax: markdown
-            content: |
-              ## Heading
-                * Bullet
-                * Points
+#       - name: bundle
+#         type: CreateReleaseBundle
+#         configuration:
+#           affinityGroup: test
+#           releaseBundleName: kermit_test_aql
+#           releaseBundleVersion: v1.1.0
+#           dryRun: false
+#           sign: false
+#           description: "some random test description"
+#           integrations:
+#             - name: kermit_art
+#           inputResources:
+#             - name: aql
+#           outputResources:
+#             - name: releaseBundle
+#           releaseNotes:
+#             syntax: markdown
+#             content: |
+#               ## Heading
+#                 * Bullet
+#                 * Points
 #        requires:
 #          integrations:
 #            - kermit_art
