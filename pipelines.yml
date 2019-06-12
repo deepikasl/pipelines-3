@@ -236,6 +236,7 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           autoPublishBuildInfo: true
+          forceXrayScan: true
           inputResources:
             - name: project_example
           integrations:
