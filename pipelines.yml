@@ -177,8 +177,8 @@ pipelines:
         #    - echo hi
         configuration:
           dryRun: false
-          #releaseBundleName: test_release
-          #releaseBundleVersion: v1.0.1
+          releaseBundleName: test_release
+          releaseBundleVersion: v1.0.1
           integrations:
             - name: kermit_art
           inputResources:
