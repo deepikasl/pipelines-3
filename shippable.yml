@@ -1,88 +1,20 @@
 resources:
   - name: app1
-    type: gitRepo
+    type: GitRepo
     repoPath: bharath92/admiral
     configuration:
-      integrationName: bharath_github
-      branches:
-        only: master
-    initialVersion:
-      sha: master
+      gitRepo: bharath_github
 
 pipelines:
 
   - name: test_pipeline
     steps:
       - name: test_func
-        type: bash
+        type: Bash
         configuration:
-          affinityGroup: build
-          nodePool: u18
-        setup:
-          environmentVariables:
-            normal:
-              myFirstName: Manisha
-              myLastName: Sahasrabudhe
-        requires:
-          resources:
-            - app1
+          inputResources:
+            - name: app1
         execution:
           onExecute:
-            - echo $myFirstName
-            - echo $myLastName
-            - printenv
-
-
-      - name: test_func_next
-        type: bash
-        configuration:
-          affinityGroup: build
-          nodePool: u18
-        triggeredBy:
-          steps:
-            - test_func
-        execution:
-          onExecute:
-            - printenv
-
-
-      - name: parallel_1
-        type: bash
-        triggeredBy:
-          steps:
-            - test_func_next
-        execution:
-          onExecute:
-            - printenv
-            - echo $imageTag
-
-
-      - name: parallel_2
-        type: bash
-        triggeredBy:
-          steps:
-            - test_func_next
-        execution:
-          onExecute:
-            - printenv
-
-      - name: parallel_3
-        type: bash
-        triggeredBy:
-          steps:
-            - test_func_next
-        execution:
-          onExecute:
-            - printenv
-
-      - name: final_step
-        type: bash
-        triggeredBy:
-          steps:
-            - parallel_2
-            - parallel_1
-            - parallel_3
-        execution:
-          onExecute:
-            - printenv
-
+            - echo hi
+        
