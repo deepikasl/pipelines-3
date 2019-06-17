@@ -1,9 +1,9 @@
 resources:
   - name: app1
     type: GitRepo
-    repoPath: bharath92/admiral
     configuration:
-      gitRepo: bharath_github
+      path: bharath92/admiral
+      gitProvider: bharath_github
 
 pipelines:
 
