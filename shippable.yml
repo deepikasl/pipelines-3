@@ -1,5 +1,5 @@
 resources:
-  - name: app1
+  - name: app12
     type: GitRepo
     configuration:
       path: bharath92/admiral
@@ -7,13 +7,13 @@ resources:
 
 pipelines:
 
-  - name: test_pipeline
+  - name: test_pipeline2
     steps:
-      - name: test_func
+      - name: test_func2
         type: Bash
         configuration:
           inputResources:
-            - name: app1
+            - name: app12
         execution:
           onExecute:
             - echo hi
