@@ -12,6 +12,7 @@ pipelines:
       - name: test_func2
         type: Bash
         configuration:
+          nodePool: bharath_nodepool
           inputResources:
             - name: app12
         execution:
