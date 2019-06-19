@@ -7,7 +7,8 @@ resources:
   - name: image
     type: Image
     configuration:
-      registry: bharath_github
+      registry: a
+      sourceRepository: lol
       imageName: bharath92/gitissues
       imageTag: lol
 pipelines:
