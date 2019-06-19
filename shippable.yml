@@ -7,7 +7,7 @@ resources:
   - name: image
     type: Image
     configuration:
-      registry: a
+      registry: art
       sourceRepository: lol
       imageName: bharath92/gitissues
       imageTag: lol
