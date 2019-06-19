@@ -4,7 +4,12 @@ resources:
     configuration:
       path: bharath92/admiral
       gitProvider: bharath_github
-
+  - name: image
+    type: Image
+    configuration:
+      registry: bharath_github
+      imageName: bharath92/gitissues
+      imageTag: lol
 pipelines:
 
   - name: test_pipeline2
@@ -14,9 +19,12 @@ pipelines:
         configuration:
           inputResources:
             - name: app12
+          outputResources:
+            - name: image
         execution:
           onExecute:
             - echo hi
+            - write_output image imageTag=v1.0.0
             - write_output app12 imageTag=v1.0.0
             - echo bi
         
