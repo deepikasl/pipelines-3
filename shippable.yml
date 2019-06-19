@@ -18,4 +18,6 @@ pipelines:
         execution:
           onExecute:
             - echo hi
+            - write_output app12 imageTag=v1.0.0
+            - echo bi
         
