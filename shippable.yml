@@ -29,13 +29,13 @@ pipelines:
             - sleep 1
             - echo bi
         
-     - name: test_func2
-       type: Bash
-       configuration:
-         affinityGroup: same
-         inputSteps:
-           - name: test_func1
-       execution:
-         onExecute:
-           - echo hi
-           - sleep 1m
+      - name: test_func2
+        type: Bash
+        configuration:
+          affinityGroup: same
+          inputSteps:
+            - name: test_func1
+        execution:
+          onExecute:
+            - echo hi
+            - sleep 1m
