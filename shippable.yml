@@ -13,9 +13,9 @@ resources:
       imageTag: lol
 pipelines:
 
-  - name: test_pipeline2
+  - name: test_pipeline1
     steps:
-      - name: test_func1
+      - name: step1
         type: Bash
         configuration:
           affinityGroup: same
@@ -29,7 +29,7 @@ pipelines:
             - sleep 1
             - echo bi
         
-      - name: test_func2
+      - name: step2
         type: Bash
         configuration:
           affinityGroup: same
