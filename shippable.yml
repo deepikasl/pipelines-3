@@ -30,7 +30,7 @@ pipelines:
         configuration:
           affinityGroup: same
           inputSteps:
-            - name: test1
+            - name: step1
         execution:
           onExecute:
             - echo hi
