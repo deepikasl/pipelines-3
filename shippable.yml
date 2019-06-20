@@ -19,10 +19,6 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: same
-          inputResources:
-            - name: app12
-          outputResources:
-            - name: image
         execution:
           onExecute:
             - echo hi
@@ -34,7 +30,7 @@ pipelines:
         configuration:
           affinityGroup: same
           inputSteps:
-            - name: test_func1
+            - name: test1
         execution:
           onExecute:
             - echo hi
