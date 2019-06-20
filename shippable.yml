@@ -15,9 +15,10 @@ pipelines:
 
   - name: test_pipeline2
     steps:
-      - name: test_func2
+      - name: test_func1
         type: Bash
         configuration:
+          affinityGroup: same
           inputResources:
             - name: app12
           outputResources:
@@ -25,8 +26,16 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-            - sleep 1m
-            - write_output image imageTag=v1.0.0
-            - write_output app12 imageTag=v1.0.0
+            - sleep 1
             - echo bi
         
+     - name: test_func2
+        type: Bash
+        configuration:
+          affinityGroup: same
+          inputSteps:
+            - name: test_func1
+        execution:
+          onExecute:
+            - echo hi
+            - sleep 1m
