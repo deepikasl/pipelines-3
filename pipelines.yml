@@ -4,13 +4,13 @@ resources:
     configuration:
       path: bharath92/admiral
       gitProvider: bharath_github
-  - name: image
-    type: Image
-    configuration:
-      registry: art
-      sourceRepository: lol
-      imageName: bharath92/gitissues
-      imageTag: lol
+#   - name: image
+#     type: Image
+#     configuration:
+#       registry: art
+#       sourceRepository: lol
+#       imageName: bharath92/gitissues
+#       imageTag: lol
 pipelines:
 
   - name: test_pipeline1
