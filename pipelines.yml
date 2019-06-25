@@ -28,6 +28,8 @@ pipelines:
       - name: step2
         type: Bash
         configuration:
+          runtime:
+            type: host
           affinityGroup: same
           inputSteps:
             - name: step1
