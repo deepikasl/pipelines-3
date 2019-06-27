@@ -167,53 +167,53 @@ pipelines:
           onExecute:
             - echo hi
             - sleep 1m
-            - name: my_u16_demo_service
-              steps:
-                - name: my_u16_bld_svc
-                  type: DockerBuild
-                  configuration:
-                    nodePool: ubuntu16
-                    dockerFileLocation: .
-                    dockerFileName: Dockerfile
-                    dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
-                    dockerImageTag: $run_number
-                    inputResources:
-                      - name: my_go_gitRepo
-                    integrations:
-                      - name: bharath_art
+  - name: my_u16_demo_service
+    steps:
+      - name: my_u16_bld_svc
+        type: DockerBuild
+        configuration:
+          nodePool: ubuntu16
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
+          dockerImageTag: $run_number
+          inputResources:
+            - name: my_go_gitRepo
+          integrations:
+            - name: bharath_art
 
-                - name: my_u16_push_svc
-                  type: DockerPush
-                  configuration:
-                    nodePool: ubuntu16
-                    targetRepository: docker-local-test
-                    integrations:
-                      - name: bharath_art
-                    inputSteps:
-                      - name: my_u16_bld_svc
+      - name: my_u16_push_svc
+        type: DockerPush
+        configuration:
+          nodePool: ubuntu16
+          targetRepository: docker-local-test
+          integrations:
+            - name: bharath_art
+          inputSteps:
+            - name: my_u16_bld_svc
 
-                - name: my_u16_publish_svc_build
-                  type: PublishBuildInfo
-                  configuration:
-                    nodePool: ubuntu16
-                    inputSteps:
-                      - name: my_u16_push_svc
-                    outputResources:
-                      - name: my_svc_build_info
+      - name: my_u16_publish_svc_build
+        type: PublishBuildInfo
+        configuration:
+          nodePool: ubuntu16
+          inputSteps:
+            - name: my_u16_push_svc
+          outputResources:
+            - name: my_svc_build_info
 
-                - name: my_u16_promote_svc_build
-                  type: PromoteBuild
-                  configuration:
-                    nodePool: ubuntu16
-                    targetRepository: promote-test
-                    inputSteps:
-                      - name: my_u16_publish_svc_build
-                    integrations:
-                      - name: bharath_art
-                    inputResources:
-                      - name: my_svc_build_info
-                    outputResources:
-                      - name: my_svc_promoted_build_info
+      - name: my_u16_promote_svc_build
+        type: PromoteBuild
+        configuration:
+          nodePool: ubuntu16
+          targetRepository: promote-test
+          inputSteps:
+            - name: my_u16_publish_svc_build
+          integrations:
+            - name: bharath_art
+          inputResources:
+            - name: my_svc_build_info
+          outputResources:
+            - name: my_svc_promoted_build_info
 
   - name: my_u16_test_pipeline1
     steps:
