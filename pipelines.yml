@@ -17,10 +17,10 @@ pipelines:
     steps:
       - name: step1
         type: Bash
-        inputResources:
-          - name: app12
         configuration:
           affinityGroup: same
+          inputResources:
+            - name: app12
         execution:
           onExecute:
             - echo hi
