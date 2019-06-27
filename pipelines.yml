@@ -75,7 +75,7 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-            - sleep 1
+            - sleep 1m
             - echo bi
         
       - name: step2
