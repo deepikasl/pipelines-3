@@ -32,14 +32,14 @@ pipelines:
           inputResources:
             - name: my_go_gitRepo
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
 
       - name: my_push_svc
         type: DockerPush
         configuration:
           targetRepository: docker-local-test
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
           inputSteps:
             - name: my_bld_svc
 
@@ -58,7 +58,7 @@ pipelines:
           inputSteps:
             - name: my_publish_svc_build
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
           inputResources:
             - name: my_svc_build_info
           outputResources:
@@ -104,7 +104,7 @@ pipelines:
           inputResources:
             - name: my_go_gitRepo
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
 
       - name: my_c7_push_svc
         type: DockerPush
@@ -112,7 +112,7 @@ pipelines:
           nodePool: c07
           targetRepository: docker-local-test
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
           inputSteps:
             - name: my_c7_bld_svc
 
@@ -133,7 +133,7 @@ pipelines:
           inputSteps:
             - name: my_c7_publish_svc_build
           integrations:
-            - name: my_bharath_art
+            - name: bharath_art
           inputResources:
             - name: my_svc_build_info
           outputResources:
