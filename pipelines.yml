@@ -41,6 +41,8 @@ pipelines:
         type: PromoteBuild
         configuration:
           targetRepository: promote-test
+          inputSteps:
+            - name: publish_svc_build
           integrations:
             - name: kermit_art
           inputResources:
