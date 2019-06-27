@@ -96,7 +96,7 @@ pipelines:
       - name: my_c7_bld_svc
         type: DockerBuild
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
@@ -109,7 +109,7 @@ pipelines:
       - name: my_c7_push_svc
         type: DockerPush
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           targetRepository: docker-local-test
           integrations:
             - name: bharath_art
@@ -119,7 +119,7 @@ pipelines:
       - name: my_c7_publish_svc_build
         type: PublishBuildInfo
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           inputSteps:
             - name: my_c7_push_svc
           outputResources:
@@ -128,7 +128,7 @@ pipelines:
       - name: my_c7_promote_svc_build
         type: PromoteBuild
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           targetRepository: promote-test
           inputSteps:
             - name: my_c7_publish_svc_build
@@ -144,7 +144,7 @@ pipelines:
       - name: my_c7_step1
         type: Bash
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           affinityGroup: same
           inputResources:
             - name: my_go_gitRepo
@@ -157,7 +157,7 @@ pipelines:
       - name: my_c7_step2
         type: Bash
         configuration:
-          nodePool: c07
+          nodePool: bharath_c7
           runtime:
             type: host
           affinityGroup: same
