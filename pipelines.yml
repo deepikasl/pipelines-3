@@ -4,6 +4,20 @@ resources:
     configuration:
       path: bharath92/swampup-go-service
       gitProvider: bharath_github
+  - name: svc_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: svc_build
+      buildNumber: 1
+
+  - name: svc_promoted_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: svc_build
+      buildNumber: 1
+
 
 pipelines:
   - name: demo_service
