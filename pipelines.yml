@@ -23,7 +23,7 @@ pipelines:
       - name: push_svc
         type: DockerPush
         configuration:
-          targetRepository: docker-local
+          targetRepository: docker-local-test
           integrations:
             - name: kermit_art
           inputSteps:
@@ -40,7 +40,7 @@ pipelines:
       - name: promote_svc_build
         type: PromoteBuild
         configuration:
-          targetRepository: swampup
+          targetRepository: promote-test
           integrations:
             - name: kermit_art
           inputResources:
