@@ -1,17 +1,52 @@
 resources:
-  - name: app12
+  - name: go_gitRepo
     type: GitRepo
     configuration:
-      path: bharath92/admiral
+      path: bharath92/swampup-go-service
       gitProvider: bharath_github
-#   - name: image
-#     type: Image
-#     configuration:
-#       registry: art
-#       sourceRepository: lol
-#       imageName: bharath92/gitissues
-#       imageTag: lol
+
 pipelines:
+  - name: demo_service
+    steps:
+      - name: bld_svc
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: 34.66.107.45:8081/docker-local/gomicrosvc
+          dockerImageTag: $run_number
+          inputResources:
+            - name: go_gitRepo
+          integrations:
+            - name: kermit_art
+
+      - name: push_svc
+        type: DockerPush
+        configuration:
+          targetRepository: docker-local
+          integrations:
+            - name: kermit_art
+          inputSteps:
+            - name: bld_svc
+
+      - name: publish_svc_build
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: push_svc
+          outputResources:
+            - name: svc_build_info
+
+      - name: promote_svc_build
+        type: PromoteBuild
+        configuration:
+          targetRepository: swampup
+          integrations:
+            - name: kermit_art
+          inputResources:
+            - name: svc_build_info
+          outputResources:
+            - name: svc_promoted_build_info
 
   - name: test_pipeline1
     steps:
@@ -20,7 +55,7 @@ pipelines:
         configuration:
           affinityGroup: same
           inputResources:
-            - name: app12
+            - name: go_gitRepo
         execution:
           onExecute:
             - echo hi
