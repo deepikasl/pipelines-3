@@ -69,6 +69,7 @@ pipelines:
       - name: my_step1
         type: Bash
         configuration:
+          timeoutSeconds: 2
           affinityGroup: same
           inputResources:
             - name: my_go_gitRepo
@@ -222,6 +223,7 @@ pipelines:
         configuration:
           nodePool: ubuntu16
           affinityGroup: same
+          timeoutSeconds: 2
           inputResources:
             - name: my_go_gitRepo
         execution:
