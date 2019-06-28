@@ -70,6 +70,7 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: same
+          nodePool: c07
           inputResources:
             - name: go_gitRepo
         execution:
@@ -84,6 +85,7 @@ pipelines:
           runtime:
             type: host
           affinityGroup: same
+          nodePool: u16
           inputSteps:
             - name: step1
         execution:
