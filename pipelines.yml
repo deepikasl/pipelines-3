@@ -85,7 +85,7 @@ pipelines:
           runtime:
             type: host
           affinityGroup: same
-          nodePool: u16
+          nodePool: c07
           inputSteps:
             - name: step1
         execution:
