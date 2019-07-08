@@ -78,7 +78,7 @@ pipelines:
         execution:
           onExecute:
             - echo hii
-      - name: step2
+      - name: step3
         type: Bash
         configuration:
           affinityGroup: foo
