@@ -92,8 +92,8 @@ pipelines:
           affinityGroup: same
           outputResources:
             - name: image
-          inputResources:
-            - name: image
+          inputSteps:
+            - name: my_step3
         execution:
           onExecute:
             - echo hi
