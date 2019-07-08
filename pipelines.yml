@@ -77,7 +77,7 @@ pipelines:
         configuration:
           affinityGroup: same
           inputResources:
-            - name: my_go_gitRepo2
+            - name: my_go_gitRepo
         execution:
           onExecute:
             - echo hi
