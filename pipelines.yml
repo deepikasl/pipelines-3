@@ -72,7 +72,7 @@ pipelines:
 
   - name: my_test_pipeline1
     steps:
-      - name: my_step1
+      - name: my_step3
         type: Bash
         configuration:
           affinityGroup: same
@@ -91,7 +91,7 @@ pipelines:
             type: host
           affinityGroup: same
           inputSteps:
-            - name: my_step1
+            - name: my_step3
         execution:
           onExecute:
             - echo hi
