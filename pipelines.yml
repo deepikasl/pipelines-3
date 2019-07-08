@@ -69,34 +69,52 @@ pipelines:
 #             - name: my_svc_build_info
 #           outputResources:
 #             - name: my_svc_promoted_build_info
-
-  - name: my_test_pipeline1
+  - name: affinityGroupTest
     steps:
-      - name: my_step3
+      - name: step1
         type: Bash
         configuration:
-          affinityGroup: same
-          inputResources:
-            - name: my_go_gitRepo
+          affinityGroup: foo
         execution:
           onExecute:
             - echo hi
-            - sleep 1m
-            - echo bi
+      - name: step2
+        type: Bash
+        configuration:
+          affinityGroup: foo
+        inputSteps:
+          - name: step1
+        execution:
+          onExecute:
+            - echo hi
 
-      - name: my_step4
-        type: Bash
-        configuration:
-          runtime:
-            type: host
-          affinityGroup: same
-          outputResources:
-            - name: image
-          inputSteps:
-            - name: my_step3
-        execution:
-          onExecute:
-            - echo hi
+#   - name: my_test_pipeline1
+#     steps:
+#       - name: my_step3
+#         type: Bash
+#         configuration:
+#           affinityGroup: same
+#           inputResources:
+#             - name: my_go_gitRepo
+#         execution:
+#           onExecute:
+#             - echo hi
+#             - sleep 1m
+#             - echo bi
+
+#       - name: my_step4
+#         type: Bash
+#         configuration:
+#           runtime:
+#             type: host
+#           affinityGroup: same
+#           outputResources:
+#             - name: image
+#           inputSteps:
+#             - name: my_step3
+#         execution:
+#           onExecute:
+#             - echo hi
   
 
 #   - name: my_c7_demo_service
