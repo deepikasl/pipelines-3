@@ -84,7 +84,7 @@ pipelines:
             - sleep 1m
             - echo bi
 
-      - name: my_step2
+      - name: my_step4
         type: Bash
         configuration:
           runtime:
