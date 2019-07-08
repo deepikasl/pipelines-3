@@ -86,7 +86,7 @@ pipelines:
             - name: step1
         execution:
           onExecute:
-            - echo hii
+            - echo hi
 
 #   - name: my_test_pipeline1
 #     steps:
