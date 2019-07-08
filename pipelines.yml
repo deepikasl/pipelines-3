@@ -78,6 +78,8 @@ pipelines:
           affinityGroup: same
           inputResources:
             - name: my_go_gitRepo
+          outputResources:
+            - name: image
         execution:
           onExecute:
             - echo hi
@@ -90,8 +92,8 @@ pipelines:
           runtime:
             type: host
           affinityGroup: same
-          inputSteps:
-            - name: my_step3
+          inputResources:
+            - name: image
         execution:
           onExecute:
             - echo hi
