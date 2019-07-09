@@ -1,28 +1,28 @@
 resources:
-  - name: my_go_gitRepo
-    type: GitRepo
-    configuration:
-      path: bharath92/swampup-go-service
-      gitProvider: bharath_github
-  - name: image
-    type: Image
-    configuration:
-      registry: artDocker
-      imageName: test
-      imageTag: foo
-  - name: my_svc_build_info
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: bharath_art
-      buildName: svc_build
-      buildNumber: 1
+#   - name: my_go_gitRepo
+#     type: GitRepo
+#     configuration:
+#       path: bharath92/swampup-go-service
+#       gitProvider: bharath_github
+#   - name: image
+#     type: Image
+#     configuration:
+#       registry: artDocker
+#       imageName: test
+#       imageTag: foo
+#   - name: my_svc_build_info
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: bharath_art
+#       buildName: svc_build
+#       buildNumber: 1
 
-  - name: my_svc_promoted_build_info
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: bharath_art
-      buildName: svc_build
-      buildNumber: 1
+#   - name: my_svc_promoted_build_info
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: bharath_art
+#       buildName: svc_build
+#       buildNumber: 1
 
 
 pipelines:
