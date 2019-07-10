@@ -74,7 +74,6 @@ pipelines:
       - name: step1
         type: Bash
         configuration:
-          nodePool: bharath_u16
           affinityGroup: foo
           integrations:
             - name: email
@@ -86,7 +85,6 @@ pipelines:
       - name: step2
         type: Bash
         configuration:
-          nodePool: bharath_u16
           runtime:
             type: host
           affinityGroup: foo
