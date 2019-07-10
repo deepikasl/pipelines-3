@@ -74,13 +74,19 @@ pipelines:
       - name: step1
         type: Bash
         configuration:
+          nodePool: bharath_u16
           affinityGroup: foo
+          runtime:
+            type: host
         execution:
           onExecute:
             - echo hii
       - name: step2
         type: Bash
         configuration:
+          nodePool: bharath_u16
+          runtime:
+            type: host
           affinityGroup: foo
           inputSteps:
             - name: step1
