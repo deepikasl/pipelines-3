@@ -76,6 +76,8 @@ pipelines:
         configuration:
           nodePool: bharath_u16
           affinityGroup: foo
+          integrations:
+            - name: email
           runtime:
             type: host
         execution:
