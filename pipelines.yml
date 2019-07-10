@@ -82,6 +82,7 @@ pipelines:
         execution:
           onExecute:
             - echo hii
+            - export NOTIFICATION_STATUS=error
             - send_notification email --recipients "1992bharath@gmail.com"
       - name: step2
         type: Bash
