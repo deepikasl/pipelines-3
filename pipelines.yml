@@ -77,22 +77,20 @@ pipelines:
           affinityGroup: foo
           #integrations:
           #  - name: email
-          runtime:
-            type: host
         execution:
           onExecute:
             - echo hii
-      - name: step2
-        type: Bash
-        configuration:
-          runtime:
-            type: host
-          affinityGroup: foo
-          inputSteps:
-            - name: step1
-        execution:
-          onExecute:
-            - echo hii
+#       - name: step2
+#         type: Bash
+#         configuration:
+#           runtime:
+#             type: host
+#           affinityGroup: foo
+#           inputSteps:
+#             - name: step1
+#         execution:
+#           onExecute:
+#             - echo hii
 
 #   - name: my_test_pipeline1
 #     steps:
