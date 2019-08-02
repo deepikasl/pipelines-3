@@ -85,6 +85,7 @@ pipelines:
         execution:
           onExecute:
             - echo hii
+            - sudo echo lol
 #       - name: step2
 #         type: Bash
 #         configuration:
