@@ -16,6 +16,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
+          inputSteps:
+            - name: step1
           nodePool: test_c7
           runtime:
             type: host
@@ -26,6 +28,8 @@ pipelines:
       - name: step3
         type: Bash
         configuration:
+          inputSteps:
+            - name: step2
           nodePool: test_c7
           runtime:
             type: host
@@ -50,6 +54,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
+          inputSteps:
+            - name: step1
           nodePool: test_u16
           runtime:
             type: host
@@ -60,6 +66,8 @@ pipelines:
       - name: step3
         type: Bash
         configuration:
+          inputSteps:
+            - name: step2
           nodePool: test_u16
           runtime:
             type: host
@@ -84,6 +92,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
+          inputSteps:
+            - name: step1
           nodePool: test_u18
           runtime:
             type: host
@@ -94,6 +104,8 @@ pipelines:
       - name: step3
         type: Bash
         configuration:
+          inputSteps:
+            - name: step2
           nodePool: test_u18
           runtime:
             type: host
