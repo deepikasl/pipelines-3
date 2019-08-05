@@ -1,282 +1,103 @@
-resources:
-#   - name: my_go_gitRepo
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/swampup-go-service
-#       gitProvider: bharath_github
-#   - name: image
-#     type: Image
-#     configuration:
-#       registry: artDocker
-#       imageName: test
-#       imageTag: foo
-#   - name: my_svc_build_info
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: bharath_art
-#       buildName: svc_build
-#       buildNumber: 1
-
-#   - name: my_svc_promoted_build_info
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: bharath_art
-#       buildName: svc_build
-#       buildNumber: 1
-
-
 pipelines:
-#   - name: my_demo_service
-#     steps:
-#       - name: my_bld_svc
-#         type: DockerBuild
-#         configuration:
-#           dockerFileLocation: .
-#           dockerFileName: Dockerfile
-#           dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
-#           dockerImageTag: $run_number
-#           inputResources:
-#             - name: my_go_gitRepo
-#           integrations:
-#             - name: bharath_art
-
-#       - name: my_push_svc
-#         type: DockerPush
-#         configuration:
-#           targetRepository: docker-local-test
-#           integrations:
-#             - name: bharath_art
-#           inputSteps:
-#             - name: my_bld_svc
-
-#       - name: my_publish_svc_build
-#         type: PublishBuildInfo
-#         configuration:
-#           inputSteps:
-#             - name: my_push_svc
-#           outputResources:
-#             - name: my_svc_build_info
-
-#       - name: my_promote_svc_build
-#         type: PromoteBuild
-#         configuration:
-#           targetRepository: promote-test
-#           inputSteps:
-#             - name: my_publish_svc_build
-#           integrations:
-#             - name: bharath_art
-#           inputResources:
-#             - name: my_svc_build_info
-#           outputResources:
-#             - name: my_svc_promoted_build_info
-  - name: affinityGroupTest
+  - name: c7_test
     steps:
       - name: step1
         type: Bash
         configuration:
           affinityGroup: foo
+          nodePool: test_c7
           runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - openjdk8
+            type: host
         execution:
           onExecute:
             - echo hii
             - sudo echo lol
-#       - name: step2
-#         type: Bash
-#         configuration:
-#           runtime:
-#             type: host
-#           affinityGroup: foo
-#           inputSteps:
-#             - name: step1
-#         execution:
-#           onExecute:
-#             - echo hii
-
-#   - name: my_test_pipeline1
-#     steps:
-#       - name: my_step3
-#         type: Bash
-#         configuration:
-#           affinityGroup: same
-#           inputResources:
-#             - name: my_go_gitRepo
-#         execution:
-#           onExecute:
-#             - echo hi
-#             - sleep 1m
-#             - echo bi
-
-#       - name: my_step4
-#         type: Bash
-#         configuration:
-#           runtime:
-#             type: host
-#           affinityGroup: same
-#           outputResources:
-#             - name: image
-#           inputSteps:
-#             - name: my_step3
-#         execution:
-#           onExecute:
-#             - echo hi
-  
-
-#   - name: my_c7_demo_service
-#     steps:
-#       - name: my_c7_bld_svc
-#         type: DockerBuild
-#         configuration:
-#           nodePool: bharath_c7
-#           dockerFileLocation: .
-#           dockerFileName: Dockerfile
-#           dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
-#           dockerImageTag: $run_number
-#           inputResources:
-#             - name: my_go_gitRepo
-#           integrations:
-#             - name: bharath_art
-
-#       - name: my_c7_push_svc
-#         type: DockerPush
-#         configuration:
-#           nodePool: bharath_c7
-#           targetRepository: docker-local-test
-#           integrations:
-#             - name: bharath_art
-#           inputSteps:
-#             - name: my_c7_bld_svc
-
-#       - name: my_c7_publish_svc_build
-#         type: PublishBuildInfo
-#         configuration:
-#           nodePool: bharath_c7
-#           inputSteps:
-#             - name: my_c7_push_svc
-#           outputResources:
-#             - name: my_svc_build_info
-
-#       - name: my_c7_promote_svc_build
-#         type: PromoteBuild
-#         configuration:
-#           nodePool: bharath_c7
-#           targetRepository: promote-test
-#           inputSteps:
-#             - name: my_c7_publish_svc_build
-#           integrations:
-#             - name: bharath_art
-#           inputResources:
-#             - name: my_svc_build_info
-#           outputResources:
-#             - name: my_svc_promoted_build_info
-
-#   - name: my_c7_test_pipeline1
-#     steps:
-#       - name: my_c7_step1
-#         type: Bash
-#         configuration:
-#           nodePool: bharath_c7
-#           affinityGroup: same
-#           inputResources:
-#             - name: my_go_gitRepo
-#         execution:
-#           onExecute:
-#             - echo hi
-#             - sleep 1m
-#             - echo bi
-
-#       - name: my_c7_step2
-#         type: Bash
-#         configuration:
-#           nodePool: bharath_c7
-#           runtime:
-#             type: host
-#           affinityGroup: same
-#           inputSteps:
-#             - name: my_c7_step1
-#         execution:
-#           onExecute:
-#             - echo hi
-#             - sleep 1m
-#   - name: my_u16_demo_service
-#     steps:
-#       - name: my_u16_bld_svc
-#         type: DockerBuild
-#         configuration:
-#           nodePool: ubuntu16
-#           dockerFileLocation: .
-#           dockerFileName: Dockerfile
-#           dockerImageName: 34.66.107.45:8081/docker-local-test/gomicrosvc
-#           dockerImageTag: $run_number
-#           inputResources:
-#             - name: my_go_gitRepo
-#           integrations:
-#             - name: bharath_art
-
-#       - name: my_u16_push_svc
-#         type: DockerPush
-#         configuration:
-#           nodePool: ubuntu16
-#           targetRepository: docker-local-test
-#           integrations:
-#             - name: bharath_art
-#           inputSteps:
-#             - name: my_u16_bld_svc
-
-#       - name: my_u16_publish_svc_build
-#         type: PublishBuildInfo
-#         configuration:
-#           nodePool: ubuntu16
-#           inputSteps:
-#             - name: my_u16_push_svc
-#           outputResources:
-#             - name: my_svc_build_info
-
-#       - name: my_u16_promote_svc_build
-#         type: PromoteBuild
-#         configuration:
-#           nodePool: ubuntu16
-#           targetRepository: promote-test
-#           inputSteps:
-#             - name: my_u16_publish_svc_build
-#           integrations:
-#             - name: bharath_art
-#           inputResources:
-#             - name: my_svc_build_info
-#           outputResources:
-#             - name: my_svc_promoted_build_info
-
-#   - name: my_u16_test_pipeline1
-#     steps:
-#       - name: my_u16_step1
-#         type: Bash
-#         configuration:
-#           nodePool: ubuntu16
-#           affinityGroup: same
-#           timeoutSeconds: 2
-#           inputResources:
-#             - name: my_go_gitRepo
-#         execution:
-#           onExecute:
-#             - echo hi
-#             - sleep 1m
-#             - echo bi
-
-#       - name: my_u16_step2
-#         type: Bash
-#         configuration:
-#           nodePool: ubuntu16
-#           runtime:
-#             type: host
-#           affinityGroup: same
-#           inputSteps:
-#             - name: my_u16_step1
-#         execution:
-#           onExecute:
-#             - echo hi
-#             - sleep 1m
+      - name: step2
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          nodePool: test_c7
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+      - name: step3
+        type: Bash
+        configuration:
+          nodePool: test_c7
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+  - name: u16_test
+    steps:
+      - name: step1
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          nodePool: test_u16
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+      - name: step2
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          nodePool: test_u16
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+      - name: step3
+        type: Bash
+        configuration:
+          nodePool: test_u16
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+  - name: u18_test
+    steps:
+      - name: step1
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          nodePool: test_u18
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+      - name: step2
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          nodePool: test_u18
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
+      - name: step3
+        type: Bash
+        configuration:
+          nodePool: test_u18
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo hii
+            - sudo echo lol
