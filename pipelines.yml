@@ -85,6 +85,7 @@ pipelines:
           onExecute:
             - echo hii
             - sudo echo lol
+            - add_run_variable buildStepName=step1
             - add_run_variables step1_buildNumber=3
             - add_run_variables step1_buildName="go_build"
 
