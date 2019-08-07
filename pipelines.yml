@@ -68,6 +68,7 @@ pipelines:
       - name: my_publish_svc_build
         type: PublishBuildInfo
         configuration:
+          affinityGroup: foo
           runtime:
             type: host
           inputSteps:
