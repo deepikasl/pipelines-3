@@ -10,12 +10,12 @@ resources:
 #       registry: artDocker
 #       imageName: test
 #       imageTag: foo
-#   - name: my_svc_build_info
-#     type: BuildInfo
-#     configuration:
-#       sourceArtifactory: bharath_art
-#       buildName: svc_build
-#       buildNumber: 1
+  - name: my_svc_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: demo_art
+      buildName: go_build
+      buildNumber: 3
 
 #   - name: my_svc_promoted_build_info
 #     type: BuildInfo
@@ -49,13 +49,7 @@ pipelines:
 #           inputSteps:
 #             - name: my_bld_svc
 
-#       - name: my_publish_svc_build
-#         type: PublishBuildInfo
-#         configuration:
-#           inputSteps:
-#             - name: my_push_svc
-#           outputResources:
-#             - name: my_svc_build_info
+      
 
 #       - name: my_promote_svc_build
 #         type: PromoteBuild
@@ -71,6 +65,13 @@ pipelines:
 #             - name: my_svc_promoted_build_info
   - name: affinityGroupTest
     steps:
+      - name: my_publish_svc_build
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: step1
+          outputResources:
+            - name: my_svc_build_info
       - name: step1
         type: Bash
         configuration:
@@ -86,6 +87,10 @@ pipelines:
           onExecute:
             - echo hii
             - sudo echo lol
+            - add_run_variables step1_buildNumber=3
+            - add_run_variables step1_buildName="go_build"
+
+     
 #       - name: step2
 #         type: Bash
 #         configuration:
