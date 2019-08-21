@@ -60,7 +60,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: basic2
+      - name: basic3
         type: Bash
         configuration:
           affinityGroup: foo
