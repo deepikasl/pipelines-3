@@ -1,75 +1,9 @@
-resources:
-  - name: buildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: lol2
-      buildNumber: 1
-  - name: test_buildInfo_2
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: lol2
-      buildNumber: 1
-  - name: test_buildInfo_3
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: lol2
-      buildNumber: 1
+
 pipelines:
-  - name: basic
-    configuration:
-      environmentVariables:
-        readOnly:
-          lol: bol
-          bol: lol
-      runtime:
-        type: host
+  - name: basic_again
     steps:
-      - name: basic1
+      - name: test
         type: Bash
-        configuration:
-          nodePool: u18
-          runtime:
-            type: image
-            image:
-              custom:
-                name: drydock/u16microbase
-                tag: master
-          environmentVariables:
-            foo: bar
-            bar: foo
-          inputResources:
-            - name: buildInfo
-            - name: test_buildInfo_2
-              trigger: false
-        execution:
-          onExecute:
-            - printenv
-      - name: basic2
-        type: Bash
-        configuration:
-          runtime:
-            type: host
-          affinityGroup: foo
-          inputResources:
-            - name: test_buildInfo_2
-          inputSteps:
-            - name: basic1
-        execution:
-          onExecute:
-            - printenv
-      - name: basic3
-        type: Bash
-        configuration:
-          affinityGroup: foo
-          integrations:
-            - name: bharath_github
-          inputSteps:
-            - name: basic2
-          outputResources:
-            - name: test_buildInfo_3
         execution:
           onExecute:
             - printenv
