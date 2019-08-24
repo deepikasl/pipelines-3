@@ -36,7 +36,7 @@ pipelines:
             image:
               custom:
                 name: ubuntu
-                tag: 18.04
+                tag: "18.04"
           environmentVariables:
             foo: bar
             bar: foo
