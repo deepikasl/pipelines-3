@@ -35,8 +35,8 @@ pipelines:
             type: image
             image:
               custom:
-                name: drydock/u16microbase
-                tag: master
+                name: ubuntu
+                tag: 18.04
           environmentVariables:
             foo: bar
             bar: foo
