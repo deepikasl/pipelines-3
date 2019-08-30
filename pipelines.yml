@@ -7,7 +7,7 @@ resources:
   - name: bitbucket
     type: GitRepo
     configuration:
-      path: bharath92/ci-tester
+      path: bharath92/sample-runsh
       gitProvider: bitbucket
   - name: gitlab
     type: GitRepo
