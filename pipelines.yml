@@ -1,9 +1,29 @@
-
+resources:
+  - name: github
+    type: GitRepo
+    configuration:
+      path: bharath92/gitIssues
+      gitProvider: bharath_github
+  - name: bitbucket
+    type: GitRepo
+    configuration:
+      path: bharath92/ci-tester
+      gitProvider: bitbucket
+  - name: gitlab
+    type: GitRepo
+    configuration:
+      path: Bharath92/samplePyt
+      gitProvider: gitlab
 pipelines:
-  - name: basic_again
+  - name: basic3
     steps:
       - name: test
         type: Bash
+        configuration:
+          inputResources:
+            - name: github
+            - name: bitbucket
+            - name: gitlab
         execution:
           onExecute:
             - printenv
