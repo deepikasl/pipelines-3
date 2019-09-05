@@ -1,5 +1,5 @@
 resources:
-  - name: github
+  - name: github_1
     type: GitRepo
     configuration:
       path: bharath92/gitIssues
@@ -10,7 +10,7 @@ resources:
          pullRequestClose: true
          releaseCreate: true
          tagCreate: true
-  - name: bitbucket
+  - name: bitbucket_1
     type: GitRepo
     configuration:
       path: bharath92/sample-runsh
@@ -21,7 +21,7 @@ resources:
          pullRequestClose: true
          releaseCreate: true
          tagCreate: true
-  - name: gitlab
+  - name: gitlab_1
     type: GitRepo
     configuration:
       path: Bharath92/samplePyt
@@ -32,6 +32,30 @@ resources:
          pullRequestClose: true
          releaseCreate: true
          tagCreate: true
+  - name: my_aql
+    type: Aql
+    configuration:
+      sourceArtifactory: art
+      query: "lol"
+  - name: myBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+  - name: fileIntegrationResource
+    type: FileSpec
+    configuration:      
+      sourceArtifactory: art
+  - name: imageName
+    type: Image
+    configuration:
+       registry: art
+       sourceRepository: lol
+       imageName: imageRepo/imageName
+       imageTag: lol 
+       autoPull: true   
+
+
+
 pipelines:
   - name: basic3
     steps:
