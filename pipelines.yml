@@ -65,9 +65,9 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: github
-            - name: bitbucket
-            - name: gitlab
+            - name: github_1
+            - name: bitbucket_1
+            - name: gitlab_1
         execution:
           onExecute:
             - printenv
