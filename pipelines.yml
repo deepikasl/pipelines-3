@@ -54,7 +54,45 @@ resources:
        sourceRepository: lol
        imageName: imageRepo/imageName
        imageTag: lol 
-       autoPull: true   
+       autoPull: true
+  - name: webhookIntegrationResource
+    type: Webhook
+    configuration:
+      webhookName: web
+      payload: "lol"
+  - name: vmIntegrationResource
+     type: VmCluster
+     configuration:
+       sshKey: ssh
+       targets:
+         - 1.2.3.4
+  - name: fileIntegrationResource
+    type: RemoteFile
+    configuration:      
+      source: file
+  - name: my_releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: dist
+      name: <string>
+      version: <string
+  - name: my_distributionRule
+    type: DistributionRule
+    configuration:
+      sourceDistribution: dist      
+      serviceName: "fasd"
+      siteName: asfd
+      cityName: afsd
+      countryCodes:
+        - afsd
+   - name: kubeClusterIntegrationResource
+     type: KubeCluster
+     configuration:
+       kubernetesConfig: kube
+
+
+
+
 
 
 
