@@ -85,10 +85,10 @@ resources:
       cityName: afsd
       countryCodes:
         - afsd
-   - name: kubeClusterIntegrationResource
-     type: KubeCluster
-     configuration:
-       kubernetesConfig: kube
+  - name: kubeClusterIntegrationResource
+    type: KubeCluster
+    configuration:
+      kubernetesConfig: kube
 
 
 
