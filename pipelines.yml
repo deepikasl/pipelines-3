@@ -26,5 +26,5 @@ pipelines:
             - name: gitlab
         execution:
           onExecute:
-            - printenv 
+            - printenv
 
