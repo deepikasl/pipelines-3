@@ -66,10 +66,7 @@ resources:
       sshKey: ssh
       targets:
         - 1.2.3.4
-  - name: fileIntegrationResource
-    type: RemoteFile
-    configuration:      
-      source: file
+
   - name: my_releaseBundle
     type: ReleaseBundle
     configuration:
