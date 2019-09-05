@@ -14,7 +14,7 @@ resources:
   - name: test_buildInfo_3
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: art 
       buildName: lol2
       buildNumber: 1
 pipelines:
