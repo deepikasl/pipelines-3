@@ -41,6 +41,8 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: art
+      buildNumber: 1
+      buildName: lol
   - name: fileIntegrationResource
     type: FileSpec
     configuration:      
