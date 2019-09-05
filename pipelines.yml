@@ -59,7 +59,7 @@ pipelines:
             - name: basic1
         execution:
           onExecute:
-            - printenv
+            - printenv 
       - name: basic3
         type: Bash
         configuration:
