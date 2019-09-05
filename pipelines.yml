@@ -61,11 +61,11 @@ resources:
       webhookName: web
       payload: "lol"
   - name: vmIntegrationResource
-     type: VmCluster
-     configuration:
-       sshKey: ssh
-       targets:
-         - 1.2.3.4
+    type: VmCluster
+    configuration:
+      sshKey: ssh
+      targets:
+        - 1.2.3.4
   - name: fileIntegrationResource
     type: RemoteFile
     configuration:      
