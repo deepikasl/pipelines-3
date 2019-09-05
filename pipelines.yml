@@ -72,5 +72,5 @@ pipelines:
             - name: test_buildInfo_3
         execution:
           onExecute:
-            - printenv
+            - printenv 
 
