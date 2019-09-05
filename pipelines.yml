@@ -4,16 +4,34 @@ resources:
     configuration:
       path: bharath92/gitIssues
       gitProvider: bharath_github
+      buildOn:  # optional
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
   - name: bitbucket
     type: GitRepo
     configuration:
       path: bharath92/sample-runsh
       gitProvider: bitbucket
+      buildOn:  # optional
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
   - name: gitlab
     type: GitRepo
     configuration:
       path: Bharath92/samplePyt
       gitProvider: gitlab
+      buildOn:  # optional
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
 pipelines:
   - name: basic3
     steps:
