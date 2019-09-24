@@ -4,6 +4,9 @@ pipelines:
     steps:
       - name: test
         type: Bash
+        configuration:
+          runtime:
+            type: host
         execution:
           onExecute:
             - printenv
