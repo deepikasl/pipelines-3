@@ -5,6 +5,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
+          nodePool: u16-on-demand
           runtime:
             type: host
         execution:
