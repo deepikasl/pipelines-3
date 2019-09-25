@@ -47,6 +47,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
+            - sleep 1m
       - name: basic2
         type: Bash
         configuration:
@@ -60,6 +61,7 @@ pipelines:
         execution:
           onExecute:
             - printenv 
+            - sleep 1m
       - name: basic3
         type: Bash
         configuration:
@@ -73,4 +75,5 @@ pipelines:
         execution:
           onExecute:
             - printenv   
+            - sleep 1m
 
