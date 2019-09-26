@@ -10,6 +10,13 @@ pipelines:
         execution:
           onExecute:
             - printenv
+      - name: testJenkins_2
+        type: Jenkins
+        configuration:
+          integrations:
+            - name: jenkins
+          inputSteps:
+            - name: start
       - name: p1
         type: Bash
         configuration:
