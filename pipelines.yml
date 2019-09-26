@@ -1,14 +1,43 @@
 
 pipelines:
-  - name: basic_again
+  - name: basic_parallel
     steps:
-      - name: test
+      - name: start
         type: Bash
         configuration:
-          nodePool: u16-on-demand
           runtime:
             type: host
         execution:
           onExecute:
             - printenv
-
+      - name: p1
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputSteps:
+            - name: start
+        execution:
+          onExecute:
+            - printenv
+      - name: p2
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputSteps:
+            - name: start
+        execution:
+          onExecute:
+            - printenv
+      - name: end
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1
+            - name: p2
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
