@@ -13,6 +13,7 @@ pipelines:
       - name: p1
         type: Bash
         configuration:
+          nodePool: u16-on-demand
           runtime:
             type: host
           inputSteps:
@@ -23,6 +24,29 @@ pipelines:
       - name: p2
         type: Bash
         configuration:
+          nodePool: u16-on-demand
+          runtime:
+            type: host
+          inputSteps:
+            - name: start
+        execution:
+          onExecute:
+            - printenv
+      - name: p3
+        type: Bash
+        configuration:
+          nodePool: c7-on-demand
+          runtime:
+            type: host
+          inputSteps:
+            - name: start
+        execution:
+          onExecute:
+            - printenv
+      - name: p4
+        type: Bash
+        configuration:
+          nodePool: c7-on-demand
           runtime:
             type: host
           inputSteps:
@@ -36,6 +60,8 @@ pipelines:
           inputSteps:
             - name: p1
             - name: p2
+            - name: p3
+            - name: p4
           runtime:
             type: host
         execution:
