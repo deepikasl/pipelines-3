@@ -30,7 +30,7 @@ pipelines:
       - name: basic1
         type: Bash
         configuration:
-          nodePool: u18
+          nodePool: u16
           runtime:
             type: image
             image:
@@ -47,10 +47,11 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - sleep 5
+            - sleep 1m
       - name: basic2
         type: Bash
         configuration:
+          nodePool: u16
           runtime:
             type: host
           affinityGroup: foo
@@ -65,6 +66,7 @@ pipelines:
       - name: basic3
         type: Bash
         configuration:
+          nodePool: u16
           affinityGroup: foo
           integrations:
             - name: bharath_github
