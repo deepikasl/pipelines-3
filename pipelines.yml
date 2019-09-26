@@ -5,6 +5,7 @@ pipelines:
       - name: start
         type: Bash
         configuration:
+          nodePool: u16
           runtime:
             type: host
         execution:
