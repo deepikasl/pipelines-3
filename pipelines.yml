@@ -46,8 +46,7 @@ pipelines:
               trigger: false
         execution:
           onExecute:
-            - printenvd
-            - sleep 1m
+            - printenv
       - name: basic2
         type: Bash
         configuration:
