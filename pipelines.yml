@@ -1,3 +1,8 @@
+resources:
+  - name: cron
+    type: CronTrigger
+    configuration:
+      interval: "*/2 * * * *"
 
 pipelines:
   - name: basic_again
@@ -5,7 +10,9 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: u16-on-demand
+          inputResources:
+            - name: cron
+          nodePool: u16
           runtime:
             type: host
         execution:
