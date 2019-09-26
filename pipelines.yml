@@ -10,7 +10,7 @@ pipelines:
             type: host
         execution:
           onExecute:
-            - printenv
+            - printenvd
       - name: testJenkins_2
         type: Jenkins
         configuration:
