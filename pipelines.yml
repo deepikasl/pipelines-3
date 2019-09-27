@@ -19,5 +19,5 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - sleep 1m
+            - sleep 3m
 
