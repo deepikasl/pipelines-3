@@ -1,8 +1,8 @@
 resources:
-  - name: cron
-    type: CronTrigger
-    configuration:
-      interval: "*/2 * * * *"
+#   - name: cron
+#     type: CronTrigger
+#     configuration:
+#       interval: "*/2 * * * *"
 
 pipelines:
   - name: basic_again
@@ -11,8 +11,8 @@ pipelines:
         type: Bash
         configuration:
           #timeoutSeconds: 120
-          inputResources:
-            - name: cron
+#           inputResources:
+#             - name: cron
           nodePool: u16
           runtime:
             type: host
