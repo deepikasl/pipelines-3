@@ -10,7 +10,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          timeoutSeconds: 120
+          #timeoutSeconds: 120
           inputResources:
             - name: cron
           nodePool: u16
