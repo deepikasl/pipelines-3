@@ -10,6 +10,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
+          timeoutSeconds: 5
           inputResources:
             - name: cron
           nodePool: u16
@@ -18,4 +19,5 @@ pipelines:
         execution:
           onExecute:
             - printenv
+            - sleep 1m
 
