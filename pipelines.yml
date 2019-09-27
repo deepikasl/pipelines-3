@@ -14,14 +14,14 @@ pipelines:
             - echo lol
   - name: basic_again
     steps:
-      - name: lol
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: test
-        execution:
-          onExecute:
-            - echo lol
+#       - name: lol
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: test
+#         execution:
+#           onExecute:
+#             - echo lol
       - name: test
         type: Bash
         configuration:
