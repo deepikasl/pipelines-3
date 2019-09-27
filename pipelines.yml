@@ -9,9 +9,6 @@ pipelines:
     steps:
       - name: lol_again
         type: Bash
-        configuration:
-          inputSteps:
-            - name: test
         execution:
           onExecute:
             - echo lol
