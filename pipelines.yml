@@ -5,13 +5,13 @@ resources:
 #       interval: "*/2 * * * *"
 
 pipelines:
-  - name: lol
-    steps:
-      - name: lol_again
-        type: Bash
-        execution:
-          onExecute:
-            - echo lol
+#   - name: lol
+#     steps:
+#       - name: lol_again
+#         type: Bash
+#         execution:
+#           onExecute:
+#             - echo lol
   - name: basic_again
     steps:
 #       - name: lol
