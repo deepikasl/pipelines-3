@@ -28,7 +28,6 @@ pipelines:
           timeoutSeconds: 120
 #           inputResources:
 #             - name: crone
-          nodePool: u16
           runtime:
             type: host
         execution:
