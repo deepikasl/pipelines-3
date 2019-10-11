@@ -28,7 +28,7 @@ pipelines:
           timeoutSeconds: 120
           integrations:
             - name: test4
-            - name: test3
+           # - name: test3
 #           inputResources:
 #             - name: crone
           runtime:
