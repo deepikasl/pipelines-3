@@ -1,40 +1,9 @@
-resources:
-#   - name: cron
-#     type: CronTrigger
-#     configuration:
-#       interval: "*/2 * * * *"
-
 pipelines:
-#   - name: lol
-#     steps:
-#       - name: lol_again
-#         type: Bash
-#         execution:
-#           onExecute:
-#             - echo lol
   - name: basic_again
     steps:
-#       - name: lol
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: test
-#         execution:
-#           onExecute:
-#             - echo lol
       - name: test
         type: Bash
-        configuration:
-          timeoutSeconds: 120
-          integrations:
-            - name: test4
-           # - name: test3
-#           inputResources:
-#             - name: crone
-          runtime:
-            type: host
         execution:
           onExecute:
             - printenv
-            - sleep 5m
 
