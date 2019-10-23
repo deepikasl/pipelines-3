@@ -9,8 +9,8 @@ pipelines:
             image:
               auto:
                 language: node
-                versions:
-                  - 8.16.0
+                #versions:
+                #  - 8.16.0
         execution:
           onExecute:
             - printenv
