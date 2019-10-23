@@ -3,9 +3,14 @@ pipelines:
     steps:
       - name: test
         type: Bash
-#        configuration:
-#           runtime:
-#             type: host
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 8.16.0
         execution:
           onExecute:
             - printenv
