@@ -1,22 +1,13 @@
-resources:
-  - name: img
-    type: Image
-    configuration:
-      registry: dockerReg
-      imageName: test/test
-      imageTag: foo
 pipelines:
   - name: basic_again
     steps:
       - name: test
         type: Bash
         configuration:
-          outputResources:
-            - name: img
           runtime:
             type: host
         execution:
           onExecute:
             - printenv
-            - write_output img "foo=bar"
+       
 
