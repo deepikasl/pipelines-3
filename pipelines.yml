@@ -3,7 +3,7 @@ pipelines:
     steps:
       - name: test
         type: Bash
-        configuration:
+#        configuration:
 #           runtime:
 #             type: host
         execution:
