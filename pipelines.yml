@@ -5,12 +5,7 @@ pipelines:
         type: Bash
         configuration:
           runtime:
-            type: image
-            image:
-              auto:
-                language: node
-                versions:
-                  - 8.16.0
+            type: host
         execution:
           onExecute:
             - printenv
