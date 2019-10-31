@@ -10,7 +10,29 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: second
+      - name: second_p1
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: first
+          nodePool: u18
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+      - name: second_p2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: first
+          nodePool: u16
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+      - name: last
         type: Bash
         configuration:
           inputSteps:
