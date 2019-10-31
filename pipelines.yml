@@ -1,48 +1,48 @@
 pipelines:
   - name: basic_again
     steps:
-      - name: first_u16
-        type: Bash
-        configuration:
-          nodePool: u16
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - printenv
-      - name: second_p1_u18
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: first_u16
-          nodePool: u18
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - printenv
-      - name: second_p2_u16
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: first_u16
-          nodePool: u16
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - printenv
-      - name: second_p3_u18
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: first_u16
-          nodePool: u18
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - printenv
+#       - name: first_u16
+#         type: Bash
+#         configuration:
+#           nodePool: u16
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - printenv
+#       - name: second_p1_u18
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: first_u16
+#           nodePool: u18
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - printenv
+#       - name: second_p2_u16
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: first_u16
+#           nodePool: u16
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - printenv
+#       - name: second_p3_u18
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: first_u16
+#           nodePool: u18
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - printenv
       - name: last_u18
         type: Bash
         configuration:
