@@ -36,7 +36,8 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: first
+            - name: second_p1
+            - name: second_p2
           nodePool: u18
           runtime:
             type: host
