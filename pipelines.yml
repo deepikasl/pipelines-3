@@ -14,7 +14,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: first
+            - name: first_u16
           nodePool: u18
           runtime:
             type: host
@@ -25,7 +25,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: first
+            - name: first_u16
           nodePool: u16
           runtime:
             type: host
@@ -36,7 +36,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: first
+            - name: first_u16
           nodePool: u18
           runtime:
             type: host
@@ -47,8 +47,9 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: second_p1
-            - name: second_p2
+            - name: second_p1_u18
+            - name: second_p2_u16
+            - name: second_p3_u18
           nodePool: u18
           runtime:
             type: host
