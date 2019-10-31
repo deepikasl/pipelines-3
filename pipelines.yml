@@ -1,7 +1,7 @@
 pipelines:
   - name: basic_again
     steps:
-      - name: first
+      - name: first_u16
         type: Bash
         configuration:
           nodePool: u16
@@ -10,7 +10,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: second_p1
+      - name: second_p1_u18
         type: Bash
         configuration:
           inputSteps:
@@ -21,7 +21,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: second_p2
+      - name: second_p2_u16
         type: Bash
         configuration:
           inputSteps:
@@ -32,7 +32,18 @@ pipelines:
         execution:
           onExecute:
             - printenv
-      - name: last
+      - name: second_p3_u18
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: first
+          nodePool: u18
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+      - name: last_u18
         type: Bash
         configuration:
           inputSteps:
