@@ -1,9 +1,21 @@
 pipelines:
   - name: basic_again
     steps:
-      - name: test
+      - name: first
         type: Bash
         configuration:
+          nodePool: u16
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+      - name: second
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: first
+          nodePool: u18
           runtime:
             type: host
         execution:
