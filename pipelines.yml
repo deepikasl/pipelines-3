@@ -46,10 +46,10 @@ pipelines:
       - name: last_u18
         type: Bash
         configuration:
-          inputSteps:
-            - name: second_p1_u18
-            - name: second_p2_u16
-            - name: second_p3_u18
+#           inputSteps:
+#             - name: second_p1_u18
+#             - name: second_p2_u16
+#             - name: second_p3_u18
           nodePool: u18
           runtime:
             type: host
