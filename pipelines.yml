@@ -60,5 +60,9 @@ pipelines:
             - echo 1
             - asd
             - echo 2
+          onComplete:
+            - echo 1
+            - lol
+            - echo 3
        
 
