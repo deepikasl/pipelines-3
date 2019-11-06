@@ -68,7 +68,7 @@ pipelines:
             - echo 2
           onComplete:
             - echo 1
-            #- lol
+            - lol
             - echo 3
        
 
