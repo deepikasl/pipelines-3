@@ -56,5 +56,9 @@ pipelines:
         execution:
           onExecute:
             - printenv
+          onSuccess:
+            - echo 1
+            - asd
+            - echo 2
        
 
