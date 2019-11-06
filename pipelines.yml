@@ -58,11 +58,11 @@ pipelines:
             - printenv
           onSuccess:
             - echo 1
-            - asd
+            #- asd
             - echo 2
           onComplete:
             - echo 1
-            - lol
+            #- lol
             - echo 3
        
 
