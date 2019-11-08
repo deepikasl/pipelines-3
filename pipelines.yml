@@ -50,25 +50,10 @@ pipelines:
 #             - name: second_p1_u18
 #             - name: second_p2_u16
 #             - name: second_p3_u18
-          nodePool: u18
+          #nodePool: u18
           runtime:
             type: host
         execution:
           onExecute:
-            - printenv
-            #- lol
             - echo 1
-          onFailure:
-            - echo 2
-            - asd
-            - echo 1
-          onSuccess:
-            - echo 1
-           #- asd
-            - echo 2
-          onComplete:
-            - echo 1
-           # - lol
-            - echo 3
-       
-
+          
