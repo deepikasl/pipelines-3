@@ -60,5 +60,5 @@ pipelines:
                   - 8.16.0
         execution:
           onExecute:
-            - echo 1
+            - echo 2
           
