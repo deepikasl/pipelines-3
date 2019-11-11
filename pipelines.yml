@@ -52,7 +52,12 @@ pipelines:
 #             - name: second_p3_u18
           #nodePool: u18
           runtime:
-            type: host
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 8.16.0
         execution:
           onExecute:
             - echo 1
