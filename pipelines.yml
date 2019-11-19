@@ -1,64 +1,18 @@
 pipelines:
   - name: basic_again
     steps:
-#       - name: first_u16
-#         type: Bash
-#         configuration:
-#           nodePool: u16
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - printenv
-#       - name: second_p1_u18
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: first_u16
-#           nodePool: u18
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - printenv
-#       - name: second_p2_u16
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: first_u16
-#           nodePool: u16
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - printenv
-#       - name: second_p3_u18
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: first_u16
-#           nodePool: u18
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - printenv
-      - name: last_u18
+      - name: basic
         type: Bash
         configuration:
-#           inputSteps:
-#             - name: second_p1_u18
-#             - name: second_p2_u16
-#             - name: second_p3_u18
-          #nodePool: u18
           runtime:
-            type: host
-#             image:
-#               auto:
-#                 language: node
-#                 versions:
-#                   - 8.16.0
+            type: custom
+            image:
+              custom:
+                name: test
+                tag: test
+                sourceRepository: test
+                registry: art
         execution:
           onExecute:
-            - echo 2
+            - echo 'Hello World!!!'
           
