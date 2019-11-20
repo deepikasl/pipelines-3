@@ -3,14 +3,14 @@ pipelines:
     steps:
       - name: basic
         type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - master
+#         configuration:
+#           runtime:
+#             type: image
+#             image:
+#               auto:
+#                 language: java
+#                 versions:
+#                   - master
         execution:
           onExecute:
             - echo 1
