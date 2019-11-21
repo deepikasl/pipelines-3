@@ -5,12 +5,12 @@ pipelines:
         type: Bash
         configuration:
           runtime:
-            type: image
-            image:
-              auto:
-                language: javad
-                versions:
-                  - master
+            type: host
+#             image:
+#               auto:
+#                 language: javad
+#                 versions:
+#                   - master
         execution:
           onExecute:
             - echo 1
