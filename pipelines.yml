@@ -3,9 +3,9 @@ pipelines:
     steps:
       - name: basic
         type: Bash
-        configuration:
-          runtime:
-            type: host
+#         configuration:
+#           runtime:
+#             type: host
 #             image:
 #               auto:
 #                 language: javad
