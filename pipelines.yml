@@ -13,7 +13,7 @@ resources:
 pipelines:
   - name: basic_c7
     steps:
-      - name: 1p1
+      - name: p11
         type: Bash
         configuration:
           inputResources:
@@ -27,7 +27,7 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-      - name: 1p2
+      - name: p12
         type: Bash
         configuration:
           inputResources:
@@ -41,12 +41,12 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-      - name: 2s
+      - name: s2
         type: Bash
         configuration:
           inputSteps:
-            - name: 1p1
-            - name: 1p2
+            - name: p11
+            - name: p12
           inputResources:
             - name: reportsFS_x8664_C7
           runtime:
