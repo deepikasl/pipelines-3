@@ -37,7 +37,7 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: base
+                tag: bash
         execution:
           onExecute:
             - echo 1
@@ -54,7 +54,7 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: base
+                tag: bash
         execution:
           onExecute:
             - echo 1
