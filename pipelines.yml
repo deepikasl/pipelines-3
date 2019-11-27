@@ -41,12 +41,12 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-      - name: second
+      - name: 2s
         type: Bash
         configuration:
           inputSteps:
-            - 1p1
-            - 1p2
+            - name: 1p1
+            - name: 1p2
           inputResources:
             - name: reportsFS_x8664_C7
           runtime:
