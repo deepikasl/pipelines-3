@@ -37,8 +37,8 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: bash4.2
-                autoPull: false
+                tag: base
+               # autoPull: false
         execution:
           onExecute:
             - echo 1
@@ -55,8 +55,8 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: bash4.2
-                autoPull: false
+                tag: base
+               # autoPull: false
         execution:
           onExecute:
             - echo 1
