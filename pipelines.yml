@@ -12,6 +12,9 @@ resources:
       pattern: "pipelines-artifacts/reports/reports-x86_64-Ubuntu_18.04-$version.tar.gz"
 pipelines:
   - name: basic_c7
+    configuration:
+      environmentVariables:
+        version: "*"
     steps:
       - name: p11
         type: Bash
@@ -31,8 +34,6 @@ pipelines:
       - name: p12
         type: Bash
         configuration:
-          environmentVariables:
-            version: "*"
           inputResources:
             - name: reportsFS_x8664_U18
             - name: reportsFS_x8664_C7
