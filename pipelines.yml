@@ -3,13 +3,13 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: entArt
-      pattern: "pipelines-artifacts/reports/reports-x86_64-CentOS_7-${step_name}.tar.gz"
+      pattern: "pipelines-artifacts/reports/reports-x86_64-CentOS_7-${version}.tar.gz"
       recursive: false
   - name: reportsFS_x8664_U18
     type: FileSpec
     configuration:
       sourceArtifactory: entArt
-      pattern: "pipelines-artifacts/reports/reports-x86_64-Ubuntu_18.04-$step_name.tar.gz"
+      pattern: "pipelines-artifacts/reports/reports-x86_64-Ubuntu_18.04-$version.tar.gz"
 pipelines:
   - name: basic_c7
     steps:
@@ -31,6 +31,8 @@ pipelines:
       - name: p12
         type: Bash
         configuration:
+          environmentVariables:
+            version: "*"
           inputResources:
             - name: reportsFS_x8664_U18
             - name: reportsFS_x8664_C7
