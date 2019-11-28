@@ -21,7 +21,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: reportsFS_x8664_U18
+            #- name: reportsFS_x8664_U18
             - name: reportsFS_x8664_C7
           runtime:
             type: image
@@ -36,7 +36,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: reportsFS_x8664_U18
+            #- name: reportsFS_x8664_U18
             - name: reportsFS_x8664_C7
           runtime:
             type: image
@@ -56,7 +56,7 @@ pipelines:
             - name: p12
           inputResources:
             - name: reportsFS_x8664_U18
-            - name: reportsFS_x8664_C7
+            #- name: reportsFS_x8664_C7
           runtime:
             type: image
             image:
