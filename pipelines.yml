@@ -14,7 +14,8 @@ pipelines:
   - name: basic_c7
     configuration:
       environmentVariables:
-        version: "*"
+        readOnly:
+          version: "*"
     steps:
       - name: p11
         type: Bash
