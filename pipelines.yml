@@ -58,6 +58,9 @@ pipelines:
             - name: out_build_info
         execution:
           onStart:
+            - export lol_1_1_1=1
+            - export lol_1_2_1=2
+            - export lol_2_1_2=3
             - jfrog rt bce p11 1
       - name: p12
         type: Bash
