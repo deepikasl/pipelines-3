@@ -50,6 +50,7 @@ pipelines:
         configuration:
           affinityGroup: foo
           envInclude: lol_1*
+          envExclude: lol_2*
           runtime:
             type: host
           inputSteps:
