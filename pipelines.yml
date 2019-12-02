@@ -32,11 +32,11 @@ pipelines:
             #- name: reportsFS_x8664_U18
             #- name: reportsFS_x8664_C7
           runtime:
-            type: image
-            image:
-              custom:
-                name: pipelines-docker.jfrog.io/jfrog/pipelines-u18
-                tag: $imageVersion
+            type: host
+#             image:
+#               custom:
+#                 name: pipelines-docker.jfrog.io/jfrog/pipelines-u18
+#                 tag: $imageVersion
         execution:
           onExecute:
             - echo 1
