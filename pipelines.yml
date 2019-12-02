@@ -23,7 +23,7 @@ pipelines:
         readOnly:
           version: "*"
           imageVersion: "base"
-          test: '"
+          test: '"''''''@$52125567'
     steps:
       - name: p11
         type: Bash
