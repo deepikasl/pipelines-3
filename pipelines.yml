@@ -23,7 +23,7 @@ pipelines:
         readOnly:
           version: "*"
           imageVersion: "base"
-          test: '"''''''@$52125567'
+          test: lol
     steps:
       - name: p11
         type: Bash
@@ -51,7 +51,7 @@ pipelines:
         configuration:
           affinityGroup: foo
           envInclude: lol_1*
-          envExclude: ${test}
+          envExclude: '"''''''@$52125567'
           runtime:
             type: host
           inputSteps:
