@@ -16,6 +16,7 @@ resources:
       sourceArtifactory: art
       buildName: test_build
       buildNumber: 1
+      envInclude: lol_1*
 pipelines:
   - name: basic_c7
     configuration:
@@ -43,8 +44,8 @@ pipelines:
             - add_run_variables buildStepName=p11
             - add_run_variables buildNumber=1
             - add_run_variables buildName="p11"
-            - add_run_variables lol_1="lol1"
-            - add_run_variables lol_2="lol2"
+            - add_run_variables lol_1_1="lol1"
+            - add_run_variables lol_2_2="lol2"
       - name: my_publish_svc_build
         type: PublishBuildInfo
         configuration:
