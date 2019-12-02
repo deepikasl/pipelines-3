@@ -23,7 +23,7 @@ pipelines:
         readOnly:
           version: "*"
           imageVersion: "base"
-          test: "lol_2*"
+          test: '"
     steps:
       - name: p11
         type: Bash
