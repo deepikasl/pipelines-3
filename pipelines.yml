@@ -34,8 +34,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
-          #inputResources:
-            #- name: reportsFS_x8664_U18
+          inputResources:
+            - name: gitRepo
             #- name: reportsFS_x8664_C7
           runtime:
             type: host
@@ -51,57 +51,57 @@ pipelines:
             - add_run_variables buildName="p11"
             - add_run_variables lol_1_1="lol1"
             - add_run_variables lol_2_2="lol2"
-      - name: my_publish_svc_build
-        type: PublishBuildInfo
-        configuration:
-          affinityGroup: foo
-          envInclude: lol_1*
-          envExclude: '"''''''@$52125567'
-          runtime:
-            type: host
-          inputSteps:
-            - name: p11
-          outputResources:
-            - name: out_build_info
-        execution:
-          onStart:
-            - export lol_1_1_1=1
-            - export lol_1_2_1=2
-            - export lol_2_1_2=3
-            - jfrog rt bce p11 1
-      - name: p12
-        type: Bash
-        configuration:
-          inputResources:
-            #- name: reportsFS_x8664_U18
-            - name: reportsFS_x8664_C7
-          runtime:
-            type: image
-            image:
-              custom:
-                name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: ${imageVersion}
-               # autoPull: false
-        execution:
-          onExecute:
-            - echo 1
-      - name: s2
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: p11
-            - name: p12
-          inputResources:
-            - name: reportsFS_x8664_U18
-            #- name: reportsFS_x8664_C7
-          runtime:
-            type: image
-            image:
-              custom:
-                name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: base
-               # autoPull: false
-        execution:
-          onExecute:
-            - echo 1
+#       - name: my_publish_svc_build
+#         type: PublishBuildInfo
+#         configuration:
+#           affinityGroup: foo
+#           envInclude: lol_1*
+#           envExclude: '"''''''@$52125567'
+#           runtime:
+#             type: host
+#           inputSteps:
+#             - name: p11
+#           outputResources:
+#             - name: out_build_info
+#         execution:
+#           onStart:
+#             - export lol_1_1_1=1
+#             - export lol_1_2_1=2
+#             - export lol_2_1_2=3
+#             - jfrog rt bce p11 1
+#       - name: p12
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             #- name: reportsFS_x8664_U18
+#             - name: reportsFS_x8664_C7
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
+#                 tag: ${imageVersion}
+#                # autoPull: false
+#         execution:
+#           onExecute:
+#             - echo 1
+#       - name: s2
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: p11
+#             - name: p12
+#           inputResources:
+#             - name: reportsFS_x8664_U18
+#             #- name: reportsFS_x8664_C7
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
+#                 tag: base
+#                # autoPull: false
+#         execution:
+#           onExecute:
+#             - echo 1
           
