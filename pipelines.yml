@@ -16,7 +16,6 @@ resources:
       sourceArtifactory: art
       buildName: test_build
       buildNumber: 1
-      envInclude: lol_1*
 pipelines:
   - name: basic_c7
     configuration:
@@ -50,6 +49,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           affinityGroup: foo
+          envInclude: lol_1*
           runtime:
             type: host
           inputSteps:
