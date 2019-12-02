@@ -16,6 +16,7 @@ pipelines:
       environmentVariables:
         readOnly:
           version: "*"
+          imageVersion: "base"
     steps:
       - name: p11
         type: Bash
@@ -28,7 +29,7 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-u18
-                tag: base
+                tag: $imageVersion
         execution:
           onExecute:
             - echo 1
@@ -43,7 +44,7 @@ pipelines:
             image:
               custom:
                 name: pipelines-docker.jfrog.io/jfrog/pipelines-c7
-                tag: base
+                tag: ${imageVersion}
                # autoPull: false
         execution:
           onExecute:
