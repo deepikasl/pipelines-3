@@ -43,7 +43,7 @@ pipelines:
             - add_run_variables buildStepName=$step_name
             - add_run_variables step1_buildNumber=$step_number
             - add_run_variables step1_buildName="p11"
-            - add_run_varibales lol_1="lol1"
+            - add_run_variables lol_1="lol1"
             - add_run_variables lol_2="lol2"
       - name: my_publish_svc_build
         type: PublishBuildInfo
