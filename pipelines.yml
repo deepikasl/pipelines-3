@@ -10,6 +10,12 @@ resources:
     configuration:
       sourceArtifactory: entArt
       pattern: "pipelines-artifacts/reports/reports-x86_64-Ubuntu_18.04-$version.tar.gz"
+  - name: out_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: test_build
+      buildNumber: 1
 pipelines:
   - name: basic_c7
     configuration:
@@ -21,9 +27,10 @@ pipelines:
       - name: p11
         type: Bash
         configuration:
-          inputResources:
+          affinityGroup: foo
+          #inputResources:
             #- name: reportsFS_x8664_U18
-            - name: reportsFS_x8664_C7
+            #- name: reportsFS_x8664_C7
           runtime:
             type: image
             image:
@@ -33,6 +40,21 @@ pipelines:
         execution:
           onExecute:
             - echo 1
+            - add_run_variables buildStepName=$step_name
+            - add_run_variables step1_buildNumber=$step_number
+            - add_run_variables step1_buildName="p11"
+            - add_run_varibales lol_1="lol1"
+            - add_run_variables lol_2="lol2"
+      - name: my_publish_svc_build
+        type: PublishBuildInfo
+        configuration:
+          affinityGroup: foo
+          runtime:
+            type: host
+          inputSteps:
+            - name: p11
+          outputResources:
+            - name: out_build_info
       - name: p12
         type: Bash
         configuration:
