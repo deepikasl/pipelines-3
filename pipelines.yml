@@ -40,7 +40,7 @@ pipelines:
         execution:
           onExecute:
             - echo 1
-            - add_run_variables buildStepName=lol
+            - add_run_variables buildStepName=p11
             - add_run_variables buildNumber=1
             - add_run_variables buildName="p11"
             - add_run_variables lol_1="lol1"
@@ -55,6 +55,9 @@ pipelines:
             - name: p11
           outputResources:
             - name: out_build_info
+        execution:
+          onStart:
+            - jfrog rt bce p11 1
       - name: p12
         type: Bash
         configuration:
