@@ -15,5 +15,5 @@ pipelines:
 #                   - master
         execution:
           onExecute:
-            - echo 1
+            - echo $foo
           
