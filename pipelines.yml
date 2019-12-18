@@ -1,9 +1,20 @@
+resources:
+  - name: git
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_github
+      branches:
+        include: master
+
 pipelines:
   - name: basic
     steps:
       - name: basic
         type: Bash
         configuration:
+          inputResources:
+            - name: git
           environmentVariables:
             foo: bar
           runtime:
@@ -14,8 +25,23 @@ pipelines:
       - name: second
         type: Bash
         configuration:
+          inputResources:
+            - name: git
+          environmentVariables:
+            foo: bar
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo $foo
+      - name: third
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git
           inputSteps:
             - name: basic
+            - name: second
           environmentVariables:
             foo: bar
           runtime:
