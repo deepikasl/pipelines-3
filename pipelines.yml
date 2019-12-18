@@ -6,8 +6,8 @@ pipelines:
         configuration:
           environmentVariables:
             foo: bar
-#           runtime:
-#             type: host
+          runtime:
+            type: host
 #             image:
 #               auto:
 #                 language: javad
