@@ -8,11 +8,18 @@ pipelines:
             foo: bar
           runtime:
             type: host
-#             image:
-#               auto:
-#                 language: javad
-#                 versions:
-#                   - master
+        execution:
+          onExecute:
+            - echo $foo
+      - name: second
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: basic
+          environmentVariables:
+            foo: bar
+          runtime:
+            type: host
         execution:
           onExecute:
             - echo $foo
