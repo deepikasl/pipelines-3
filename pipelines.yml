@@ -18,7 +18,14 @@ pipelines:
           environmentVariables:
             foo: bar
           runtime:
-            type: host
+            #type: host
+            type: image
+            image:
+              auto:
+                language: java
+                versions: 
+                  - 11
+
         execution:
           onExecute:
             - echo $foo
