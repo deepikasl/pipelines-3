@@ -18,42 +18,42 @@ pipelines:
           environmentVariables:
             foo: bar
           runtime:
-            #type: host
-            type: image
-            image:
-              auto:
-                language: Java
-                versions: 
-                  - "11"
+            type: host
+#             type: image
+#             image:
+#               auto:
+#                 language: Java
+#                 versions: 
+#                   - "11"
 
         execution:
           onExecute:
             - echo $foo
-      - name: second
-        type: Bash
-        configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - echo $foo
-      - name: third
-        type: Bash
-        configuration:
-          #inputResources:
-          #  - name: git
-          inputSteps:
-            - name: basic
-            - name: second
-          environmentVariables:
-            foo: bar
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - echo $foo
+#       - name: second
+#         type: Bash
+#         configuration:
+#           #inputResources:
+#           #  - name: git
+#           environmentVariables:
+#             foo: bar
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - echo $foo
+#       - name: third
+#         type: Bash
+#         configuration:
+#           #inputResources:
+#           #  - name: git
+#           inputSteps:
+#             - name: basic
+#             - name: second
+#           environmentVariables:
+#             foo: bar
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - echo $foo
           
