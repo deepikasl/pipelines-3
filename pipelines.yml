@@ -1,59 +1,23 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: bharath_github
-#       branches:
-#         include: master
+ resources:
+   - name: git_repro
+     type: GitRepo
+     configuration:
+       path: bharath92/pipelines
+       gitProvider: bharath_github
+       branches:
+         include: repro
 
 pipelines:
-  - name: basic
+  - name: repro
     steps:
       - name: basic
         type: Bash
         configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
+          inputResources:
+            - name: git
           runtime:
             type: host
-#             type: image
-#             image:
-#               auto:
-#                 language: Java
-#                 versions: 
-#                   - "11"
-
         execution:
           onExecute:
-            - echo $foo
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
+            - echo hi
           
