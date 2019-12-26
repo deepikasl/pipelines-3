@@ -1,11 +1,11 @@
- resources:
-   - name: git_repro
-     type: GitRepo
-     configuration:
-       path: bharath92/pipelines
-       gitProvider: bharath_github
-       branches:
-         include: repro
+resources:
+  - name: git_repro
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_github
+      branches:
+        include: master
 
 pipelines:
   - name: repro
@@ -20,4 +20,3 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-          
