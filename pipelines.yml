@@ -14,7 +14,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: git
+            - name: git_repro
           runtime:
             type: host
         execution:
