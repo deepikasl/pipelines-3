@@ -1,5 +1,5 @@
 resources:
-  - name: git_repro
+  - name: repro
     type: GitRepo
     configuration:
       path: bharath92/pipelines
@@ -14,7 +14,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: git_repro
+            - name: repro
           runtime:
             type: host
         execution:
