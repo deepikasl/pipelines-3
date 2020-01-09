@@ -19,13 +19,6 @@ pipelines:
             foo: bar
           runtime:
             type: host
-#             type: image
-#             image:
-#               auto:
-#                 language: Java
-#                 versions: 
-#                   - "11"
-
         execution:
           onExecute:
             - echo $foo
