@@ -17,8 +17,8 @@ pipelines:
           #  - name: git
           environmentVariables:
             foo: bar
-         runtime:
-           type: host
+          runtime:
+            type: host
         execution:
           onExecute:
             - echo $foo
