@@ -21,7 +21,7 @@ pipelines:
             type: host
         execution:
           onExecute:
-            - sleep 2m
+            #- sleep 2m
             - echo $foo
 #       - name: second
 #         type: Bash
