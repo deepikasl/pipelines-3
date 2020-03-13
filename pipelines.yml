@@ -3,12 +3,17 @@ pipelines:
     steps: 
       - name: Start
         type: Bash
+        configuration: 
+          runtime:
+            type: host
         execution: 
           onExecute: 
             - echo "It's a start."
       - name: Step1
         type: Bash
         configuration: 
+          runtime:
+            type: host
           inputSteps: 
             - name: Start
         execution: 
@@ -17,6 +22,8 @@ pipelines:
       - name: Step2
         type: Bash
         configuration: 
+          runtime:
+            type: host 
           inputSteps: 
             - name: Start
         execution: 
@@ -25,6 +32,8 @@ pipelines:
       - name: Step3
         type: Bash
         configuration: 
+          runtime:
+            type: host 
           inputSteps: 
             - name: Start
         execution: 
@@ -33,6 +42,8 @@ pipelines:
       - name: Finish
         type: Bash
         configuration: 
+          runtime:
+            type: host 
           inputSteps: 
             - name: Step1
             - name: Step2
