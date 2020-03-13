@@ -50,7 +50,7 @@ pipelines:
             - name: Step3
         execution: 
           onExecute: 
-            - echo "Step1: $step1"
-            - echo "Step2: $step2"
-            - echo "Step3: $step3"
+            - echo "Step1 $step1"
+            - echo "Step2 $step2"
+            - echo "Step3 $step3"
             - echo "$builder_api_token"
