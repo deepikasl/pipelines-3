@@ -1,53 +1,45 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: bharath_github
-#       branches:
-#         include: master
-
-pipelines:
-  - name: basic
-    steps:
-      - name: basic
+pipelines: 
+  - name: test
+    steps: 
+      - name: Start
         type: Bash
-        configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
-        execution:
-          onExecute:
-            #- sleep 2m
-            - echo $foo
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+        execution: 
+          onExecute: 
+            - echo "It's a start."
+      - name: Step1
+        type: Bash
+        configuration: 
+          inputSteps: 
+            - name: Start
+        execution: 
+          onExecute: 
+            - add_run_variables step1=foo
+      - name: Step2
+        type: Bash
+        configuration: 
+          inputSteps: 
+            - name: Start
+        execution: 
+          onExecute: 
+            - add_run_variables step2=bar
+      - name: Step3
+        type: Bash
+        configuration: 
+          inputSteps: 
+            - name: Start
+        execution: 
+          onExecute: 
+            - add_run_variables step3=baz
+      - name: Finish
+        type: Bash
+        configuration: 
+          inputSteps: 
+            - name: Step1
+            - name: Step2
+            - name: Step3
+        execution: 
+          onExecute: 
+            - |
+              echo "Step1: $step1"
+              echo "Step2: $step2"
+              echo "Step3: $step3"
