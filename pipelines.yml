@@ -1,53 +1,36 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: bharath_github
-#       branches:
-#         include: master
-
 pipelines:
-  - name: basic
+  - name: managed
     steps:
-      - name: basic
+      - name: u18
         type: Bash
         configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
+          runtime:
+            type: host
         execution:
           onExecute:
-            #- sleep 2m
-            - echo $foo
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+            - docker images
+      - name: c07
+        type: Bash
+        configuration:
+          nodePool: c07
+        execution:
+          onExecute:
+            - docker images
+      - name: u16
+        type: Bash
+        configuration:
+          nodePool: u16
+        execution:
+          onExecute:
+            - docker images
+  - name: published
+    steps:
+      - name: u18cust
+        type: Bash
+        configuration:
+          nodePool: u18cust
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - docker images
