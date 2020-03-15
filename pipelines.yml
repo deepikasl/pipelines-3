@@ -12,6 +12,8 @@ pipelines:
       - name: c07
         type: Bash
         configuration:
+          inputSteps:
+            - name: u18
           nodePool: c07
         execution:
           onExecute:
@@ -19,6 +21,8 @@ pipelines:
       - name: u16
         type: Bash
         configuration:
+          inputSteps:
+            - name: u18
           nodePool: u16
           runtime:
             type: host
