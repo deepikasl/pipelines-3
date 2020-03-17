@@ -21,6 +21,7 @@ pipelines:
             - add_run_variables step1=foo
             - echo $step_id > foo
             - add_run_files foo foo
+            - sleep 5
       - name: Step2
         type: Bash
         configuration: 
@@ -33,6 +34,7 @@ pipelines:
             - add_run_variables step2=bar
             - echo $step_id > bar
             - add_run_files bar bar
+            - sleep 10
       - name: Step3
         type: Bash
         configuration: 
@@ -45,6 +47,7 @@ pipelines:
             - add_run_variables step3=baz
             - echo $step_id > baz
             - add_run_files baz baz
+            - sleep 15
       - name: Finish
         type: Bash
         configuration: 
