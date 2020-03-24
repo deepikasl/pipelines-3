@@ -12,6 +12,7 @@ pipelines:
       - name: Step1
         type: Bash
         configuration: 
+          chronological: true
           runtime:
             type: host
           inputSteps: 
@@ -24,7 +25,8 @@ pipelines:
             - sleep 5
       - name: Step2
         type: Bash
-        configuration: 
+        configuration:
+          chronological: true
           runtime:
             type: host 
           inputSteps: 
@@ -38,6 +40,7 @@ pipelines:
       - name: Step3
         type: Bash
         configuration: 
+          chronological: true
           runtime:
             type: host 
           inputSteps: 
