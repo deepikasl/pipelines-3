@@ -40,7 +40,6 @@ pipelines:
       - name: Step3
         type: Bash
         configuration: 
-          chronological: true
           runtime:
             type: host 
           inputSteps: 
