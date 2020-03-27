@@ -59,7 +59,7 @@ pipelines:
             image:
               custom:
                 registry: aws_creds
-                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/ubuntu
                 tag: latest
                 region: us-east-1
           inputSteps: 
@@ -111,7 +111,7 @@ pipelines:
             image:
               custom:
                 registry: aws_creds
-                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/ubuntu
                 tag: latest
                 region: us-east-1
           inputSteps: 
@@ -194,7 +194,7 @@ pipelines:
             image:
               custom:
                 registry: aws_creds
-                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/ubuntu
                 tag: latest
                 region: us-east-1
           inputSteps: 
