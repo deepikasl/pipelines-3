@@ -93,7 +93,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: az_creds
+                registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
                 tag: latest 
           inputSteps: 
@@ -126,7 +126,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: az_creds
+                registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
                 tag: latest
           inputSteps: 
@@ -158,7 +158,7 @@ pipelines:
             type: image
             image:
               custom:
-                registry: az_creds
+                registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
                 tag: latest 
           inputSteps: 
