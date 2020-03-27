@@ -64,4 +64,8 @@ pipelines:
             - echo "Step1 $step1"
             - echo "Step2 $step2"
             - echo "Step3 $step3"
-            - echo "$builder_api_token"
+            - gcloud --version
+            - jfrog --version
+            - aws --version
+            - git --version
+            - helm --version
