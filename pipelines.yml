@@ -55,135 +55,147 @@ pipelines:
         configuration: 
           nodePool: u16-aws
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: aws_creds
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                tag: latest
+                region: us-east-1
           inputSteps: 
             - name: Step1
             - name: Step2
             - name: Step3
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: u18_aws
         type: Bash
         configuration: 
           nodePool: u18-aws
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: gcloud_creds
+                name: shipbeta00/ubuntu
+                tag: latest
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: c7_aws
         type: Bash
         configuration: 
           nodePool: c7-aws
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: az_creds
+                name: jfrogpipelines.azurecr.io/alpine:latest
+                tag: latest 
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: u18_gcp
         type: Bash
         configuration: 
           nodePool: u18-gcp
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: aws_creds
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                tag: latest
+                region: us-east-1
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: u16_gcp
         type: Bash
         configuration: 
           nodePool: u16-gcp
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: az_creds
+                name: jfrogpipelines.azurecr.io/alpine:latest
+                tag: latest
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: c7_gcp
         type: Bash
         configuration: 
           nodePool: c7-gcp
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: gcloud_creds
+                name: shipbeta00/ubuntu
+                tag: latest
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: u18_az
         type: Bash
         configuration: 
           nodePool: u18-az
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: az_creds
+                name: jfrogpipelines.azurecr.io/alpine:latest
+                tag: latest 
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: u16_az
         type: Bash
         configuration: 
           nodePool: u16-az
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: gcloud_creds
+                name: shipbeta00/ubuntu
+                tag: latest
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
       - name: c7_az
         type: Bash
         configuration: 
           nodePool: c7-az
           runtime:
-            type: host 
+            type: image
+            image:
+              custom:
+                registry: aws_creds
+                name: 754160106182.dkr.ecr.us-east-1.amazonaws.com/jfbeta/ubuntu
+                tag: latest
+                region: us-east-1
           inputSteps: 
             - name: Finish
         execution: 
           onExecute:
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version -c
+            - echo hi
