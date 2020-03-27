@@ -78,7 +78,7 @@ pipelines:
             image:
               custom:
                 registry: gcloud_creds
-                name: shipbeta00
+                name: gcr.io/ship-rc/ubuntu
                 tag: latest
           inputSteps: 
             - name: Finish
@@ -145,7 +145,7 @@ pipelines:
             image:
               custom:
                 registry: gcloud_creds
-                name: shipbeta00
+                name: gcr.io/ship-rc/ubuntu
                 tag: latest
           inputSteps: 
             - name: Finish
@@ -178,7 +178,7 @@ pipelines:
             image:
               custom:
                 registry: gcloud_creds
-                name: shipbeta00
+                name: gcr.io/ship-rc/ubuntu
                 tag: latest
           inputSteps: 
             - name: Finish
