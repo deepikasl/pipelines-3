@@ -70,7 +70,7 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: u18-aws
+      - name: u18_aws
         type: Bash
         configuration: 
           runtime:
@@ -88,7 +88,7 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: c7-aws
+      - name: c7_aws
         type: Bash
         configuration: 
           runtime:
@@ -106,7 +106,7 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: u18-gcp
+      - name: u18_gcp
         type: Bash
         configuration: 
           runtime:
@@ -124,7 +124,25 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: c7-gcp
+      - name: u16_gcp
+        type: Bash
+        configuration: 
+          runtime:
+            nodePool: u16-gcp
+            type: host 
+          inputSteps: 
+            - name: Finish
+        execution: 
+          onExecute: 
+            - echo "Step1 $step1"
+            - echo "Step2 $step2"
+            - echo "Step3 $step3"
+            - gcloud --version
+            - jfrog --version
+            - aws --version
+            - git --version
+            - helm version
+      - name: c7_gcp
         type: Bash
         configuration: 
           runtime:
@@ -142,25 +160,7 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: c7-gcp
-        type: Bash
-        configuration: 
-          runtime:
-            nodePool: c7-gcp
-            type: host 
-          inputSteps: 
-            - name: Finish
-        execution: 
-          onExecute: 
-            - echo "Step1 $step1"
-            - echo "Step2 $step2"
-            - echo "Step3 $step3"
-            - gcloud --version
-            - jfrog --version
-            - aws --version
-            - git --version
-            - helm version
-      - name: u18-az
+      - name: u18_az
         type: Bash
         configuration: 
           runtime:
@@ -178,11 +178,11 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: c7-az
+      - name: u16_az
         type: Bash
         configuration: 
           runtime:
-            nodePool: c7-az
+            nodePool: u16-az
             type: host 
           inputSteps: 
             - name: Finish
@@ -196,7 +196,7 @@ pipelines:
             - aws --version
             - git --version
             - helm version
-      - name: c7-az
+      - name: c7_az
         type: Bash
         configuration: 
           runtime:
