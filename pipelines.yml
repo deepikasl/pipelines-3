@@ -53,8 +53,8 @@ pipelines:
       - name: Finish
         type: Bash
         configuration: 
+          nodePool: u16-aws
           runtime:
-            nodePool: u16-aws
             type: host 
           inputSteps: 
             - name: Step1
@@ -73,8 +73,8 @@ pipelines:
       - name: u18_aws
         type: Bash
         configuration: 
+          nodePool: u18-aws
           runtime:
-            nodePool: u18-aws
             type: host 
           inputSteps: 
             - name: Finish
@@ -91,8 +91,8 @@ pipelines:
       - name: c7_aws
         type: Bash
         configuration: 
+          nodePool: c7-aws
           runtime:
-            nodePool: c7-aws
             type: host 
           inputSteps: 
             - name: Finish
@@ -109,8 +109,8 @@ pipelines:
       - name: u18_gcp
         type: Bash
         configuration: 
+          nodePool: u18-gcp
           runtime:
-            nodePool: u18-gcp
             type: host 
           inputSteps: 
             - name: Finish
@@ -127,8 +127,8 @@ pipelines:
       - name: u16_gcp
         type: Bash
         configuration: 
+          nodePool: u16-gcp
           runtime:
-            nodePool: u16-gcp
             type: host 
           inputSteps: 
             - name: Finish
@@ -145,8 +145,8 @@ pipelines:
       - name: c7_gcp
         type: Bash
         configuration: 
+          nodePool: c7-gcp
           runtime:
-            nodePool: c7-gcp
             type: host 
           inputSteps: 
             - name: Finish
@@ -163,8 +163,8 @@ pipelines:
       - name: u18_az
         type: Bash
         configuration: 
+          nodePool: u18-az
           runtime:
-            nodePool: u18-az
             type: host 
           inputSteps: 
             - name: Finish
@@ -181,8 +181,8 @@ pipelines:
       - name: u16_az
         type: Bash
         configuration: 
+          nodePool: u16-az
           runtime:
-            nodePool: u16-az
             type: host 
           inputSteps: 
             - name: Finish
@@ -199,8 +199,8 @@ pipelines:
       - name: c7_az
         type: Bash
         configuration: 
+          nodePool: c7-az
           runtime:
-            nodePool: c7-az
             type: host 
           inputSteps: 
             - name: Finish
