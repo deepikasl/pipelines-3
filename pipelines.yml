@@ -96,6 +96,7 @@ pipelines:
                 registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
                 tag: latest 
+                sourceRepository: pipelines-docker
           inputSteps: 
             - name: Finish
         execution: 
@@ -129,6 +130,7 @@ pipelines:
                 registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
                 tag: latest
+                sourceRepository: pipelines-docker
           inputSteps: 
             - name: Finish
         execution: 
@@ -160,7 +162,8 @@ pipelines:
               custom:
                 registry: jfrog_creds
                 name: jfrogpipelines.azurecr.io/alpine:latest
-                tag: latest 
+                tag: latest
+                sourceRepository: pipelines-docker
           inputSteps: 
             - name: Finish
         execution: 
