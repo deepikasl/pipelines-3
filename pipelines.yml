@@ -34,6 +34,8 @@ pipelines:
             image:
               auto:
                 language: node
+                versions:
+                  - 8
           inputSteps: 
             - name: Start
         execution: 
