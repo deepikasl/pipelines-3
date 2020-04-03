@@ -3,9 +3,6 @@ pipelines:
     steps: 
       - name: Start
         type: Bash
-        configuration: 
-          runtime:
-            type: host
         execution: 
           onExecute: 
             - echo "It's a start."
@@ -14,7 +11,12 @@ pipelines:
         configuration: 
           chronological: true
           runtime:
-            type: host
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - 11
           inputSteps: 
             - name: Start
         execution: 
@@ -28,7 +30,10 @@ pipelines:
         configuration:
           chronological: true
           runtime:
-            type: host 
+            type: image
+            image:
+              auto:
+                language: node
           inputSteps: 
             - name: Start
         execution: 
