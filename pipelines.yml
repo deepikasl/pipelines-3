@@ -3,95 +3,98 @@ pipelines:
     steps: 
       - name: Start
         type: Bash
+        configuration:
+          runtime:
+            type: host
         execution: 
           onExecute: 
             - echo "It's a start."
-      - name: Step1
-        type: Bash
-        configuration: 
-          chronological: true
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - 11
-          inputSteps: 
-            - name: Start
-        execution: 
-          onExecute: 
-            - add_run_variables step1=foo
-            - echo $step_id > foo
-            - add_run_files foo foo
-            - sleep 5
-      - name: Step2
-        type: Bash
-        configuration:
-          chronological: true
-          runtime:
-            type: image
-            image:
-              auto:
-                language: node
-                versions:
-                  - 8
-          inputSteps: 
-            - name: Start
-        execution: 
-          onExecute: 
-            - add_run_variables step2=bar
-            - echo $step_id > bar
-            - add_run_files bar bar
-            - sleep 10
-      - name: Step3
-        type: Bash
-        configuration: 
-          runtime:
-            type: host 
-          inputSteps: 
-            - name: Start
-        execution: 
-          onExecute: 
-            - add_run_variables step3=baz
-            - echo $step_id > baz
-            - add_run_files baz baz
-            - sleep 15
-      - name: Finish
-        type: Bash
-        configuration: 
-          nodePool: u16-aws
-          runtime:
-            type: host
-          inputSteps: 
-            - name: Step1
-            - name: Step2
-            - name: Step3
-        execution: 
-          onExecute:
-            - echo hi
-      - name: u18_aws
-        type: Bash
-        configuration: 
-          nodePool: u18-aws
-          runtime:
-            type: host
-          inputSteps: 
-            - name: Finish
-        execution: 
-          onExecute:
-            - echo hi
-      - name: c7_aws
-        type: Bash
-        configuration: 
-          nodePool: c7-aws
-          runtime:
-            type: host
-          inputSteps: 
-            - name: Finish
-        execution: 
-          onExecute:
-            - echo hi
+#       - name: Step1
+#         type: Bash
+#         configuration: 
+#           chronological: true
+#           runtime:
+#             type: image
+#             image:
+#               auto:
+#                 language: java
+#                 versions:
+#                   - 11
+#           inputSteps: 
+#             - name: Start
+#         execution: 
+#           onExecute: 
+#             - add_run_variables step1=foo
+#             - echo $step_id > foo
+#             - add_run_files foo foo
+#             - sleep 5
+#       - name: Step2
+#         type: Bash
+#         configuration:
+#           chronological: true
+#           runtime:
+#             type: image
+#             image:
+#               auto:
+#                 language: node
+#                 versions:
+#                   - 8
+#           inputSteps: 
+#             - name: Start
+#         execution: 
+#           onExecute: 
+#             - add_run_variables step2=bar
+#             - echo $step_id > bar
+#             - add_run_files bar bar
+#             - sleep 10
+#       - name: Step3
+#         type: Bash
+#         configuration: 
+#           runtime:
+#             type: host 
+#           inputSteps: 
+#             - name: Start
+#         execution: 
+#           onExecute: 
+#             - add_run_variables step3=baz
+#             - echo $step_id > baz
+#             - add_run_files baz baz
+#             - sleep 15
+#       - name: Finish
+#         type: Bash
+#         configuration: 
+#           nodePool: u16-aws
+#           runtime:
+#             type: host
+#           inputSteps: 
+#             - name: Step1
+#             - name: Step2
+#             - name: Step3
+#         execution: 
+#           onExecute:
+#             - echo hi
+#       - name: u18_aws
+#         type: Bash
+#         configuration: 
+#           nodePool: u18-aws
+#           runtime:
+#             type: host
+#           inputSteps: 
+#             - name: Finish
+#         execution: 
+#           onExecute:
+#             - echo hi
+#       - name: c7_aws
+#         type: Bash
+#         configuration: 
+#           nodePool: c7-aws
+#           runtime:
+#             type: host
+#           inputSteps: 
+#             - name: Finish
+#         execution: 
+#           onExecute:
+#             - echo hi
 #       - name: u18_gcp
 #         type: Bash
 #         configuration: 
