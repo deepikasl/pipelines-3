@@ -67,3 +67,15 @@ pipelines:
         execution:
           onExecute:
             - echo hi
+  - name: check4
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: git4
+        execution:
+          onExecute:
+            - echo hi
