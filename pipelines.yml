@@ -15,7 +15,7 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
-   - name: git3
+  - name: git3
     type: GitRepo
     configuration:
       path: ~bharathu/poc
