@@ -28,7 +28,7 @@ resources:
       path: bharath92/multibranch-pipelines
       gitProvider: bharath_github
       branches:
-        include: *
+        include: '*'
      
 pipelines:
   - name: check1
