@@ -15,6 +15,14 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
+   - name: git3
+    type: GitRepo
+    configuration:
+      path: ~bharathu/poc
+      gitProvider: bharath_bbs
+      branches:
+        include: master
+     
 pipelines:
   - name: check1
     steps:
@@ -37,6 +45,18 @@ pipelines:
             type: host
           inputResources:
             - name: git2
+        execution:
+          onExecute:
+            - echo hi
+   - name: check3
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: git3
         execution:
           onExecute:
             - echo hi
