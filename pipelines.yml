@@ -48,7 +48,7 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-   - name: check3
+  - name: check3
     steps:
       - name: basic
         type: Bash
