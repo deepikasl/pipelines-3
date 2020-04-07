@@ -21,6 +21,8 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          runtime:
+            type: host
           inputResources:
             - name: git1
         execution:
@@ -31,6 +33,8 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          runtime:
+            type: host
           inputResources:
             - name: git2
         execution:
