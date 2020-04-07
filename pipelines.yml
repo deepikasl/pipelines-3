@@ -22,6 +22,13 @@ resources:
       gitProvider: bharath_bbs
       branches:
         include: master
+  - name: git4
+    type: GitRepo
+    configuration:
+      path: bharath92/multibranch-pipelines
+      gitProvider: bharath_github
+      branches:
+        include: *
      
 pipelines:
   - name: check1
