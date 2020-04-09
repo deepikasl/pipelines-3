@@ -29,6 +29,13 @@ resources:
       gitProvider: bharath_github
       branches:
         include: \b.+\b
+  - name: git5
+    type: GitRepo
+    configuration:
+      path: bharath92/pipelines
+      gitProvider: bharath_github
+      branches:
+        include: basic2
      
 pipelines:
   - name: check1
