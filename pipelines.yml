@@ -49,7 +49,7 @@ pipelines:
             - name: git1
         execution:
           onExecute:
-            - add_run_variables "step=$step_id"
+            - add_pipeline_variables "step=$step_id"
   - name: check2
     steps:
       - name: basic
