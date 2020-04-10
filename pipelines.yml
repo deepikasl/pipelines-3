@@ -45,7 +45,7 @@ resources:
         include: master
       buildOn:
         commit: false
-        pullRequest: true
+        pullRequestCreate: true
      
 pipelines:
   - name: check1
