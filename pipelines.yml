@@ -112,7 +112,9 @@ pipelines:
             - export is_fork=true
             - |
               if $res_git6_isPullRequest; then
-                if [ "$res_git6_gitRepoFullName" == "$(echo \"$res_git6_shaData\" | jq -r .pullRequestRepoFullName)" ]; then
+                head=$(echo "$res_git6_shaData" | jq -r .pullRequestRepoFullName)
+                base="$res_git6_gitRepoFullName"
+                if [ "$head" == "$base" ]; then
                   is_fork=false
                 fi
               fi
