@@ -133,5 +133,6 @@ pipelines:
               else
                 export isFork=false;
               fi
+            - echo "$cloneUrl $pullRequestSourceUrl" 
             -  echo $isFork
                       
