@@ -13,6 +13,9 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          inputResources:
+            - name: git1
+
           #inputResources:
           #  - name: git
           environmentVariables:
