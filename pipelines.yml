@@ -46,7 +46,16 @@ resources:
       buildOn:
         commit: false
         pullRequestCreate: true
-     
+  - name: git7
+    type: GitRepo
+    configuration:
+      path: ~bharathu/poc
+      gitProvider: bharath_bbs
+      branches:
+        include: master
+      buildOn:
+        commit: false
+        pullRequestCreate: true
 pipelines:
   - name: check1
     steps:
