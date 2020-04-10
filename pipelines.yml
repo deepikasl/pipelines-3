@@ -119,4 +119,19 @@ pipelines:
                 fi
               fi
             - echo $is_fork
-              
+            - isPrivateRepository=$(find_resource_variable "$resourceName" isPrivateRepository)
+            - pullRequestSourceUrl=$(find_resource_variable "$resourceName" pullRequestSourceUrl)
+            - |
+              if isPrivateRepository; then
+                cloneUrl=$(find_resource_variable "$resourceName" gitRepoRepositorySshUrl)
+              else
+                cloneUrl=$(find_resource_variable "$resourceName" gitRepoRepositoryHttpsUrl)
+              fi
+            - |
+              if [ "$cloneUrl" != "$pullRequestSourceUrl" ]; then
+                export isFork=true;
+              else
+                export isFork=false;
+              fi
+            -  echo $isFork
+                      
