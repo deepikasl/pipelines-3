@@ -109,3 +109,4 @@ pipelines:
           onExecute:
             - echo $res_git6_shaData
             - echo $res_git6_isPullRequest
+            - echo $res_git6_gitRepoFullName
