@@ -96,3 +96,16 @@ pipelines:
         execution:
           onExecute:
             - echo hi
+  - name: check5
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: git6
+        execution:
+          onExecute:
+            - echo $res_git6_shaData
+            - echo $res_git6_isPullRequest
