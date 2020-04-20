@@ -81,7 +81,7 @@ pipelines:
           onExecute:
             - wget https://norvig.com/big.txt --no-check-certificate
             - cat big.txt
-      - name: parallel3
+      - name: parallel8
         type: Bash
         configuration:
           nodePool: c7dynamic
@@ -91,7 +91,7 @@ pipelines:
           onExecute:
             - wget https://norvig.com/big.txt --no-check-certificate
             - cat big.txt
-      - name: parallel4
+      - name: parallel9
         type: Bash
         configuration:
           nodePool: c7dynamic
@@ -101,7 +101,7 @@ pipelines:
           onExecute:
              - wget https://norvig.com/big.txt --no-check-certificate
              - cat big.txt
-      - name: parallel5
+      - name: parallel10
         type: Bash
         configuration:
           nodePool: win_2019
@@ -111,7 +111,7 @@ pipelines:
           onExecute:
             - wget https://norvig.com/big.txt --no-check-certificate
             - type big.txt
-      - name: parallel6
+      - name: parallel11
         type: Bash
         configuration:
           nodePool: win_2019
@@ -121,7 +121,7 @@ pipelines:
           onExecute:
              - wget https://norvig.com/big.txt --no-check-certificate
              - type big.txt
-       - name: parallel7
+       - name: parallel12
          type: Bash
          configuration:
            nodePool: rhel7
