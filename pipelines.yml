@@ -5,12 +5,9 @@ pipelines:
         type: Bash
         configuration:
           nodePool: u16
-          inputSteps:
-            - name: trigger
         execution:
           onExecute:
-             - wget https://norvig.com/big.txt --no-check-certificate
-             - cat big.txt
+             - echo "I am just a trigger"
       - name: parallel1
         type: Bash
         configuration:
