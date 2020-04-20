@@ -106,7 +106,7 @@ pipelines:
             - name: trigger
         execution:
           onExecute:
-            - wget https://norvig.com/big.txt --no-check-certificate
+            - wget https://norvig.com/big.txt
             - type big.txt
       - name: parallel11
         type: PowerShell
@@ -116,7 +116,7 @@ pipelines:
             - name: trigger
         execution:
           onExecute:
-             - wget https://norvig.com/big.txt --no-check-certificate
+             - wget https://norvig.com/big.txt
              - type big.txt
       - name: parallel12
         type: Bash
