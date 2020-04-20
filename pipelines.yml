@@ -121,13 +121,13 @@ pipelines:
           onExecute:
              - wget https://norvig.com/big.txt --no-check-certificate
              - type big.txt
-       - name: parallel12
-         type: Bash
-         configuration:
-           nodePool: rhel7
-           inputSteps:
-             - name: trigger
-         execution:
-           onExecute:
-             - wget https://norvig.com/big.txt --no-check-certificate
-             - cat big.txt
+      - name: parallel12
+        type: Bash
+        configuration:
+          nodePool: rhel7
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
