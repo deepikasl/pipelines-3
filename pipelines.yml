@@ -1,53 +1,133 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: bharath_github
-#       branches:
-#         include: master
-
 pipelines:
-  - name: basic
+  - name: bigfiles
     steps:
-      - name: basic
+      - name: trigger
         type: Bash
         configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
+          nodePool: u16
+          inputSteps:
+            - name: trigger
         execution:
           onExecute:
-            #- sleep 2m
-            - echo $foo
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
+      - name: parallel1
+        type: Bash
+        configuration:
+          nodePool: u16dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
+      - name: parallel2
+        type: Bash
+        configuration:
+          nodePool: u16dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
+      - name: parallel3
+        type: Bash
+        configuration:
+          nodePool: u16dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
+      - name: parallel4
+        type: Bash
+        configuration:
+          nodePool: u18dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
+      - name: parallel5
+        type: Bash
+        configuration:
+          nodePool: u18dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
+      - name: parallel6
+        type: Bash
+        configuration:
+          nodePool: u18dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
+      - name: parallel7
+        type: Bash
+        configuration:
+          nodePool: c7dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
+      - name: parallel3
+        type: Bash
+        configuration:
+          nodePool: c7dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - cat big.txt
+      - name: parallel4
+        type: Bash
+        configuration:
+          nodePool: c7dynamic
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
+      - name: parallel5
+        type: Bash
+        configuration:
+          nodePool: win_2019
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+            - wget https://norvig.com/big.txt --no-check-certificate
+            - type big.txt
+      - name: parallel6
+        type: Bash
+        configuration:
+          nodePool: win_2019
+          inputSteps:
+            - name: trigger
+        execution:
+          onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - type big.txt
+       - name: parallel7
+         type: Bash
+         configuration:
+           nodePool: rhel7
+           inputSteps:
+             - name: trigger
+         execution:
+           onExecute:
+             - wget https://norvig.com/big.txt --no-check-certificate
+             - cat big.txt
