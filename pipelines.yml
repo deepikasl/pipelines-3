@@ -102,7 +102,7 @@ pipelines:
              - wget https://norvig.com/big.txt --no-check-certificate
              - cat big.txt
       - name: parallel10
-        type: Bash
+        type: PowerShell
         configuration:
           nodePool: win_2019
           inputSteps:
@@ -112,7 +112,7 @@ pipelines:
             - wget https://norvig.com/big.txt --no-check-certificate
             - type big.txt
       - name: parallel11
-        type: Bash
+        type: PowerShell
         configuration:
           nodePool: win_2019
           inputSteps:
