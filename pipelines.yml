@@ -22,7 +22,7 @@ resources:
       gitProvider: bharath_bb
       branches:
         include: master
-  - name: bb-git2
+  - name: bb_git2
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
@@ -38,7 +38,7 @@ resources:
       gitProvider: bharath_bbs
       branches:
         include: master
-  - name: bbs-git2
+  - name: bbs_git2
     type: GitRepo
     configuration:
       path: ~bharathu/sample-runSh
@@ -54,7 +54,7 @@ resources:
       gitProvider: bharath_gitlab
       branches:
         include: master
-  - name: gl-git2
+  - name: gl_git2
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
@@ -141,7 +141,7 @@ pipelines:
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
-  - name: bb-check2
+  - name: bb_check2
     steps:
       - name: basic
         type: Bash
@@ -149,7 +149,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: bb-git2
+            - name: bb_git2
         execution:
           onExecute:
             - echo hi
@@ -165,7 +165,7 @@ pipelines:
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
-  - name: bbs-check2
+  - name: bbs_check2
     steps:
       - name: basic
         type: Bash
@@ -173,7 +173,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: bbs-git2
+            - name: bbs_git2
         execution:
           onExecute:
             - echo hi
@@ -189,7 +189,7 @@ pipelines:
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
-  - name: gl-check2
+  - name: gl_check2
     steps:
       - name: basic
         type: Bash
@@ -197,7 +197,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: gl-git2
+            - name: gl_git2
         execution:
           onExecute:
             - echo hi
