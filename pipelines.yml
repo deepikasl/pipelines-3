@@ -15,6 +15,54 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
+  - name: bb-git1
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_bb
+      branches:
+        include: master
+  - name: bb-git2
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_bb
+      branches:
+        include: master
+      files:
+        include: \btestdir\/file1\b
+  - name: bbs-git1
+    type: GitRepo
+    configuration:
+      path: ~bharathu/sample-runSh
+      gitProvider: bharath_bbs
+      branches:
+        include: master
+  - name: bbs-git2
+    type: GitRepo
+    configuration:
+      path: ~bharathu/sample-runSh
+      gitProvider: bharath_bbs
+      branches:
+        include: master
+      files:
+        include: \btestdir\/file1\b
+  - name: gl-git1
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_gitlab
+      branches:
+        include: master
+  - name: gl-git2
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: bharath_gitlab
+      branches:
+        include: master
+      files:
+        include: \btestdir\/file1\b
   - name: git3
     type: GitRepo
     configuration:
@@ -78,6 +126,78 @@ pipelines:
             type: host
           inputResources:
             - name: git2
+        execution:
+          onExecute:
+            - echo hi
+  - name: bb-check1
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: bb-git1
+        execution:
+          onExecute:
+            - add_pipeline_variables "step=$step_id"
+  - name: bb-check2
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: bb-git2
+        execution:
+          onExecute:
+            - echo hi
+  - name: bbs-check1
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: bbs-git1
+        execution:
+          onExecute:
+            - add_pipeline_variables "step=$step_id"
+  - name: bbs-check2
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: bbs-git2
+        execution:
+          onExecute:
+            - echo hi
+  - name: gl-check1
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: gl-git1
+        execution:
+          onExecute:
+            - add_pipeline_variables "step=$step_id"
+  - name: gl-check2
+    steps:
+      - name: basic
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputResources:
+            - name: gl-git2
         execution:
           onExecute:
             - echo hi
