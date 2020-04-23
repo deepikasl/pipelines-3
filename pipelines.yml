@@ -15,7 +15,7 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
-  - name: bb-git1
+  - name: bb_git1
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
@@ -31,7 +31,7 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
-  - name: bbs-git1
+  - name: bbs_git1
     type: GitRepo
     configuration:
       path: ~bharathu/sample-runSh
@@ -47,7 +47,7 @@ resources:
         include: master
       files:
         include: \btestdir\/file1\b
-  - name: gl-git1
+  - name: gl_git1
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
@@ -129,7 +129,7 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-  - name: bb-check1
+  - name: bb_check1
     steps:
       - name: basic
         type: Bash
@@ -137,7 +137,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: bb-git1
+            - name: bb_git1
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
@@ -153,7 +153,7 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-  - name: bbs-check1
+  - name: bbs_check1
     steps:
       - name: basic
         type: Bash
@@ -161,7 +161,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: bbs-git1
+            - name: bbs_git1
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
@@ -177,7 +177,7 @@ pipelines:
         execution:
           onExecute:
             - echo hi
-  - name: gl-check1
+  - name: gl_check1
     steps:
       - name: basic
         type: Bash
@@ -185,7 +185,7 @@ pipelines:
           runtime:
             type: host
           inputResources:
-            - name: gl-git1
+            - name: gl_git1
         execution:
           onExecute:
             - add_pipeline_variables "step=$step_id"
