@@ -369,7 +369,7 @@ pipelines:
                 _post_curl "$payload_file" "$headers" "$endpoint"
               }
 
-              update_commit_status_custom git4 --url "https://jfrog.com"
+              update_commit_status_custom git4 --url "https://jfrog.com" --status "success"
             
           
   - name: check5
