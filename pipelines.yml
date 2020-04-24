@@ -266,6 +266,7 @@ pipelines:
                 export opt_message=""
 
                 export opt_context=""
+                export opt_url="$step_url"
                 if [ -z "$opt_context" ]; then
                   opt_context="${pipeline_name}_${step_name}"
                 fi
@@ -298,6 +299,8 @@ pipelines:
                       ;;
                   esac
                 done
+
+                echo "opt url : $opt_url"
 
                 if [ -z "$opt_status" ]; then
                   case "$current_script_section" in
@@ -369,7 +372,7 @@ pipelines:
                 _post_curl "$payload_file" "$headers" "$endpoint"
               }
 
-              update_commit_status_custom git4 --url "https://jfrog.com" --status "success"
+              update_commit_status_custom git4 --url "https://jfrog.com"
             
           
   - name: check5
