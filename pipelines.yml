@@ -5,7 +5,7 @@ resources:
       path: bharath92/sample-runSh
       gitProvider: bharath_github
       branches:
-        include: master
+        include: test
 
 pipelines:
   - name: basic
