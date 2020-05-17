@@ -1,11 +1,8 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: bharath_github
-#       branches:
-#         include: master
+resources:
+  - name: git
+    type: dummy
+    configuration:
+      foo: bar
 
 pipelines:
   - name: basic
