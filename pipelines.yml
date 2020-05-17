@@ -15,4 +15,12 @@ pipelines:
         execution:
           onExecute:
             - printenv
+      - name: dStep
+        type: dummy
+        configuration:
+          inputResources:
+           - name: dRes
+        execution:
+          onExecute:
+            - printenv
 
