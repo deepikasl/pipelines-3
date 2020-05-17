@@ -1,5 +1,9 @@
 resources:
-  - name: dRes
+  - name: dRes1
+    type: dummy
+    configuration:
+      foo: bar
+  - name: dRes2
     type: dummy
     configuration:
       foo: bar
@@ -11,15 +15,25 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-           - name: dRes
+           - name: dRes1
         execution:
           onExecute:
             - printenv
-      - name: dStep
+      - name: dStep1
         type: dummy
         configuration:
           inputResources:
-           - name: dRes
+           - name: dRes1
+        execution:
+          onExecute:
+            - printenv
+      - name: dStep2
+        type: dummy
+        configuration:
+          inputSteps:
+            - name: dStep1
+          outputResources:
+            - name: dRes2
         execution:
           onExecute:
             - printenv
