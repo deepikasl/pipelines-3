@@ -24,6 +24,8 @@ pipelines:
         configuration:
           inputResources:
            - name: dRes1
+          inputSteps:
+            - name: dStep2
         execution:
           onExecute:
             - printenv
