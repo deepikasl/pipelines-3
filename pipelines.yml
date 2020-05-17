@@ -1,5 +1,5 @@
 resources:
-  - name: git
+  - name: dRes
     type: dummy
     configuration:
       foo: bar
@@ -10,41 +10,9 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
-          #inputResources:
-          #  - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
+          inputResources:
+           - name: dRes
         execution:
           onExecute:
-            #- sleep 2m
-            - echo $foo
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+            - printenv
+
