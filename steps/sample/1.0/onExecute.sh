@@ -1,5 +1,5 @@
 sample() {
-  echo foo
+  echo foobar
 }
 
 execute_group sample
