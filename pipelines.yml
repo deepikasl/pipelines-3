@@ -4,4 +4,4 @@ pipelines:
       - name: sample
         type: sample
         configuration:
-          fodo: bar
+          foo: bar
