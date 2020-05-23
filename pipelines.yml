@@ -3,3 +3,5 @@ pipelines:
     steps:
       - name: sample
         type: sample
+        configuration:
+          foo: bar
