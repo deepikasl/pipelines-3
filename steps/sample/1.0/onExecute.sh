@@ -1,5 +1,6 @@
 sample() {
   echo foobar
+  echo "step name: $step_name"
 }
 
-execute_group sample
+execute_command sample
