@@ -5,3 +5,12 @@ pipelines:
         type: sample
         configuration:
           foo: "yeah!!!"
+      - name: bash
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: sample
+        execution:
+          onExecute:
+            - echo hi
+
