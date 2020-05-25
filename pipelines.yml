@@ -16,6 +16,8 @@ pipelines:
       - name: secondSample
         type: sample
         configuration:
+          inputSteps:
+            - name: bash
           foo: "yeah!!!"
         execution:
           onSuccess:
