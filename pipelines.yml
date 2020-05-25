@@ -13,4 +13,11 @@ pipelines:
         execution:
           onExecute:
             - echo hi
+      - name: secondSample
+        type: sample
+        configuration:
+          foo: "yeah!!!"
+        execution:
+          onSuccess:
+            - echo success
 
