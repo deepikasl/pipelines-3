@@ -1,25 +1,18 @@
+resources:
+  - name: testRes
+    type: sampleResource
+    syntaxVersion: 0.0.1
+    configuration:
+      resourceFoo: 1
+
 pipelines:
   - name: sample
     steps:
-      - name: sample
-        type: sample
+      - name: testStep
+        type: sampleStep
+        syntaxVersion: 0.0.1
         configuration:
           foo: "yeah!!!"
-      - name: bash
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: sample
-        execution:
-          onExecute:
-            - echo hi
-      - name: secondSample
-        type: sample
-        configuration:
-          inputSteps:
-            - name: bash
-          foo: "second yeah!!!"
-        execution:
-          onSuccess:
-            - echo success
-
+          inputResources:
+            - name: testRes
+    
