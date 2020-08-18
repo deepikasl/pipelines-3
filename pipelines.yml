@@ -23,7 +23,6 @@ pipelines:
 #             type: host
         execution:
           onExecute:
-            - sleep 10s
             - echo $foo
 #       - name: second
 #         type: Bash
