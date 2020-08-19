@@ -34,7 +34,7 @@ pipelines:
 #             foo: bar
 #           runtime:
 #             type: host
-#         execution:
+#         execution: 
 #           onExecute:
 #             - echo $foo
 #       - name: third
