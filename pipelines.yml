@@ -23,7 +23,7 @@ pipelines:
 #             type: host
         execution:
           onExecute:
-            - echo $foo
+            - printenv
 #       - name: second
 #         type: Bash
 #         configuration:
