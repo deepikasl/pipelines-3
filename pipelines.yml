@@ -24,6 +24,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
+            - echo lol
 #       - name: second
 #         type: Bash
 #         configuration:
