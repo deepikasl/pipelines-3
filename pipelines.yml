@@ -15,8 +15,8 @@ pipelines:
         configuration:
           runtime:
             type: host
-          #inputResources:
-          #  - name: git
+          inputResources:
+           - name: git
           environmentVariables:
             foo: bar
 #           runtime:
