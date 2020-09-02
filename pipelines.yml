@@ -1,11 +1,11 @@
-resources:
-  - name: git
-    type: GitRepo
-    configuration:
-      path: bharath92/sample-runSh
-      gitProvider: github
-      branches:
-        include: master
+# resources:
+#   - name: git
+#     type: GitRepo
+#     configuration:
+#       path: bharath92/sample-runSh
+#       gitProvider: github
+#       branches:
+#         include: master
 
 pipelines:
   - name: basic
@@ -15,8 +15,8 @@ pipelines:
         configuration:
           runtime:
             type: host
-          inputResources:
-           - name: git
+#           inputResources:
+#            - name: git
           environmentVariables:
             foo: bar
 #           runtime:
