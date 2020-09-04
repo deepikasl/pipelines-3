@@ -1,8 +1,6 @@
 resources:
   - name: test
-    type: testRes
-    namespace: qhode
-    syntaxVersion: latest
+    type: qhode/testRes
     configuration:
       test: 1
 #   - name: git
