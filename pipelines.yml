@@ -2,7 +2,7 @@ resources:
   - name: test
     type: qhode/testRes
     configuration:
-      test: 13
+      test: 15
 #   - name: git
 #     type: GitRepo
 #     configuration:
