@@ -1,4 +1,9 @@
-# resources:
+resources:
+  - name: test
+    type: testRes
+    namespace: qhode
+    configuration:
+      test: 1
 #   - name: git
 #     type: GitRepo
 #     configuration:
