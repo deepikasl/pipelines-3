@@ -3,6 +3,9 @@ resources:
     type: qhode/testRes
     configuration:
       test: 212
+      test2: 1
+      uddt:
+        bar: 11
 #   - name: git
 #     type: GitRepo
 #     configuration:
