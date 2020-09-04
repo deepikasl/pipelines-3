@@ -1,6 +1,6 @@
 resources:
   - name: test
-    type: testRes
+    type: testres
     namespace: qhode
     configuration:
       test: 1
