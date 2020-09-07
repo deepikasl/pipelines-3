@@ -2,7 +2,7 @@ resources:
   - name: test
     type: qhode/testRes
     configuration:
-      test: 2122
+      test: 21222
       test2: 11
       uddt:
         bar: 11
