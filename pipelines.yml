@@ -1,6 +1,7 @@
 resources:
   - name: test
     type: qhode/testRes
+    syntaxVersion: 1.2.3
     configuration:
       test: 21
       test2: 11
