@@ -1,55 +1,11 @@
-resources:
-  - name: git
-    type: GitRepo
-    configuration:
-      path: bharath92/sample-runSh
-      gitProvider: github
-      branches:
-        include: master
-
 pipelines:
-  - name: basic
+  - name: windows
     steps:
-      - name: basic
-        type: Bash
+      - name: windows
+        type: PowerShell
         configuration:
           runtime:
             type: host
-          inputResources:
-           - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
         execution:
           onExecute:
-            - printenv
             - echo lol
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution: 
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
