@@ -8,7 +8,7 @@ resources:
         include: master 
 
 pipelines:
-  - name: basic
+  - name: basic2
     steps:
       - name: basic
         type: Bash
