@@ -10,46 +10,24 @@ resources:
 pipelines:
   - name: basic1
     steps:
-      - name: basic
+      - name: first
         type: Bash
         configuration:
           runtime:
             type: host
           inputResources:
            - name: git
-          environmentVariables:
-            foo: bar
-#           runtime:
-#             type: host
         execution:
           onExecute:
             - printenv
-            - echo lol
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution: 
-#           onExecute:
-#             - echo $foo
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+            - echo 1
+      - name: second
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputSteps:
+            - name: basic
+        execution: 
+          onExecute:
+            - echo 1
