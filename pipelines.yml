@@ -27,7 +27,7 @@ pipelines:
           runtime:
             type: host
           inputSteps:
-            - name: basic
+            - name: first
         execution: 
           onExecute:
             - echo 1
