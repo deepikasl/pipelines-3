@@ -25,7 +25,7 @@ pipelines:
           onExecute:
             - printenv
             - echo lol
-            - add_run_variables foo=bar
+            - add_pipeline_variables foo=bar
 #       - name: second
 #         type: Bash
 #         configuration:
