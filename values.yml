@@ -1,9 +1,26 @@
-foo:
-  bar: 1111
-  baz: 24
+GitRepo:
+  name: fooGitRepo
+  gitProvider: github
+  path: bharath92/sample-runsh
+  branches:
+    include: 'master'
 
- 
+artifactoryIntegration: art
+  
+Image:
+  name: fooImage
+  sourceRepository: foo
 
+DockerBuild:
+  name: foobuild
+  dockerImageName: foo
+  dockerFileName: foo
 
+Pipeline:
+  name: foo
 
-
+DockerPush:
+  name: foopush
+  dockerImageName: foo
+  dockerFileName: foo
+  targetRepository: foo
