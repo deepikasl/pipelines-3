@@ -12,13 +12,13 @@ pipelines:
     steps:
       - name: basic
         type: Bash
-        configuration:
-          runtime:
-            type: host
-          inputResources:
-           - name: git
-          environmentVariables:
-            foo: bar
+#         configuration:
+#           runtime:
+#             type: host
+# #           inputResources:
+# #            - name: git
+#           environmentVariables:
+#             foo: bar
 #           runtime:
 #             type: host
         execution:
