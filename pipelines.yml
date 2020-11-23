@@ -13,8 +13,8 @@ pipelines:
       - name: basic
         type: Bash
 #         configuration:
-#           runtime:
-#             type: host
+          runtime:
+            type: host
 # #           inputResources:
 # #            - name: git
 #           environmentVariables:
