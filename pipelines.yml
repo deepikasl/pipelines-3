@@ -26,6 +26,7 @@ pipelines:
             - printenv
             - echo lol
             - add_pipeline_variables foo=bar
+            - echo loool
 #       - name: second
 #         type: Bash
 #         configuration:
