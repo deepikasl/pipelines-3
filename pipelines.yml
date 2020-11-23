@@ -12,7 +12,7 @@ pipelines:
     steps:
       - name: basic
         type: Bash
-#         configuration:
+        configuration:
           runtime:
             type: host
 # #           inputResources:
