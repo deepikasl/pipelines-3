@@ -1,11 +1,11 @@
-# resources:
-#   - name: git
-#     type: GitRepo
-#     configuration:
-#       path: bharath92/sample-runSh
-#       gitProvider: github
-#       branches:
-#         include: master 
+resources:
+  - name: git
+    type: GitRepo
+    configuration:
+      path: bharath92/sample-runSh
+      gitProvider: github
+      branches:
+        include: master 
 
 pipelines:
   - name: basic1
@@ -27,18 +27,15 @@ pipelines:
             - echo lol
             - add_pipeline_variables foo=bar
             - echo loool
-#       - name: second
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution: 
-#           onExecute:
-#             - echo $foo
+      - name: second
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: foo
+          dockerImageTag: foo
+          inputResources:
+            - git
 #       - name: third
 #         type: Bash
 #         configuration:
