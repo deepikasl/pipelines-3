@@ -30,6 +30,8 @@ pipelines:
       - name: second
         type: DockerBuild
         configuration:
+          runtime:
+            type: host
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: foo
