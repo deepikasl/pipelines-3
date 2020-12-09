@@ -35,7 +35,7 @@ pipelines:
           dockerImageName: foo
           dockerImageTag: foo
           inputResources:
-            - git
+            - name: git
 #       - name: third
 #         type: Bash
 #         configuration:
