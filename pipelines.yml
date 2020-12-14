@@ -19,8 +19,8 @@ pipelines:
         configuration:
           runtime:
             type: host
-          inputResources:
-            - name: cron
+#           inputResources:
+#             - name: cron
         execution:
           onExecute:
             - printenv
