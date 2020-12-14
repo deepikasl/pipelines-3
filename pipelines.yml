@@ -6,6 +6,10 @@ resources:
       gitProvider: github
       branches:
         include: master 
+  - name: cron
+    type: CronTrigger
+    configuration:
+      interval: '*/2 * * *'
 
 pipelines:
   - name: basic1
@@ -15,12 +19,8 @@ pipelines:
         configuration:
           runtime:
             type: host
-# #           inputResources:
-# #            - name: git
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
+          inputResources:
+            - name: cron
         execution:
           onExecute:
             - printenv
