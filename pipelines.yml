@@ -17,6 +17,8 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          inputSteps:
+            - name: basic
           runtime:
             type: host
         execution:
