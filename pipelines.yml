@@ -25,29 +25,30 @@ pipelines:
             - echo lol
             - add_pipeline_variables foo=bar
             - echo loool
-      - name: basicps
-        type: PowerShell
-        configuration:
-          inputSteps:
-            - name: basic
-          runtime:
-            type: host
-        execution:
-          onExecute:
-            - echo loool
-      - name: second
-        type: DockerBuild
-        configuration:
-          runtime:
-            type: host
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
-          dockerImageName: foo
-          dockerImageTag: foo
-          inputResources:
-            - name: git
-          inputSteps:
-            - name: basic
+            - sleep 10m
+#       - name: basicps
+#         type: PowerShell
+#         configuration:
+#           inputSteps:
+#             - name: basic
+#           runtime:
+#             type: host
+#         execution:
+#           onExecute:
+#             - echo loool
+#       - name: second
+#         type: DockerBuild
+#         configuration:
+#           runtime:
+#             type: host
+#           dockerFileLocation: .
+#           dockerFileName: Dockerfile
+#           dockerImageName: foo
+#           dockerImageTag: foo
+#           inputResources:
+#             - name: git
+#           inputSteps:
+#             - name: basic
 #       - name: third
 #         type: Bash
 #         configuration:
