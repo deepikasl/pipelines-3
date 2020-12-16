@@ -17,8 +17,6 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
-          inputSteps:
-            - name: basic
           runtime:
             type: host
         execution:
@@ -30,6 +28,8 @@ pipelines:
       - name: basicps
         type: PowerShell
         configuration:
+          inputSteps:
+            - name: basic
           runtime:
             type: host
         execution:
