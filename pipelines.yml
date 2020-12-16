@@ -19,13 +19,19 @@ pipelines:
         configuration:
           runtime:
             type: host
-#           inputResources:
-#             - name: cron
         execution:
           onExecute:
             - printenv
             - echo lol
             - add_pipeline_variables foo=bar
+            - echo loool
+      - name: basicps
+        type: PowerShell
+        configuration:
+          runtime:
+            type: host
+        execution:
+          onExecute:
             - echo loool
       - name: second
         type: DockerBuild
