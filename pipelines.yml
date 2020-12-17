@@ -17,6 +17,8 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          inputResources:
+            - name: git
           runtime:
             type: host
         execution:
@@ -26,16 +28,16 @@ pipelines:
             - add_pipeline_variables foo=bar
             - echo loool
             - sleep 10m
-#       - name: basicps
-#         type: PowerShell
-#         configuration:
-#           inputSteps:
-#             - name: basic
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo loool
+      - name: basicps
+        type: PowerShell
+        configuration:
+          inputResources:
+            - name: git
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo loool
 #       - name: second
 #         type: DockerBuild
 #         configuration:
