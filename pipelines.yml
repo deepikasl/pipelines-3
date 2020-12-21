@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
-      gitProvider: githuba
+      gitProvider: github
       branches:
         include: master 
   - name: cron
