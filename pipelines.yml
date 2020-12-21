@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       path: bharath92/sample-runSh
-      gitProvider: github
+      gitProvider: githuba
       branches:
         include: master 
   - name: cron
@@ -19,8 +19,6 @@ pipelines:
         configuration:
           inputResources:
             - name: git
-          inputSteps:
-            - name: basic
           runtime:
             type: host
         execution:
