@@ -17,9 +17,10 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
-          nodePool: foo
           inputResources:
             - name: git
+          inputSteps:
+            - name: basic
           runtime:
             type: host
         execution:
