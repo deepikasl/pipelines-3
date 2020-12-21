@@ -19,7 +19,6 @@ pipelines:
         configuration:
           inputResources:
             - name: git
-            - name: foo
           runtime:
             type: host
         execution:
