@@ -40,6 +40,7 @@ pipelines:
           onExecute:
             - printenv
             - write_output cron "foo=$run_number"
+            - save_tests /tmp/test.xml
         
 #       - name: basicps
 #         type: PowerShell
