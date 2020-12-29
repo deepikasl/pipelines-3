@@ -25,10 +25,11 @@ pipelines:
             - echo lol
             - add_pipeline_variables foo=bar
             - echo loool
-            - sleep 1m
       - name: basic2
         type: Bash
         configuration:
+          outputResources:
+            - name: cron
           inputResources:
             - name: git
           inputSteps:
@@ -38,6 +39,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
+            - write_output cron "foo=$run_number"
         
 #       - name: basicps
 #         type: PowerShell
