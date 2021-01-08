@@ -41,7 +41,8 @@ pipelines:
             - printenv
             - write_output cron "foo=$run_number"
             - save_tests /tmp/test.xml
-            - echo $(get_resource_name --type GitRepo --operation IN)
+            - export resName=$(get_resource_name --type GitRepo --operation IN)
+            - echo $(find_resource_variable $resName path)
         
 #       - name: basicps
 #         type: PowerShell
