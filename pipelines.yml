@@ -28,7 +28,6 @@ pipelines:
       - name: basic2
         type: Bash
         configuration:
-          timeoutSeconds: 180
           outputResources:
             - name: cron
           inputResources:
@@ -42,7 +41,7 @@ pipelines:
             - printenv
             - write_output cron "foo=$run_number"
             - save_tests /tmp/test.xml
-            - sleep 1m
+            - echo $(get_resource_name --type GitRepo --operation IN)
         
 #       - name: basicps
 #         type: PowerShell
