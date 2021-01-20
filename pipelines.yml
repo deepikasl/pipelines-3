@@ -38,10 +38,6 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - write_output cron "foo=$run_number"
-            - save_tests /tmp/test.xml
-            - export resName=$(get_resource_name --type GitRepo --operation IN)
-            - echo $(find_resource_variable $resName path)
             - sleep 2m
       - name: basic3
         type: Bash
