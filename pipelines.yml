@@ -17,14 +17,23 @@ pipelines:
       - name: basic
         type: Bash
         configuration:
+          affinityGroup: foo
           runtime:
             type: host
         execution:
           onExecute:
-            - printenv
-            - echo lol
-            - add_pipeline_variables foo=bar
-            - echo loool
+            - sleep 5m
+      - name: basicparallel
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: basic
+          affinityGroup: foo
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - sleep 5m
       - name: basic2
         type: Bash
         configuration:
