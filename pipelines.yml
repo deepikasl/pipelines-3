@@ -28,8 +28,7 @@ pipelines:
       - name: basic2
         type: Bash
         configuration:
-          outputResources:
-            - name: cron
+          affinityGroup: foo
           inputResources:
             - name: git
           inputSteps:
@@ -43,43 +42,19 @@ pipelines:
             - save_tests /tmp/test.xml
             - export resName=$(get_resource_name --type GitRepo --operation IN)
             - echo $(find_resource_variable $resName path)
-        
-#       - name: basicps
-#         type: PowerShell
-#         configuration:
-#           inputResources:
-#             - name: git
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo loool
-#       - name: second
-#         type: DockerBuild
-#         configuration:
-#           runtime:
-#             type: host
-#           dockerFileLocation: .
-#           dockerFileName: Dockerfile
-#           dockerImageName: foo
-#           dockerImageTag: foo
-#           inputResources:
-#             - name: git
-#           inputSteps:
-#             - name: basic
-#       - name: third
-#         type: Bash
-#         configuration:
-#           #inputResources:
-#           #  - name: git
-#           inputSteps:
-#             - name: basic
-#             - name: second
-#           environmentVariables:
-#             foo: bar
-#           runtime:
-#             type: host
-#         execution:
-#           onExecute:
-#             - echo $foo
-          
+            - sleep 2m
+      - name: basic3
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          outputResources:
+            - name: cron
+          inputSteps:
+            - name: basic2
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+            - write_output cron "foo=$run_number"
+            - sleep 1m
