@@ -53,4 +53,28 @@ pipelines:
           onExecute:
             - printenv
             - write_output cron "foo=$run_number"
-            - sleep 1m
+            - sleep 2m
+      - name: basic4
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          inputSteps:
+            - name: basic3
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+            - sleep 2m
+      - name: basic5
+        type: Bash
+        configuration:
+          affinityGroup: foo
+          inputSteps:
+            - name: basic4
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - printenv
+            - sleep 2m
