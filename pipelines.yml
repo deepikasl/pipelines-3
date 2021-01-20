@@ -22,7 +22,7 @@ pipelines:
             type: host
         execution:
           onExecute:
-            - sleep 5m
+            - sleep 2m
       - name: basicparallel
         type: Bash
         configuration:
@@ -33,7 +33,7 @@ pipelines:
             type: host
         execution:
           onExecute:
-            - sleep 5m
+            - sleep 1m
       - name: basic2
         type: Bash
         configuration:
@@ -47,7 +47,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - sleep 5m
+            - sleep 3m
       - name: basic3
         type: Bash
         configuration:
@@ -62,7 +62,7 @@ pipelines:
           onExecute:
             - printenv
             - write_output cron "foo=$run_number"
-            - sleep 2m
+            - sleep 1m
       - name: basic4
         type: Bash
         configuration:
@@ -74,7 +74,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - sleep 2m
+            - sleep 1m
       - name: basic5
         type: Bash
         configuration:
@@ -86,4 +86,4 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - sleep 2m
+            - sleep 1m
