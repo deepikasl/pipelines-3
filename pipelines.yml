@@ -1,11 +1,11 @@
 resources:
-  - name: git
-    type: GitRepo
-    configuration:
-      path: bharath92/sample-runSh
-      gitProvider: github
-      branches:
-        include: master 
+#   - name: git
+#     type: GitRepo
+#     configuration:
+#       path: bharath92/sample-runSh
+#       gitProvider: github
+#       branches:
+#         include: master 
   - name: cron
     type: CronTrigger
     configuration:
@@ -38,8 +38,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
-          inputResources:
-            - name: git
+#           inputResources:
+#             - name: git
           inputSteps:
             - name: basic
           runtime:
