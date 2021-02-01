@@ -1,4 +1,4 @@
-resources:
+# resources:
 #   - name: git
 #     type: GitRepo
 #     configuration:
@@ -6,10 +6,10 @@ resources:
 #       gitProvider: github
 #       branches:
 #         include: master 
-  - name: cron
-    type: CronTrigger
-    configuration:
-      interval: '*/2 * * *'
+#   - name: cron
+#     type: CronTrigger
+#     configuration:
+#       interval: '*/2 * * *'
 
 pipelines:
   - name: basic1
@@ -52,8 +52,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: foo
-          outputResources:
-            - name: cron
+#           outputResources:
+#             - name: cron
           inputSteps:
             - name: basic2
           runtime:
@@ -61,7 +61,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - write_output cron "foo=$run_number"
+#             - write_output cron "foo=$run_number"
             - sleep 1m
       - name: basic4
         type: Bash
