@@ -78,6 +78,7 @@ pipelines:
       - name: basic5
         type: Bash
         configuration:
+          nodePool: k8_node_pool
           affinityGroup: foo
           inputSteps:
             - name: basic4
