@@ -86,4 +86,5 @@ pipelines:
         execution:
           onExecute:
             - printenv
+            - curl -vvv http://localhost:2376/_ping
             - sleep 1m
