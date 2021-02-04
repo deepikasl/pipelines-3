@@ -78,11 +78,10 @@ pipelines:
       - name: basic5
         type: Bash
         configuration:
-          nodePool: k8_node_pool
           inputSteps:
             - name: basic4
-#           runtime:
-#             type: host
+          runtime:
+            type: host
         execution:
           onExecute:
             - printenv
