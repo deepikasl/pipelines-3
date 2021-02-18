@@ -1,19 +1,11 @@
-resources:
-  - name: cron
-    type: CronTrigger
-    configuration:
-      interval: '*/5 * * * *'
-
 pipelines:
   - name: basic_cron
     steps:
       - name: basic
         type: Bash
         configuration:
-          inputResources:
-            - name: cron
           runtime:
             type: host
         execution:
           onExecute:
-            - echo hi $run_number
+            - add_pipeline_variables run=$run_number
