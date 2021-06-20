@@ -12,6 +12,15 @@ pipelines:
             - add_run_variables run="$run_number lol"
             - touch foo
             - add_run_files foo foo
+#             - restore_cache_files pipeline_state_cache cache.txt
+            - add_pipeline_variables pipelineId=$pipeline_id
+            - add_run_variables runId=$run_number	
+            - echo "state=$run_number" > cache.txt
+            - add_cache_files cache.txt pipeline_state_cache
+            - echo "state=$run_number" > pipeline_state.txt
+            - add_pipeline_files pipeline_state.txt pipeline_state_file
+            - echo "state=$run_number" > run_state.txt
+            - add_run_files run_state.txt run_state_file
       - name: two
         type: Bash
         configuration:
